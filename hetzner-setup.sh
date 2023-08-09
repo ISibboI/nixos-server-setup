@@ -33,14 +33,14 @@ set -o pipefail
 set -x
 
 # Global properties
-if [[ -z "$SSH_KEY" ]]; then
+if [[ -z "${SSH_KEY:-}" ]]; then
     AUTHORIZED_KEYS_FILE=/root/.ssh/authorized_keys
     echo "SSH_KEY is empty, checking $AUTHORIZED_KEYS_FILE if there is any"
     set +e
     SSH_KEY=$(head -n 1 $AUTHORIZED_KEYS_FILE)
     set -e
 
-    if [[ -z "$SSH_KEY" ]]; then
+    if [[ -z "${SSH_KEY:-}" ]]; then
         echo "Error: no SSH_KEY found in $AUTHORIZED_KEYS_FILE"
         exit 1
     else
@@ -48,12 +48,12 @@ if [[ -z "$SSH_KEY" ]]; then
     fi
 fi
 
-if [[ -z "$NIXOS_STATE_VERSION" ]]; then
+if [[ -z "${NIXOS_STATE_VERSION:-}" ]]; then
     echo "NIXOS_STATE_VERSION is empty, using default value \"23.05\""
     NIXOS_STATE_VERSION="23.05"
 fi
 
-if [[ -z "$NETMASK_PREFIX_LENGTH" ]]; then
+if [[ -z "${NETMASK_PREFIX_LENGTH:-}" ]]; then
     echo "NETMASK_PREFIX_LENGTH is empty, using default value 26"
     NETMASK_PREFIX_LENGTH=26
 fi
@@ -84,7 +84,7 @@ ARRAY <ignore> UUID=00000000:00000000:00000000:00000000' > /etc/mdadm/mdadm.conf
 
 # Create wrapper for parted >= 3.3 that does not exit 1 when it cannot inform
 # the kernel of partitions changing (we use partprobe for that).
-echo -e "#! /usr/bin/env bash\nset -e\n" 'parted $@ 2> parted-stderr.txt || grep "unable to inform the kernel of the change" parted-stderr.txt && echo "This is expected, continuing" || echo >&2 "Parted failed; stderr: $(< parted-stderr.txt)"' > parted-ignoring-partprobe-error.sh && chmod +x parted-ignoring-partprobe-error.sh
+echo -e "#! /usr/bin/env bash\nset -e\n" 'parted $@ 2> parted-stderr.txt || grep "unable to inform the kernel of the change" parted-stderr.txt && echo "This is expected, continuing" || (echo >&2 "Parted failed; stderr: $(< parted-stderr.txt)"; exit 1)' > parted-ignoring-partprobe-error.sh && chmod +x parted-ignoring-partprobe-error.sh
 
 # Create partition tables (--script to not ask)
 ./parted-ignoring-partprobe-error.sh --script /dev/sda mklabel gpt
@@ -105,8 +105,8 @@ echo -e "#! /usr/bin/env bash\nset -e\n" 'parted $@ 2> parted-stderr.txt || grep
 #   ... part-type is one of 'primary', 'extended' or 'logical', and may be specified only with 'msdos' or 'dvh' partition tables.
 #   A name must be specified for a 'gpt' partition table.
 # GPT partition names are limited to 36 UTF-16 chars, see https://en.wikipedia.org/wiki/GUID_Partition_Table#Partition_entries_(LBA_2-33).
-./parted-ignoring-partprobe-error.sh --script --align optimal /dev/sda -- mklabel gpt mkpart primary 'BIOS-boot-partition' 1MB 2MB set 1 bios_grub on mkpart primary 'data-partition' 2MB '-16GB' mkpart linux-swap 'swap' '-16GB' '100%'
-./parted-ignoring-partprobe-error.sh --script --align optimal /dev/sdb -- mklabel gpt mkpart primary 'BIOS-boot-partition' 1MB 2MB set 1 bios_grub on mkpart primary 'data-partition' 2MB '-16GB' mkpart linux-swap 'swap' '-16GB' '100%'
+./parted-ignoring-partprobe-error.sh --script --align optimal /dev/sda -- mklabel gpt mkpart 'BIOS-boot-partition' 1MB 2MB set 1 bios_grub on mkpart 'data-partition' 2MB '-16GB' mkpart 'swap' linux-swap '-16GB' '100%'
+./parted-ignoring-partprobe-error.sh --script --align optimal /dev/sdb -- mklabel gpt mkpart 'BIOS-boot-partition' 1MB 2MB set 1 bios_grub on mkpart 'data-partition' 2MB '-16GB' mkpart 'swap' linux-swap '-16GB' '100%'
 
 # Reload partitions
 partprobe
@@ -371,7 +371,7 @@ cat > /mnt/etc/nixos/configuration.nix <<EOF
 EOF
 
 # Install NixOS
-PATH="$PATH" `which nixos-install` --no-root-passwd --root /mnt --max-jobs 40
+PATH="$PATH" NIX_PATH="$NIX_PATH" `which nixos-install` --no-root-passwd --root /mnt --max-jobs 40
 
 umount /mnt
 
