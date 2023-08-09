@@ -159,6 +159,8 @@ lvcreate --yes --extents 100%FREE -n root0 vg0
 
 # Filesystems (-f to not ask on preexisting FS)
 mkfs.btrfs -f -L root /dev/mapper/vg0-root0
+mkswap -L swapa /dev/sda3
+mkswap -L swapb /dev/sdb3
 
 # Creating file systems changes their UUIDs.
 # Trigger udev so that the entries in /dev/disk/by-uuid get refreshed.
