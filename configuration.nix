@@ -17,6 +17,8 @@
     };
   };
 
+  users.mutableUsers = false;
+
   # We want to use fish instead of bash.
   users.defaultUserShell = pkgs.fish;
 
@@ -104,5 +106,23 @@
 
   # Create a backup copy of the system config.
   system.copySystemConfiguration = true;
+
+  # Syncthing
+  users.users.syncthing = {
+    isNormalUser = true;
+  };
+
+  services = {
+    syncthing = {
+        enable = true;
+        user = "syncthing";
+        dataDir = "/home/syncthing";    # Default folder for new synced folders
+        configDir = "/home/.config/syncthing";   # Folder for Syncthing's settings and keys
+    };
+  };
+
+  # Syncthing ports
+  networking.firewall.allowedTCPPorts = [ 8384 22000 ];
+  networking.firewall.allowedUDPPorts = [ 22000 21027 ];
 
 }
