@@ -111,6 +111,7 @@
   users.users.syncthing = {
     isNormalUser = true;
     isSystemUser = false;
+    home = "/home/syncthing";
   };
 
   services = {
