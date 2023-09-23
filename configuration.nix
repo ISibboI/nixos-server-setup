@@ -110,6 +110,7 @@
   # Syncthing
   users.users.syncthing = {
     isNormalUser = true;
+    isSystemUser = false;
   };
 
   services = {
