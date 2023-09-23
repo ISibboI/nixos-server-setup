@@ -195,7 +195,7 @@ nix-channel --add https://nixos.org/channels/nixos-$NIXOS_STATE_VERSION nixpkgs
 nix-channel --update
 
 # Getting NixOS installation tools
-nix-env -iE "_: with import <nixpkgs/nixos> { configuration = {}; }; with config.system.build; [ nixos-generate-config nixos-install nixos-enter manual.manpages git ]"
+nix-env -iE "_: with import <nixpkgs/nixos> { configuration = { programs.git.enable = true; }; }; with config.system.build; [ nixos-generate-config nixos-install nixos-enter manual.manpages ]"
 
 nixos-generate-config --root /mnt
 
@@ -232,10 +232,11 @@ cd /mnt/etc/nixos
 
 # https://stackoverflow.com/questions/2411031/how-do-i-clone-into-a-non-empty-directory
 git init
-git remote add origin git@github.com:ISibboI/nixos-server-setup.git
+git remote add origin https://github.com/isibboi/nixos-server-setup.git
 git fetch
 git reset origin/main  # Required when the versioned files existed in path before "git init" of this repo.
 git checkout -t origin/main
+git checkout .
 
 # Now we have a `configuration.nix` that is just missing some secrets.
 # Generate `secrets.nix`. Note that we splice in shell variables.
