@@ -195,7 +195,7 @@ nix-channel --add https://nixos.org/channels/nixos-$NIXOS_STATE_VERSION nixpkgs
 nix-channel --update
 
 # Getting NixOS installation tools
-nix-env -iE "_: with import <nixpkgs/nixos> { configuration = {}; }; with config.system.build; [ nixos-generate-config nixos-install nixos-enter manual.manpages ]"
+nix-env -iE "_: with import <nixpkgs/nixos> { configuration = {}; }; with config.system.build; [ nixos-generate-config nixos-install nixos-enter manual.manpages git ]"
 
 nixos-generate-config --root /mnt
 
@@ -228,96 +228,21 @@ echo "Determined IP_V6 as $IP_V6"
 read _ _ DEFAULT_GATEWAY _ < <(ip route list match 0/0); echo "$DEFAULT_GATEWAY"
 echo "Determined DEFAULT_GATEWAY as $DEFAULT_GATEWAY"
 
+cd /mnt/etc/nixos
 
-# Generate `configuration.nix`. Note that we splice in shell variables.
-cat > /mnt/etc/nixos/configuration.nix <<EOF
+# https://stackoverflow.com/questions/2411031/how-do-i-clone-into-a-non-empty-directory
+git init
+git remote add origin git@github.com:ISibboI/nixos-server-setup.git
+git fetch
+git reset origin/main  # Required when the versioned files existed in path before "git init" of this repo.
+git checkout -t origin/main
+
+# Now we have a `configuration.nix` that is just missing some secrets.
+# Generate `secrets.nix`. Note that we splice in shell variables.
+cat > /mnt/etc/nixos/secrets.nix <<EOF
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
-  nix = {
-    settings = {
-      # Enable flakes and new 'nix' command
-      experimental-features = "nix-command flakes";
-      # Deduplicate and optimize nix store
-      auto-optimise-store = true;
-    };
-  };
-
-  # We want to use fish instead of bash.
-  users.defaultUserShell = pkgs.fish;
-
-  programs.fish.enable = true;
-  programs.git.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    # Basics
-    vim
-    file
-    htop
-    direnv
-    docker-compose
-
-    # Fish stuff
-    fishPlugins.done
-    fishPlugins.fzf-fish
-    fishPlugins.forgit
-    fishPlugins.hydro
-    fzf
-    fishPlugins.grc
-    grc
-  ];
-
-  # Set your time zone.
-  time.timeZone = "Europe/Helsinki";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    font = "ter-v32n";
-    keyMap = "fi";
-    packages = with pkgs; [terminus_font];
-  };
-
-  virtualisation.docker = {
-    enable = true;
-    storageDriver = "btrfs";
-  };
-
-  # Use GRUB2 as the boot loader.
-  # We don't use systemd-boot because Hetzner uses BIOS legacy boot.
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.grub = {
-    enable = true;
-    efiSupport = false;
-    devices = [ "/dev/sda" "/dev/sdb" ];
-  };
-
-  networking.hostName = "hetzner";
-
-  # The mdadm RAID1s were created with 'mdadm --create ... --homehost=hetzner',
-  # but the hostname for each machine may be different, and mdadm's HOMEHOST
-  # setting defaults to '<system>' (using the system hostname).
-  # This results mdadm considering such disks as "foreign" as opposed to
-  # "local", and showing them as e.g. '/dev/md/hetzner:root0'
-  # instead of '/dev/md/root0'.
-  # This is mdadm's protection against accidentally putting a RAID disk
-  # into the wrong machine and corrupting data by accidental sync, see
-  # https://bugzilla.redhat.com/show_bug.cgi?id=606481#c14 and onward.
-  # We do not worry about plugging disks into the wrong machine because
-  # we will never exchange disks between machines, so we tell mdadm to
-  # ignore the homehost entirely.
-  environment.etc."mdadm.conf".text = ''
-    HOMEHOST <ignore>
-  '';
-  # The RAIDs are assembled in stage1, so we need to make the config
-  # available there.
-  boot.initrd.services.swraid.mdadmConf = config.environment.etc."mdadm.conf".text;
-
   # Network (Hetzner uses static IP assignments, and we don't use DHCP here)
   networking.useDHCP = false;
   networking.interfaces."$NIXOS_INTERFACE".ipv4.addresses = [
@@ -340,35 +265,20 @@ cat > /mnt/etc/nixos/configuration.nix <<EOF
   ];
   networking.defaultGateway = "$DEFAULT_GATEWAY";
   networking.defaultGateway6 = { address = "fe80::1"; interface = "$NIXOS_INTERFACE"; };
-  networking.nameservers = [ "8.8.8.8" ];
-
-  # Not root password.
-  # Since we don't allow password authentication for SSH, that should be fine for installation.
-  # For security reasons, still set one after installation.
-  users.users.root.initialPassword = "";
 
   # The only possibility to log in initially is this ssh key.
   users.users.root.openssh.authorizedKeys.keys = [
     "$SSH_KEY"
   ];
-
-  services.openssh = {
-    enable = true;
-    # Require public key authentication for better security.
-    settings.PasswordAuthentication = false;
-    settings.KbdInteractiveAuthentication = false;
-    settings.PermitRootLogin = "prohibit-password";
-  };
-
-  # Create a backup copy of the system config.
-  system.copySystemConfiguration = true;
-
+  
+  # The following is technically not a secret, but it is set by the install script,
+  # so we put it here such that we can keep the plain `configuration.nix` as in the
+  # git repo.
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
   system.stateVersion = "$NIXOS_STATE_VERSION"; # Did you read the comment?
-
 }
 EOF
 
