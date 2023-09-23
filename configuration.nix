@@ -107,6 +107,42 @@
   # Create a backup copy of the system config.
   system.copySystemConfiguration = true;
 
+  # Nginx
+  services.nginx = {
+    enable = true;
+
+    # Use recommended settings
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+
+    # Only allow PFS-enabled ciphers with AES256
+    sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
+
+    # Add any further config to match your needs, e.g.:
+    virtualHosts = let
+      base = locations: {
+        inherit locations;
+
+        forceSSL = true;
+        enableACME = true;
+        root = "/dev/null";
+      };
+      proxy = port: base {
+        "/".proxyPass = "http://127.0.0.1:" + toString(port) + "/";
+      };
+    in {
+      # Define syncthing.tktie.de as reverse-proxied service on 127.0.0.1:8384
+      "syncthing.tktie.de" = proxy 8384 // { default = true; };
+    };
+  };
+
+  security.acme = {
+    acceptTerms = true;
+    email = "isibboi@gmail.com";
+  };
+
   # Syncthing
   services = {
     syncthing = {
