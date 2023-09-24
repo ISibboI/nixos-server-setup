@@ -102,10 +102,8 @@
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
     settings.PermitRootLogin = "prohibit-password";
-    extraConfig = ''
-      ClientAliveInterval 60
-      ClientAliveCountMax 60
-    '';
+    settings.ClientAliveInterval = 60;
+    settings.ClientAliveCountMax = 60;
   };
 
   # Create a backup copy of the system config.
