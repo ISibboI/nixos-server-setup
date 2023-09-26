@@ -90,7 +90,7 @@
   # available there.
   boot.initrd.services.swraid.mdadmConf = config.environment.etc."mdadm.conf".text;
 
-  networking.nameservers = [ "oxygen.ns.hetzner.com" "hydrogen.ns.hetzner.com" "helium.ns.hetzner.de" "8.8.8.8" ];
+  networking.nameservers = [ "213.133.100.98" "88.198.229.192" "193.47.99.5" "8.8.8.8" ];
 
   # Not root password.
   # Since we don't allow password authentication for SSH, that should be fine for installation.
