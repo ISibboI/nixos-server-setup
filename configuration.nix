@@ -30,6 +30,7 @@
     vim
     file
     htop
+    bind
     direnv
     docker-compose
 
