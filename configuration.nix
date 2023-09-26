@@ -90,7 +90,7 @@
   # available there.
   boot.initrd.services.swraid.mdadmConf = config.environment.etc."mdadm.conf".text;
 
-  networking.nameservers = [ "213.133.100.98" "88.198.229.192" "193.47.99.5" "8.8.8.8" ];
+  networking.nameservers = [ "2a01:4f8:0:1::add:1098" "2a01:4f8:0:1::add:2992" "2001:67c:192c::add:5" "213.133.100.98" "88.198.229.192" "193.47.99.5" "8.8.8.8" ];
 
   # Not root password.
   # Since we don't allow password authentication for SSH, that should be fine for installation.
