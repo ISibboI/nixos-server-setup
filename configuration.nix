@@ -146,7 +146,13 @@
       };
     in {
       # Define syncthing.tktie.de as reverse-proxied service on 127.0.0.1:8384
-      "syncthing.tktie.de" = proxy 8384 // { default = true; };
+      "syncthing.tktie.de" = proxy 8384 // { 
+        default = true;
+        extraConfig = ''
+          auth_basic "Restricted";
+          auth_basic_user_file /home/syncthing/.htpasswd;
+        '';
+     };
     };
   };
 
@@ -165,7 +171,7 @@
     };
   };
 
-  # Syncthing ports
+  # Firewall
   networking.firewall.allowedTCPPorts = [ 80 443 22000 ];
   networking.firewall.allowedUDPPorts = [ 22000 21027 ];
 
