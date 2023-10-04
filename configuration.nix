@@ -23,7 +23,11 @@
   users.defaultUserShell = pkgs.fish;
 
   programs.fish.enable = true;
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    userName = "Sebastian Schmidt";
+    userEmail = "isibboi@gmail.com";
+  };
 
   environment.systemPackages = with pkgs; [
     # Basics
