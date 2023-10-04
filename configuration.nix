@@ -25,8 +25,13 @@
   programs.fish.enable = true;
   programs.git = {
     enable = true;
-    userName = "Sebastian Schmidt";
-    userEmail = "isibboi@gmail.com";
+    config = {
+      init = {
+        defaultBranch = "main";
+      };
+      user.name = "Sebastian Schmidt";
+      user.email = "isibboi@gmail.com";
+    };
   };
 
   environment.systemPackages = with pkgs; [
