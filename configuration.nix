@@ -148,10 +148,7 @@
       # Define syncthing.tktie.de as reverse-proxied service on 127.0.0.1:8384
       "syncthing.tktie.de" = proxy 8384 // { 
         default = true;
-        extraConfig = ''
-          auth_basic "Restricted";
-          auth_basic_user_file /home/syncthing/.htpasswd;
-        '';
+        basicAuthFile = "/home/syncthing/.htpasswd";
      };
     };
   };
