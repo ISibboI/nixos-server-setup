@@ -51,6 +51,9 @@
     fzf
     fishPlugins.grc
     grc
+
+    # htpasswd for creating HTTP basic auth logins
+    apacheHttpd
   ];
 
   # Set your time zone.
