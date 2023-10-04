@@ -129,6 +129,9 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
 
+    # Only allow PFS-enabled ciphers with AES256
+    sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
+
     # Add any further config to match your needs, e.g.:
     virtualHosts = let
       base = locations: {
