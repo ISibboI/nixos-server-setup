@@ -163,7 +163,7 @@
   };
 
   # Syncthing ports
-  networking.firewall.allowedTCPPorts = [ 22000 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 22000 ];
   networking.firewall.allowedUDPPorts = [ 22000 21027 ];
 
 }
