@@ -139,7 +139,7 @@
 
         forceSSL = true;
         enableACME = true;
-        root = "/dev/null";
+        root = "/var/www";
       };
       proxy = port: base {
         "/".proxyPass = "http://127.0.0.1:" + toString(port) + "/";
@@ -166,7 +166,7 @@
   };
 
   # Syncthing ports
-  networking.firewall.allowedTCPPorts = [ 8384 22000 ];
+  networking.firewall.allowedTCPPorts = [ 22000 ];
   networking.firewall.allowedUDPPorts = [ 22000 21027 ];
 
 }
