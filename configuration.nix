@@ -194,6 +194,7 @@
         } ];
       }
     ];
+    extraConfigFiles = [ "/run/secrets/matrix-shared-secret" ];
   };
 
   # Postgres for matrix-synapse
