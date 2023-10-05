@@ -1,6 +1,16 @@
 { config, pkgs, ... }:
 
-{
+let
+  matrixFqdn = "matrix.${config.networking.domain}";
+  matrixBaseUrl = "https://${matriFqdn}";
+  clientConfig."m.homeserver".base_url = matrixBaseUrl;
+  serverConfig."m.server" = "${matrixFqdn}:443";
+  mkWellKnown = data: ''
+    add_header Content-Type application/json;
+    add_header Access-Control-Allow-Origin *;
+    return 200 '${builtins.toJSON data}';
+  '';
+in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -81,6 +91,7 @@
     devices = [ "/dev/sda" "/dev/sdb" ];
   };
 
+  networking.domain = "tktie.de";
   networking.hostName = "hetzner";
 
   # The mdadm RAID1s were created with 'mdadm --create ... --homehost=hetzner',
@@ -148,12 +159,19 @@
         "/".proxyPass = "http://localhost:" + toString(port) + "/";
       };
     in {
-      # Define syncthing.tktie.de as reverse-proxied service on localhost:8384
-      "syncthing.tktie.de" = proxy 8384 // {
+      # Define syncthing.${config.networking.domain} as reverse-proxied service on localhost:8384
+      "syncthing.${config.networking.domain}" = proxy 8384 // {
         basicAuthFile = "/var/www/.htpasswd";
       };
 
-      "matrix.tktie.de" = proxy 8008;
+      "matrix.${config.networking.domain}" = proxy 8008;
+
+      "${config.networking.domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."= /.well-known/matrix/server".extraConfig = mkWellKnown serverConfig;
+        locations."= /.well-known/matrix/client".extraConfig = mkWellKnown clientConfig;
+      };
     };
   };
 
@@ -176,12 +194,8 @@
   # Matrix
   services.matrix-synapse = {
     enable = true;
-    settings.server_name = "matrix.tktie.de";
-    # The public base URL value must match the `base_url` value set in `clientConfig` above.
-    # The default value here is based on `server_name`, so if your `server_name` is different
-    # from the value of `fqdn` above, you will likely run into some mismatched domain names
-    # in client applications.
-    settings.public_baseurl = "https://matrix.tktie.de";
+    settings.server_name = config.networking.domain;
+    settings.public_baseurl = matrixBaseUrl;
     settings.listeners = [
       { port = 8008;
         bind_addresses = [ "localhost" ];
