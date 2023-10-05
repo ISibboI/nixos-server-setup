@@ -123,7 +123,7 @@
   system.copySystemConfiguration = true;
 
   # Webserver
-  services.httpd = {
+  services.nginx = {
     enable = true;
 
     # Use recommended settings
@@ -151,7 +151,7 @@
       # Define syncthing.tktie.de as reverse-proxied service on 127.0.0.1:8384
       "syncthing.tktie.de" = proxy 8384 // { 
         default = true;
-        basicAuthFile = "/home/nginx/.htpasswd";
+        basicAuthFile = "/var/www/.htpasswd";
      };
     };
   };
