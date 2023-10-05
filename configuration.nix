@@ -152,7 +152,11 @@
       "syncthing.tktie.de" = proxy 8384 // { 
         default = true;
         basicAuthFile = "/var/www/.htpasswd";
-     };
+      };
+
+      "matrix.tktie.de" = proxy 8008 // {
+        default = true;
+      };
     };
   };
 
@@ -171,6 +175,39 @@
         extraOptions.gui.insecureSkipHostcheck = true;
     };
   };
+
+  # Matrix
+  services.matrix-synapse = {
+    enable = true;
+    settings.server_name = "matrix.tktie.de";
+    # The public base URL value must match the `base_url` value set in `clientConfig` above.
+    # The default value here is based on `server_name`, so if your `server_name` is different
+    # from the value of `fqdn` above, you will likely run into some mismatched domain names
+    # in client applications.
+    settings.public_baseurl = "https://matrix.tktie.de";
+    settings.listeners = [
+      { port = 8008;
+        bind_addresses = [ "localhost" ];
+        type = "http";
+        tls = false;
+        x_forwarded = true;
+        resources = [ {
+          names = [ "client" "federation" ];
+          compress = true;
+        } ];
+      }
+    ];
+  };
+
+  # Postgres for matrix-synapse
+  services.postgresql.enable = true;
+  services.postgresql.initialScript = pkgs.writeText "synapse-init.sql" ''
+    CREATE ROLE "matrix-synapse" WITH LOGIN PASSWORD 'synapse';
+    CREATE DATABASE "matrix-synapse" WITH OWNER "matrix-synapse"
+      TEMPLATE template0
+      LC_COLLATE = "C"
+      LC_CTYPE = "C";
+  '';
 
   # Firewall
   networking.firewall.allowedTCPPorts = [ 80 443 22000 ];
