@@ -122,8 +122,8 @@
   # Create a backup copy of the system config.
   system.copySystemConfiguration = true;
 
-  # Nginx
-  services.nginx = {
+  # Webserver
+  services.httpd = {
     enable = true;
 
     # Use recommended settings
