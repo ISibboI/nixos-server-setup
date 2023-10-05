@@ -166,11 +166,24 @@ in {
 
       "matrix.${config.networking.domain}" = proxy 8008;
 
+      # Make matrix findable from root domain
       "${config.networking.domain}" = {
         enableACME = true;
         forceSSL = true;
         locations."= /.well-known/matrix/server".extraConfig = mkWellKnown serverConfig;
         locations."= /.well-known/matrix/client".extraConfig = mkWellKnown clientConfig;
+      };
+
+      # Element: webinterface for matrix
+      "element.${config.networking.domain}" = {
+        enableACME = true;
+        forceSSL = true;
+
+        root = pkgs.element-web.override {
+          conf = {
+            default_server_config = clientConfig; # see `clientConfig` from the snippet above.
+          };
+        };
       };
     };
   };
