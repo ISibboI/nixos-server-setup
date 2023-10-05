@@ -145,10 +145,10 @@
         root = "/var/www";
       };
       proxy = port: base {
-        "/".proxyPass = "http://127.0.0.1:" + toString(port) + "/";
+        "/".proxyPass = "http://localhost:" + toString(port) + "/";
       };
     in {
-      # Define syncthing.tktie.de as reverse-proxied service on 127.0.0.1:8384
+      # Define syncthing.tktie.de as reverse-proxied service on localhost:8384
       "syncthing.tktie.de" = proxy 8384 // { 
         default = true;
         basicAuthFile = "/var/www/.htpasswd";
