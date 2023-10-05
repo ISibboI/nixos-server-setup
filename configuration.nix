@@ -149,14 +149,11 @@
       };
     in {
       # Define syncthing.tktie.de as reverse-proxied service on localhost:8384
-      "syncthing.tktie.de" = proxy 8384 // { 
-        default = true;
+      "syncthing.tktie.de" = proxy 8384 // {
         basicAuthFile = "/var/www/.htpasswd";
       };
 
-      "matrix.tktie.de" = proxy 8008 // {
-        default = true;
-      };
+      "matrix.tktie.de" = proxy 8008;
     };
   };
 
