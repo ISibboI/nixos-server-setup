@@ -2,7 +2,7 @@
 
 let
   matrixFqdn = "matrix.${config.networking.domain}";
-  matrixBaseUrl = "https://${matriFqdn}";
+  matrixBaseUrl = "https://${matrixFqdn}";
   clientConfig."m.homeserver".base_url = matrixBaseUrl;
   serverConfig."m.server" = "${matrixFqdn}:443";
   mkWellKnown = data: ''
