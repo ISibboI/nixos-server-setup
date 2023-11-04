@@ -146,7 +146,7 @@ in {
     # Only allow PFS-enabled ciphers with AES256
     sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
 
-    # Add any further config to match your needs, e.g.:
+    # Add virtual hosts:
     virtualHosts = let
       base = locations: {
         inherit locations;
@@ -184,6 +184,12 @@ in {
             default_server_config = clientConfig; # see `clientConfig` from the snippet above.
           };
         };
+      };
+
+      # Enable ACME for nextcloud
+      "nextcloud.${config.networking.domain}" = {
+        enableACME = true;
+        forceSSL = true;
       };
     };
   };
