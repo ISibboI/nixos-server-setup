@@ -232,7 +232,21 @@ in {
       TEMPLATE template0
       LC_COLLATE = "C"
       LC_CTYPE = "C";
+
+    CREATE ROLE "nextcloud" WITH LOGIN PASSWORD 'nextcloud';
+    CREATE DATABASE "nextcloud" WITH OWNER "nextcloud";
   '';
+
+  # Nextcloud
+  services.nextcloud = {
+    enable = true;
+    hostName = "nextcloud.${config.networking.domain}";
+    config = {
+      dbtype = "pgsql";
+      adminpassFile = "/run/secrets/nextcloud-admin-pass.txt";
+      dbpassFile = "/run/secrets/nextcloud-postgres-pass.txt";
+    };
+  };
 
   # Firewall
   networking.firewall.allowedTCPPorts = [ 80 443 22000 ];
