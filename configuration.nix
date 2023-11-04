@@ -224,19 +224,6 @@ in {
     extraConfigFiles = [ "/run/secrets/matrix-shared-secret" ];
   };
 
-  # Postgres for matrix-synapse
-  services.postgresql.enable = true;
-  services.postgresql.initialScript = pkgs.writeText "synapse-init.sql" ''
-    CREATE ROLE "matrix-synapse" WITH LOGIN PASSWORD 'synapse';
-    CREATE DATABASE "matrix-synapse" WITH OWNER "matrix-synapse"
-      TEMPLATE template0
-      LC_COLLATE = "C"
-      LC_CTYPE = "C";
-
-    CREATE ROLE "nextcloud" WITH LOGIN PASSWORD 'nextcloud';
-    CREATE DATABASE "nextcloud" WITH OWNER "nextcloud";
-  '';
-
   # Nextcloud
   services.nextcloud = {
     enable = true;
@@ -247,6 +234,19 @@ in {
       dbpassFile = "/run/secrets/nextcloud-postgres-pass.txt";
     };
   };
+
+  # Postgres setup
+  services.postgresql.enable = true;
+  services.postgresql.initialScript = pkgs.writeText "postgres-init.sql" ''
+    CREATE ROLE "matrix-synapse" WITH LOGIN PASSWORD 'synapse';
+    CREATE DATABASE "matrix-synapse" WITH OWNER "matrix-synapse"
+      TEMPLATE template0
+      LC_COLLATE = "C"
+      LC_CTYPE = "C";
+
+    CREATE ROLE "nextcloud" WITH LOGIN PASSWORD 'nextcloud';
+    CREATE DATABASE "nextcloud" WITH OWNER "nextcloud";
+  '';
 
   # Firewall
   networking.firewall.allowedTCPPorts = [ 80 443 22000 ];
