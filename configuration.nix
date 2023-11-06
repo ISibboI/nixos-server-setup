@@ -227,7 +227,7 @@ in {
         } ];
       }
     ];
-    extraConfigFiles = [ "/run/secrets/matrix-shared-secret" ];
+    extraConfigFiles = [ "/etc/nixos/matrix-shared-secret.txt" ];
   };
 
   # Nextcloud
@@ -236,8 +236,10 @@ in {
     hostName = "nextcloud.${config.networking.domain}";
     config = {
       dbtype = "pgsql";
+      # Set only once, hence it can be in /run
       adminpassFile = "/run/secrets/nextcloud-admin-pass.txt";
-      dbpassFile = "/run/secrets/nextcloud-postgres-pass.txt";
+      # Needed every time.
+      dbpassFile = "/etc/nixos/nextcloud-postgres-pass.txt";
     };
   };
 
