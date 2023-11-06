@@ -16,6 +16,9 @@ in {
       ./hardware-configuration.nix
       # Store secrets in a separate file
       ./secrets.nix
+
+      # Immich
+      ./immich.nix
     ];
 
   nix = {
@@ -254,6 +257,9 @@ in {
 
     CREATE ROLE "nextcloud" WITH LOGIN PASSWORD 'nextcloud';
     CREATE DATABASE "nextcloud" WITH OWNER "nextcloud";
+
+    CREATE ROLE "immich" WITH LOGIN PASSWORD 'immich';
+    CREATE DATABASE "immich" WITH OWNER "immich";
   '';
 
   # Firewall
