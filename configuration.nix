@@ -237,7 +237,7 @@ in {
     config = {
       dbtype = "pgsql";
       # Set only once, hence it can be in /run
-      adminpassFile = "/run/secrets/nextcloud-admin-pass.txt";
+      adminpassFile = "/etc/nixos/nextcloud-admin-pass.txt";
       # Needed every time.
       dbpassFile = "/etc/nixos/nextcloud-postgres-pass.txt";
     };
