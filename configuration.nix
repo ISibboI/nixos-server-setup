@@ -241,20 +241,28 @@ in {
   };
 
   # Postgres setup
-  services.postgresql.enable = true;
-  services.postgresql.initialScript = pkgs.writeText "postgres-init.sql" ''
-    CREATE ROLE "matrix-synapse" WITH LOGIN PASSWORD 'synapse';
-    CREATE DATABASE "matrix-synapse" WITH OWNER "matrix-synapse"
-      TEMPLATE template0
-      LC_COLLATE = "C"
-      LC_CTYPE = "C";
+  services.postgresql = {
+    enable = true;
+    enableTCPIP = true;
 
-    CREATE ROLE "nextcloud" WITH LOGIN PASSWORD 'nextcloud';
-    CREATE DATABASE "nextcloud" WITH OWNER "nextcloud";
+    authentication = ''
+      host immich immich 10.90.0.0/24 password
+    '';
 
-    CREATE ROLE "immich" WITH LOGIN PASSWORD 'immich';
-    CREATE DATABASE "immich" WITH OWNER "immich";
-  '';
+    initialScript = pkgs.writeText "postgres-init.sql" ''
+      CREATE ROLE "matrix-synapse" WITH LOGIN PASSWORD 'synapse';
+      CREATE DATABASE "matrix-synapse" WITH OWNER "matrix-synapse"
+        TEMPLATE template0
+        LC_COLLATE = "C"
+        LC_CTYPE = "C";
+
+      CREATE ROLE "nextcloud" WITH LOGIN PASSWORD 'nextcloud';
+      CREATE DATABASE "nextcloud" WITH OWNER "nextcloud";
+
+      CREATE ROLE "immich" WITH LOGIN PASSWORD 'immich';
+      CREATE DATABASE "immich" WITH OWNER "immich";
+    '';
+  };
 
   # Firewall
   networking.firewall.allowedTCPPorts = [ 80 443 22000 ];

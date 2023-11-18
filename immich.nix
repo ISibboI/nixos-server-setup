@@ -1,12 +1,12 @@
 { pkgs, config, ... }:
 
 let
-  dbHostname = "10.90.0.1";
+  dbHostname = "10.90.0.1"; # Changing these requires changes below as well. These variables are not used everywhere they should.
   dbUsername = "immich";
   dbPassword = "immich";
   dbDatabaseName = "immich";
 
-  redisHostname = "10.90.0.1";
+  redisHostname = "10.90.0.1"; # Changing these requires changes below as well. These variables are not used everywhere they should.
   redisPort = 6366;
   redisPassword = "immich";
   photosLocation = "/home/immich";
@@ -202,12 +202,17 @@ in
       # crash the whole service.
       check=$(${pkgs.podman}/bin/podman network ls | grep "immich-bridge" || true)
       if [ -z "$check" ];
-        then ${pkgs.podman}/bin/podman network create --gateway 10.90.0.1 --subnet 10.90.0.0/24 immich-bridge
+        then ${pkgs.podman}/bin/podman network create --gateway 10.90.0.1 --subnet 10.90.0.0/24 --interface-name=immich-bridge immich-bridge
         else echo "immich-bridge already exists in podman"
       fi
       ''; 
   };
 
+  # Allow containers to reach redis and postgres on host
+  networking.firewall.extraCommands = ''
+    iptables -A INPUT -p tcp --dport 6366 -s 10.90.0.0/24 -i immich-bridge -j ACCEPT
+    iptables -A INPUT -p tcp --dport 5432 -s 10.90.0.0/24 -i immich-bridge -j ACCEPT
+  '';
 
   services.nginx.virtualHosts."immich.${config.networking.domain}" = {
     enableACME = true;
