@@ -61,7 +61,7 @@ in
     enable = true;
     port = redisPort;
     requirePass = redisPassword;
-    bind = null;
+    bind = redisHostname;
   };
 
   virtualisation.oci-containers.containers = {

@@ -54,7 +54,6 @@ in {
     htop
     bind
     direnv
-    docker-compose
 
     # Fish stuff
     fishPlugins.done
@@ -78,11 +77,6 @@ in {
     font = "ter-v32n";
     keyMap = "fi";
     packages = with pkgs; [terminus_font];
-  };
-
-  virtualisation.docker = {
-    enable = true;
-    storageDriver = "btrfs";
   };
 
   # Use GRUB2 as the boot loader.
