@@ -195,7 +195,7 @@ in {
       # Gitlab
       "gitlab.${config.networking.domain}" = base // {
         "/".proxyPass = "http://unix:/run/gitlab/gitlab-workhorse.socket";
-      }
+      };
     };
   };
 
