@@ -16,6 +16,14 @@ in {
       ./hardware-configuration.nix
       # Store secrets in a separate file
       ./secrets.nix
+      # Mailserver
+      (builtins.fetchTarball {
+        # Pick a release version you are interested in and set its hash, e.g.
+        url = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/archive/nixos-23.05/nixos-mailserver-nixos-23.05.tar.gz";
+        # To get the sha256 of the nixos-mailserver tarball, we can use the nix-prefetch-url command:
+        # release="nixos-23.05"; nix-prefetch-url "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/archive/${release}/nixos-mailserver-${release}.tar.gz" --unpack
+        sha256 = "1ngil2shzkf61qxiqw11awyl81cr7ks2kv3r3k243zz7v2xakm5c";
+      })
     ];
 
   nix = {
@@ -263,8 +271,27 @@ in {
       jwsFile = pkgs.runCommand "oidcKeyBase" {} "${pkgs.openssl}/bin/openssl genrsa 2048 > $out";
     };
   };
-
   systemd.services.gitlab-backup.environment.BACKUP = "dump";
+
+  # Mailserver
+  mailserver = {
+    enable = true;
+    fqdn = "mail.${config.networking.domain}";
+    domains = [ "${config.networking.domain}" ];
+
+    # A list of all login accounts. To create the password hashes, use
+    # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
+    loginAccounts = {
+      "sibbo@${config.networking.domain}" = {
+        hashedPasswordFile = "/etc/nixos/mail-password-sibbo.txt";
+        aliases = ["postmaster@${config.networking.domain}"];
+      };
+    };
+
+    # Use Let's Encrypt certificates. Note that this needs to set up a stripped
+    # down nginx and opens port 80.
+    certificateScheme = "acme-nginx";
+  };
 
   # Postgres setup
   services.postgresql.enable = true;
