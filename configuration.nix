@@ -197,7 +197,7 @@ in {
         enableACME = true;
         forceSSL = true;
         root = "/var/www";
-        "/".proxyPass = "http://unix:/run/gitlab/gitlab-workhorse.socket";
+        locations."/".proxyPass = "http://unix:/run/gitlab/gitlab-workhorse.socket";
       };
     };
   };
