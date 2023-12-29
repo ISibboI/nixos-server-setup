@@ -193,7 +193,10 @@ in {
       };
 
       # Gitlab
-      "gitlab.${config.networking.domain}" = base // {
+      "gitlab.${config.networking.domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        root = "/var/www";
         "/".proxyPass = "http://unix:/run/gitlab/gitlab-workhorse.socket";
       };
     };
