@@ -243,6 +243,20 @@ in {
     };
   };
 
+  # Gitlab
+  services.gitlab = {
+    enable = true;
+    databasePasswordFile = "/etc/nixos/gitlab-postgres-pass.txt";
+    initialRootPasswordFile = "/etc/nixos/gitlab-initial-root-pass.txt";
+    secrets = {
+      secretFile = "/etc/nixos/gitlab-secret.txt";
+      otpFile = "/etc/nixos/gitlab-otp.txt";
+      dbFile = "/etc/nixos/gitlab-db.txt";
+      jwsFile = pkgs.runCommand "oidcKeyBase" {} "${pkgs.openssl}/bin/openssl genrsa 2048 > $out";
+    };
+  };
+
+
   # Postgres setup
   services.postgresql.enable = true;
   services.postgresql.initialScript = pkgs.writeText "postgres-init.sql" ''
