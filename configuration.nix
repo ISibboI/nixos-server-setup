@@ -262,6 +262,7 @@ in {
   # Gitlab
   services.gitlab = {
     enable = true;
+    host = "gitlab.${config.networking.domain}";
     databasePasswordFile = "/etc/nixos/gitlab-postgres-pass.txt";
     initialRootPasswordFile = "/etc/nixos/gitlab-initial-root-pass.txt";
     secrets = {
