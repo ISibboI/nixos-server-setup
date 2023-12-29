@@ -191,6 +191,11 @@ in {
         enableACME = true;
         forceSSL = true;
       };
+
+      # Gitlab
+      "gitlab.${config.networking.domain}" = base // {
+        "/".proxyPass = "http://unix:/run/gitlab/gitlab-workhorse.socket";
+      }
     };
   };
 
@@ -256,6 +261,7 @@ in {
     };
   };
 
+  systemd.services.gitlab-backup.environment.BACKUP = "dump";
 
   # Postgres setup
   services.postgresql.enable = true;
