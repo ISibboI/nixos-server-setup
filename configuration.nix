@@ -191,6 +191,14 @@ in {
         enableACME = true;
         forceSSL = true;
       };
+
+      # Gitlab
+      "gitlab.${config.networking.domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        root = "/var/www";
+        locations."/".proxyPass = "http://unix:/run/gitlab/gitlab-workhorse.socket";
+      };
     };
   };
 
@@ -242,6 +250,21 @@ in {
       dbpassFile = "/etc/nixos/nextcloud-postgres-pass.txt";
     };
   };
+
+  # Gitlab
+  services.gitlab = {
+    enable = true;
+    databasePasswordFile = "/etc/nixos/gitlab-postgres-pass.txt";
+    initialRootPasswordFile = "/etc/nixos/gitlab-initial-root-pass.txt";
+    secrets = {
+      secretFile = "/etc/nixos/gitlab-secret.txt";
+      otpFile = "/etc/nixos/gitlab-otp.txt";
+      dbFile = "/etc/nixos/gitlab-db.txt";
+      jwsFile = pkgs.runCommand "oidcKeyBase" {} "${pkgs.openssl}/bin/openssl genrsa 2048 > $out";
+    };
+  };
+
+  systemd.services.gitlab-backup.environment.BACKUP = "dump";
 
   # Postgres setup
   services.postgresql.enable = true;
