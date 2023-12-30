@@ -263,7 +263,7 @@ in {
   services.gitlab = {
     enable = true;
     host = "gitlab.${config.networking.domain}";
-    externalUrl = "https://gitlab.${config.networking.domain}";
+    port = 443;
     databasePasswordFile = "/etc/nixos/gitlab-postgres-pass.txt";
     initialRootPasswordFile = "/etc/nixos/gitlab-initial-root-pass.txt";
     secrets = {
