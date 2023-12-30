@@ -277,7 +277,7 @@ in {
   # Gitlab runner
   services.gitlab-runner = {
     enable = true;
-    services.default = {
+    services.debian = {
       # File should contain at least these two variables:
       # `CI_SERVER_URL`
       # `REGISTRATION_TOKEN`
