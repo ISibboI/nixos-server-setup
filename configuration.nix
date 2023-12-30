@@ -274,6 +274,18 @@ in {
   };
   systemd.services.gitlab-backup.environment.BACKUP = "dump";
 
+  # Gitlab runner
+  services.gitlab-runner = {
+    enable = true;
+    services.debian = {
+      # File should contain at least these two variables:
+      # `CI_SERVER_URL`
+      # `REGISTRATION_TOKEN`
+      registrationConfigFile = "/etc/nixos/gitlab-runner-registration.txt";
+      dockerImage = "debian:stable";
+    };
+  };
+
   # Mailserver
   mailserver = {
     enable = true;
