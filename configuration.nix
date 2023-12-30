@@ -264,6 +264,7 @@ in {
     enable = true;
     host = "gitlab.${config.networking.domain}";
     port = 443;
+    https = true;
     databasePasswordFile = "/etc/nixos/gitlab-postgres-pass.txt";
     initialRootPasswordFile = "/etc/nixos/gitlab-initial-root-pass.txt";
     secrets = {
