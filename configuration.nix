@@ -248,6 +248,7 @@ in {
   services.nextcloud = {
     enable = true;
     hostName = "nextcloud.${config.networking.domain}";
+    package = pkgs.nextcloud27;
     config = {
       dbtype = "pgsql";
       # Set only once, hence it can be in /run
