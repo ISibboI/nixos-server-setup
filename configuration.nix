@@ -285,6 +285,8 @@ in {
       registrationConfigFile = "/etc/nixos/gitlab-runner-registration.txt";
       dockerImage = "debian:stable";
       cloneUrl = "https://gitlab.${config.networking.domain}";
+      limit = 8;
+      requestConcurrency = 8;
     };
   };
 
