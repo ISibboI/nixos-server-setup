@@ -278,6 +278,7 @@ in {
   # Gitlab runner
   services.gitlab-runner = {
     enable = true;
+    settings.concurrent = 8;
     services.debian = {
       # File should contain at least these two variables:
       # `CI_SERVER_URL`
@@ -285,8 +286,6 @@ in {
       registrationConfigFile = "/etc/nixos/gitlab-runner-registration.txt";
       dockerImage = "debian:stable";
       cloneUrl = "https://gitlab.${config.networking.domain}";
-      limit = 8;
-      requestConcurrency = 8;
     };
   };
 
