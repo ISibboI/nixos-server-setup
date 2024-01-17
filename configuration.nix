@@ -162,7 +162,7 @@ in {
         root = "/var/www";
       };
       proxy = port: base {
-        "/".proxyPass = "http://localhost:" + toString(port) + "/";
+        "/".proxyPass = "http://localhost:" + toString(port);
       };
     in {
       # Define syncthing.${config.networking.domain} as reverse-proxied service on localhost:8384
