@@ -286,6 +286,10 @@ in {
       registrationConfigFile = "/etc/nixos/gitlab-runner-registration.txt";
       dockerImage = "debian:stable";
       cloneUrl = "https://gitlab.${config.networking.domain}";
+      environmentVariables = {
+        # Make sure it uses btrfs volumes for faster CI times.
+        DOCKER_DRIVER = "btrfs";
+      };
     };
   };
 
