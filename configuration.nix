@@ -219,8 +219,9 @@ in {
         enable = true;
         user = "syncthing";
         dataDir = "/home/syncthing";    # Default folder for new synced folders
-        configDir = "/home/syncthing/.config/syncthing";   # Folder for Syncthing's settings and keys
-        settings.gui.insecureSkipHostcheck = true;
+        openDefaultPorts = true;
+        overrideDevices = false;
+        overrideFolders = false;
     };
   };
 
@@ -327,7 +328,6 @@ in {
   '';
 
   # Firewall
-  networking.firewall.allowedTCPPorts = [ 80 443 22000 ];
-  networking.firewall.allowedUDPPorts = [ 22000 21027 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 
 }
