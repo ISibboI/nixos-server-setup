@@ -250,6 +250,7 @@ in {
     enable = true;
     hostName = "nextcloud.${config.networking.domain}";
     package = pkgs.nextcloud27;
+    https = true;
     config = {
       dbtype = "pgsql";
       # Set only once, hence it can be in /run
