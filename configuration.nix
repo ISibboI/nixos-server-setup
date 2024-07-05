@@ -315,6 +315,21 @@ in {
     certificateScheme = "acme-nginx";
   };
 
+  # Grocy
+  services.grocy = {
+    enable = true;
+    hostName = "grocy.${config.networking.domain}";
+    settings = {
+      currency = "EUR";
+      culture = "en";
+      calendar = {
+        showWeekNumber = true;
+        # 1 = Monday
+        firstDayOfWeek = 1;
+      };
+    };
+  };
+
   # Postgres setup
   services.postgresql.enable = true;
   services.postgresql.initialScript = pkgs.writeText "postgres-init.sql" ''
