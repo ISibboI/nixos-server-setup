@@ -16,6 +16,8 @@ in {
       ./hardware-configuration.nix
       # Store secrets in a separate file
       ./secrets.nix
+      # Backup scripts
+      ./backup.nix
       # Mailserver
       (builtins.fetchTarball {
         # Pick a release version you are interested in and set its hash, e.g.
