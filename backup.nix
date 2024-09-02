@@ -81,11 +81,13 @@
       set -o nounset
       set -o pipefail
 
+      ${pkgs.coreutils}/bin/mkdir -p "/backup/daily"
       readonly DATE="$(${pkgs.coreutils}/bin/date '+%G-%V')"
       readonly BACKUP_DIR="/backup/weekly/$DATE"
-      readonly SOURCE_DIR="/backup/daily/$(${pkgs.coreutils}/bin/ls -t /backup/daily | ${pkgs.gnugrep}/bin/grep -v 'latest' | sed '6q;d')"
+      readonly SOURCE_SUBDIR="$(${pkgs.coreutils}/bin/ls -t /backup/daily | ${pkgs.gnugrep}/bin/grep -v 'latest' | sed '6q;d')"
+      readonly SOURCE_DIR="/backup/daily/$SOURCE_SUBDIR"
 
-      if [ -z "$SOURCE_DIR" ]; then
+      if [ -n "$SOURCE_SUBDIR" ]; then
         ${pkgs.coreutils}/bin/mkdir -p "$BACKUP_DIR"
         ${pkgs.coreutils}/bin/cp -al "$SOURCE_DIR/" "BACKUP_DIR/"
       fi
@@ -103,11 +105,13 @@
       set -o nounset
       set -o pipefail
 
+      ${pkgs.coreutils}/bin/mkdir -p "/backup/weekly"
       readonly DATE="$(${pkgs.coreutils}/bin/date '+%Y-%m')"
       readonly BACKUP_DIR="/backup/monthly/$DATE"
-      readonly SOURCE_DIR="/backup/weekly/$(${pkgs.coreutils}/bin/ls -t /backup/weekly | ${pkgs.gnugrep}/bin/grep -v 'latest' | sed '4q;d')"
+      readonly SOURCE_SUBDIR="$(${pkgs.coreutils}/bin/ls -t /backup/weekly | ${pkgs.gnugrep}/bin/grep -v 'latest' | sed '4q;d')"
+      readonly SOURCE_DIR="/backup/weekly/$SOURCE_SUBDIR"
 
-      if [ -z "$SOURCE_DIR" ]; then
+      if [ -n "$SOURCE_SUBDIR" ]; then
         ${pkgs.coreutils}/bin/mkdir -p "$BACKUP_DIR"
         ${pkgs.coreutils}/bin/cp -al "$SOURCE_DIR/" "BACKUP_DIR/"
       fi
@@ -125,12 +129,16 @@
       set -o nounset
       set -o pipefail
 
+      ${pkgs.coreutils}/bin/mkdir -p "/backup/monthly"
       readonly DATE="$(${pkgs.coreutils}/bin/date '+%Y')"
       readonly BACKUP_DIR="/backup/yearly/$DATE"
-      readonly SOURCE_DIR="/backup/monthly/$(${pkgs.coreutils}/bin/ls -t /backup/monthly | ${pkgs.gnugrep}/bin/grep -v 'latest' | sed '12q;d')"
+      readonly SOURCE_SUBDIR="$(${pkgs.coreutils}/bin/ls -t /backup/monthly | ${pkgs.gnugrep}/bin/grep -v 'latest' | sed '12q;d')"
+      readonly SOURCE_DIR="/backup/monthly/$SOURCE_SUBDIR"
 
-      ${pkgs.coreutils}/bin/mkdir -p "$BACKUP_DIR"
-      ${pkgs.coreutils}/bin/cp -al "$SOURCE_DIR/" "BACKUP_DIR/"
+      if [ -n "$SOURCE_SUBDIR" ]; then
+        ${pkgs.coreutils}/bin/mkdir -p "$BACKUP_DIR"
+        ${pkgs.coreutils}/bin/cp -al "$SOURCE_DIR/" "BACKUP_DIR/"
+      fi
     '';
     serviceConfig = {
       Type = "oneshot";
@@ -146,7 +154,7 @@
       set -o pipefail
 
       readonly BACKUP_DIR="/backup"
-      ${pkgs.coreutils}/bin/mkdir -p "/backup"
+      ${pkgs.coreutils}/bin/mkdir -p "/backup/daily" "/backup/weekly" "/backup/monthly"
 
       # Remove daily backups after one week
       ${pkgs.coreutils}/bin/ls -t /backup/daily | ${pkgs.coreutils}/bin/tail -n +8 | ${pkgs.findutils}/bin/xargs ${pkgs.coreutils}/bin/rm -rf
