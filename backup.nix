@@ -163,13 +163,13 @@
       ${pkgs.coreutils}/bin/mkdir -p "/backup/daily" "/backup/weekly" "/backup/monthly"
 
       # Remove daily backups after one week
-      ${pkgs.coreutils}/bin/ls -t /backup/daily | ${pkgs.coreutils}/bin/tail -n +8 | ${pkgs.findutils}/bin/xargs ${pkgs.coreutils}/bin/rm -rf
+      ${pkgs.coreutils}/bin/ls -t /backup/daily | ${pkgs.coreutils}/bin/tail -n +8 | ${pkgs.findutils}/bin/xargs -Iä ${pkgs.coreutils}/bin/rm -rf /backup/daily/ä
 
       # Remove weekly backups after six weeks
-      ${pkgs.coreutils}/bin/ls -t /backup/weekly | ${pkgs.coreutils}/bin/tail -n +7 | ${pkgs.findutils}/bin/xargs ${pkgs.coreutils}/bin/rm -rf
+      ${pkgs.coreutils}/bin/ls -t /backup/weekly | ${pkgs.coreutils}/bin/tail -n +7 | ${pkgs.findutils}/bin/xargs -Iä ${pkgs.coreutils}/bin/rm -rf /backup/weekly/ä
 
       # Remove monthly backups after fourteen months
-      ${pkgs.coreutils}/bin/ls -t /backup/monthly | ${pkgs.coreutils}/bin/tail -n +15 | ${pkgs.findutils}/bin/xargs ${pkgs.coreutils}/bin/rm -rf
+      ${pkgs.coreutils}/bin/ls -t /backup/monthly | ${pkgs.coreutils}/bin/tail -n +15 | ${pkgs.findutils}/bin/xargs -Iä ${pkgs.coreutils}/bin/rm -rf /backup/monthly/ä
 
       # Never remove yearly backups
     '';
