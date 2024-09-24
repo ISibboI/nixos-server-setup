@@ -51,22 +51,24 @@
       set -o nounset
       set -o pipefail
 
-      readonly BACKUP_NAME="syncthing"
-      readonly SOURCE_DIRS=("/home/syncthing")
+      readonly SOURCE_CONFIGS=("/home/syncthing:syncthing" "/var/lib/immich:immich")
 
       readonly DATE="''$(${pkgs.coreutils}/bin/date '+%Y-%m-%d')"
-      readonly BACKUP_DIR="/backup/daily/$DATE/$BACKUP_NAME"
+      readonly BACKUP_DIR="/backup/daily/$DATE"
 
       ${pkgs.coreutils}/bin/mkdir -p "$BACKUP_DIR"
 
       # Sync
-      for SOURCE_DIR in "''${SOURCE_DIRS[@]}"; do
-        ${pkgs.rsync}/bin/rsync -av --delete "''${SOURCE_DIR}/" --link-dest "''${SOURCE_DIR}/" "''${BACKUP_DIR}"
+      for SOURCE_CONFIG in "''${SOURCE_CONFIGS[@]}"; do
+        readarray -d ":" -t SOURCE_TARGET <<< "$SOURCE_CONFIG"
+        SOURCE_DIR=''${SOURCE_TARGET[0]}
+        TARGET_DIR=''${SOURCE_TARGET[1]}
+        ${pkgs.rsync}/bin/rsync -av --delete "''${SOURCE_DIR}/" --link-dest "''${SOURCE_DIR}/" "''${BACKUP_DIR}/''${TARGET_DIR}"
       done
       
       # Move latest pointer
-      ${pkgs.coreutils}/bin/rm -f "/backup/latest/$BACKUP_NAME"
-      ${pkgs.coreutils}/bin/ln -s "''${BACKUP_DIR}" "/backup/latest/$BACKUP_NAME"
+      ${pkgs.coreutils}/bin/rm -f "/backup/latest"
+      ${pkgs.coreutils}/bin/ln -s "''${BACKUP_DIR}" "/backup/latest"
     '';
     serviceConfig = {
       Type = "oneshot";
