@@ -209,7 +209,15 @@ in {
       };
 
       # Immich
-      "immich.${config.networking.domain}" = proxy 3001;
+      "immich.${config.networking.domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        root = "/var/www";
+        locations."/" = {
+          proxyPass = "http://localhost:3001";
+          clientMaxBodySize = "0";
+        };
+      };
     };
   };
 
