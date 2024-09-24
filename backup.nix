@@ -91,7 +91,7 @@
 
       if [ -n "$SOURCE_SUBDIR" ]; then
         ${pkgs.coreutils}/bin/mkdir -p "$BACKUP_DIR"
-        ${pkgs.coreutils}/bin/cp -al "$SOURCE_DIR/" "BACKUP_DIR/"
+        ${pkgs.coreutils}/bin/cp -al "$SOURCE_DIR/" "$BACKUP_DIR/"
       else
         echo "Skipping weekly backup as there are not enough daily backups yet"
       fi
@@ -117,7 +117,7 @@
 
       if [ -n "$SOURCE_SUBDIR" ]; then
         ${pkgs.coreutils}/bin/mkdir -p "$BACKUP_DIR"
-        ${pkgs.coreutils}/bin/cp -al "$SOURCE_DIR/" "BACKUP_DIR/"
+        ${pkgs.coreutils}/bin/cp -al "$SOURCE_DIR/" "$BACKUP_DIR/"
       else
         echo "Skipping monthly backup as there are not enough weekly backups yet"
       fi
@@ -143,7 +143,7 @@
 
       if [ -n "$SOURCE_SUBDIR" ]; then
         ${pkgs.coreutils}/bin/mkdir -p "$BACKUP_DIR"
-        ${pkgs.coreutils}/bin/cp -al "$SOURCE_DIR/" "BACKUP_DIR/"
+        ${pkgs.coreutils}/bin/cp -al "$SOURCE_DIR/" "$BACKUP_DIR/"
       else
         echo "Skipping yearly backup as there are not enough monthly backups yet"
       fi
