@@ -62,7 +62,7 @@
       for SOURCE_CONFIG in "''${SOURCE_CONFIGS[@]}"; do
         readarray -d ":" -t SOURCE_TARGET <<< "$SOURCE_CONFIG"
         SOURCE_DIR=''${SOURCE_TARGET[0]}
-        TARGET_DIR=''${SOURCE_TARGET[1]}
+        TARGET_DIR=$(''${SOURCE_TARGET[1]} | ${pkgs.findutils}/bin/xargs)
         ${pkgs.rsync}/bin/rsync -av --delete "''${SOURCE_DIR}/" --link-dest "''${SOURCE_DIR}/" "''${BACKUP_DIR}/''${TARGET_DIR}"
       done
       
