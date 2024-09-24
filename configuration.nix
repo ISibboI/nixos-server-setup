@@ -213,9 +213,9 @@ in {
         enableACME = true;
         forceSSL = true;
         root = "/var/www";
+        clientMaxBodySize = "0";
         locations."/" = {
           proxyPass = "http://localhost:3001";
-          clientMaxBodySize = "0";
         };
       };
     };
