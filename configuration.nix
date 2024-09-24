@@ -207,6 +207,9 @@ in {
         root = "/var/www";
         locations."/".proxyPass = "http://unix:/run/gitlab/gitlab-workhorse.socket";
       };
+
+      # Immich
+      "immich.${config.networking.domain}" = proxy 3001;
     };
   };
 
@@ -330,6 +333,11 @@ in {
         firstDayOfWeek = 1;
       };
     };
+  };
+
+  # Immich
+  services.immich = {
+    enable = true;
   };
 
   # Postgres setup
