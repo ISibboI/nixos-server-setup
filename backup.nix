@@ -61,7 +61,7 @@
 
       # Sync
       for SOURCE_DIR in "''${SOURCE_DIRS[@]}"; do
-        ${pkgs.rsync}/bin/rsync -av --delete "''${SOURCE_DIR}/" --link-dest "/backup/latest/$BACKUP_NAME" "''${BACKUP_DIR}"
+        ${pkgs.rsync}/bin/rsync -av --delete "''${SOURCE_DIR}/" --link-dest "''${SOURCE_DIR}/" "''${BACKUP_DIR}"
       done
       
       # Move latest pointer
