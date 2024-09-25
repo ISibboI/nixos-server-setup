@@ -231,7 +231,7 @@ in {
     syncthing = {
         enable = true;
         user = "syncthing";
-        dataDir = "/home/syncthing";    # Default folder for new synced folders
+        dataDir = "/syncthing";    # Default folder for new synced folders
         openDefaultPorts = true;
         overrideDevices = false;
         overrideFolders = false;
