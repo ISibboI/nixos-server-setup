@@ -347,9 +347,6 @@ in {
   services.immich = {
     enable = true;
   };
-  
-  # Allow immich to access syncthing temporarily
-  systemd.services.immich-server.serviceConfig.ReadWritePaths = ["/home/syncthing"];
 
   # Postgres setup
   services.postgresql.enable = true;
