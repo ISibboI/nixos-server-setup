@@ -66,9 +66,42 @@
         ${pkgs.rsync}/bin/rsync -av --delete "''${SOURCE_DIR}/" --link-dest "''${SOURCE_DIR}/" "''${BACKUP_DIR}/''${TARGET_DIR}"
       done
 
-      # Postgres
+      # Prepare postgres folder
       ${pkgs.coreutils}/bin/mkdir -p "''${BACKUP_DIR}/postgres"
-      sudo -u postgres ${pkgs.postgresql}/bin/pg_dumpall | ${pkgs.coreutils}/bin/split -b 2G --filter='gzip > $FILE.gz' - "''${BACKUP_DIR}/postgres/pg_dumpall.sql"
+      chown postgres:postgres "''${BACKUP_DIR}/postgres"
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+      OnSuccess = "backup-daily-postgres.service";
+    };
+  };
+
+  systemd.services."backup-daily-postgres" = {
+    script = ''
+      set -eu
+      set -o errexit
+      set -o nounset
+      set -o pipefail
+
+      readonly BACKUP_DIR=$(${pkgs.coreutils}/bin/ls "/backup/daily" | ${pkgs.coreutils}/bin/tail -n 1 | xargs -Iä /backup/daily/ä)
+      ${pkgs.postgresql}/bin/pg_dumpall | ${pkgs.coreutils}/bin/split -b 2G --filter='${pkgs.gzip}/bin/gzip > $FILE.gz' - "''${BACKUP_DIR}/postgres/pg_dumpall.sql"
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "postgres";
+      OnSuccess = "backup-daily-move-latest.service";
+    };
+  };
+
+  systemd.services."backup-daily-move-latest" = {
+    script = ''
+      set -eu
+      set -o errexit
+      set -o nounset
+      set -o pipefail
+
+      readonly BACKUP_DIR=$(ls "/backup/daily" | tail -n 1 | ${pkgs.findutils}/bin/xargs -Iä /backup/daily/ä)
 
       # Move latest pointer
       ${pkgs.coreutils}/bin/rm -f "/backup/latest"
