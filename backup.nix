@@ -73,6 +73,8 @@
     serviceConfig = {
       Type = "oneshot";
       User = "root";
+    };
+    unitConfig = {
       OnSuccess = "backup-daily-postgres.service";
     };
   };
@@ -90,6 +92,8 @@
     serviceConfig = {
       Type = "oneshot";
       User = "postgres";
+    };
+    unitConfig = {
       OnSuccess = "backup-daily-move-latest.service";
     };
   };
