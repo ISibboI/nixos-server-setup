@@ -63,7 +63,20 @@
         readarray -d ":" -t SOURCE_TARGET <<< "$SOURCE_CONFIG"
         SOURCE_DIR=''${SOURCE_TARGET[0]}
         TARGET_DIR=$(echo "''${SOURCE_TARGET[1]}" | ${pkgs.findutils}/bin/xargs)
+        ${pkgs.coreutils}/bin/echo "Backing up $SOURCE_DIR to $TARGET_DIR"
+
+        set +e
         ${pkgs.rsync}/bin/rsync -av --delete "''${SOURCE_DIR}/" --link-dest "''${SOURCE_DIR}/" "''${BACKUP_DIR}/''${TARGET_DIR}"
+        RET=$?
+        set -e
+
+        if [ $RET -eq 24 ]; then
+          RET=0
+        fi
+        if [ $RET -ne 0 ]; then
+          exit $RET
+          ${pkgs.coreutils}/bin/echo "rsync failed with exit code $RET"
+        fi
       done
 
       # Prepare postgres folder
