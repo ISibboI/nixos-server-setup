@@ -105,7 +105,7 @@
       set -o nounset
       set -o pipefail
 
-      readonly BACKUP_DIR=$(ls "/backup/daily" | tail -n 1 | ${pkgs.findutils}/bin/xargs -Iä /backup/daily/ä)
+      readonly BACKUP_DIR=$(${pkgs.coreutils}/bin/ls "/backup/daily" | ${pkgs.coreutils}/bin/tail -n 1 | xargs -Iä ${pkgs.coreutils}/bin/echo -n /backup/daily/ä)
 
       # Move latest pointer
       ${pkgs.coreutils}/bin/rm -f "/backup/latest"
