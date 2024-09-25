@@ -68,7 +68,7 @@
 
       # Prepare postgres folder
       ${pkgs.coreutils}/bin/mkdir -p "''${BACKUP_DIR}/postgres"
-      chown postgres:postgres "''${BACKUP_DIR}/postgres"
+      ${pkgs.coreutils}/bin/chown postgres:postgres "''${BACKUP_DIR}/postgres"
     '';
     serviceConfig = {
       Type = "oneshot";
