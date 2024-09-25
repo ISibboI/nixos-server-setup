@@ -58,13 +58,17 @@
 
       ${pkgs.coreutils}/bin/mkdir -p "$BACKUP_DIR"
 
-      # Sync
+      # Rsync
       for SOURCE_CONFIG in "''${SOURCE_CONFIGS[@]}"; do
         readarray -d ":" -t SOURCE_TARGET <<< "$SOURCE_CONFIG"
         SOURCE_DIR=''${SOURCE_TARGET[0]}
         TARGET_DIR=$(echo "''${SOURCE_TARGET[1]}" | ${pkgs.findutils}/bin/xargs)
         ${pkgs.rsync}/bin/rsync -av --delete "''${SOURCE_DIR}/" --link-dest "''${SOURCE_DIR}/" "''${BACKUP_DIR}/''${TARGET_DIR}"
       done
+
+      # Postgres
+      ${pkgs.coreutils}/bin/mkdir -p "''${BACKUP_DIR}/postgres"
+      sudo -u postgres ${pkgs.postgresql-and-plugins}/bin/pg_dumpall | ${pkgs.coreutils}/bin/split -b 2G --filter='gzip > $FILE.gz' - "''${BACKUP_DIR}/postgres/pg_dumpall.sql"
       
       # Move latest pointer
       ${pkgs.coreutils}/bin/rm -f "/backup/latest"
