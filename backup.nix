@@ -87,7 +87,7 @@
       set -o pipefail
 
       readonly BACKUP_DIR=$(${pkgs.coreutils}/bin/ls "/backup/daily" | ${pkgs.coreutils}/bin/tail -n 1 | xargs -Iä ${pkgs.coreutils}/bin/echo -n /backup/daily/ä)
-      ${pkgs.postgresql}/bin/pg_dumpall | ${pkgs.coreutils}/bin/split -b 2G --filter='${pkgs.gzip}/bin/gzip > $FILE.gz' - "''${BACKUP_DIR}/postgres/pg_dumpall.sql"
+      ${pkgs.postgresql}/bin/pg_dumpall | ${pkgs.coreutils}/bin/split -b 2G --filter='${pkgs.gzip}/bin/gzip > $FILE.gz' - "''${BACKUP_DIR}/postgres/pg_dumpall.sql."
     '';
     serviceConfig = {
       Type = "oneshot";
