@@ -51,7 +51,7 @@
       set -o nounset
       set -o pipefail
 
-      readonly SOURCE_CONFIGS=("/home/syncthing:syncthing" "/var/lib/immich:immich")
+      readonly SOURCE_CONFIGS=("/home/syncthing:syncthing" "/var/lib/immich:immich" "/var/lib/nextcloud:nextcloud")
 
       readonly DATE="''$(${pkgs.coreutils}/bin/date '+%Y-%m-%d')"
       readonly BACKUP_DIR="/backup/daily/$DATE"
