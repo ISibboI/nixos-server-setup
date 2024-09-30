@@ -74,6 +74,9 @@ in {
 
     # htpasswd for creating HTTP basic auth logins
     apacheHttpd
+
+    # Image editing
+    exiftool
   ];
 
   # Set your time zone.
