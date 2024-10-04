@@ -77,6 +77,9 @@ in {
 
     # Image editing
     exiftool
+
+    # Python3 for sshuttle VPN over SSH
+    python3
   ];
 
   # Set your time zone.
