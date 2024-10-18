@@ -374,10 +374,6 @@ in {
       };
     };
     service.DISABLE_REGISTRATION = true;
-    actions = {
-      ENABLED = true;
-      DEFAULT_ACTIONS_URL = "github";
-    };
   };
 
   # Postgres setup
