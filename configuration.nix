@@ -229,7 +229,7 @@ in {
         forceSSL = true;
         root = "/var/www";
         extraConfig = "client_max_body_size 512M;";
-        locations."/".proxyPass = "http://localhost:3000";
+        locations."/".proxyPass = "http://unix:/run/forgejo/forgejo.sock";
       };
     };
   };
@@ -370,10 +370,10 @@ in {
       server = {
         DOMAIN = "forgejo.${config.networking.domain}";
         ROOT_URL = "https://forgejo.${config.networking.domain}/";
-        HTTP_PORT = 3000;
+        PROTOCOL = "http+unix";
       };
+      service.DISABLE_REGISTRATION = true; 
     };
-    service.DISABLE_REGISTRATION = true;
   };
 
   # Postgres setup
