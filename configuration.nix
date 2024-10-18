@@ -220,9 +220,16 @@ in {
         forceSSL = true;
         root = "/var/www";
         extraConfig = "client_max_body_size 0;";
-        locations."/" = {
-          proxyPass = "http://localhost:3001";
-        };
+        locations."/".proxyPass = "http://localhost:3001";
+      };
+
+      # Forgejo
+      "forgejo.${config.networking.domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        root = "/var/www";
+        extraConfig = "client_max_body_size 512M;";
+        locations."/".proxyPass = "http://localhost:3000";
       };
     };
   };
@@ -352,6 +359,25 @@ in {
   # Immich
   services.immich = {
     enable = true;
+  };
+
+  # Forgejo
+  services.forgejo = {
+    enable = true;
+    database.type = "postgres";
+    lfs.enable = true;
+    settings = {
+      server = {
+        DOMAIN = "forgejo.${config.networking.domain}";
+        ROOT_URL = "https://forgejo.${config.networking.domain}/";
+        HTTP_PORT = 3000;
+      };
+    };
+    service.DISABLE_REGISTRATION = true;
+    actions = {
+      ENABLED = true;
+      DEFAULT_ACTIONS_URL = "github";
+    };
   };
 
   # Postgres setup
