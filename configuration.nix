@@ -311,7 +311,7 @@ in {
       # File should contain at least these two variables:
       # `CI_SERVER_URL`
       # `REGISTRATION_TOKEN`
-      registrationConfigFile = "/etc/nixos/gitlab-runner-registration.txt";
+      authenticationTokenConfigFile = "/etc/nixos/gitlab-runner-registration.txt";
       dockerImage = "debian:stable";
       cloneUrl = "https://gitlab.${config.networking.domain}";
       environmentVariables = {
