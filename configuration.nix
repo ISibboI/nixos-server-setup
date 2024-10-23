@@ -388,7 +388,7 @@ in {
       name = "monolith";
       url = "https://forgejo.${config.networking.domain}/";
       # Obtaining the path to the runner token file may differ
-      tokenFile = config.age.secrets.forgejo-runner-token.path;
+      tokenFile = "/etc/nixos/forgejo-runner-token.txt";
       labels = [
         "ubuntu-latest:docker://node:16-bullseye"
         "ubuntu-22.04:docker://node:16-bullseye"
