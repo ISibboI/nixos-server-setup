@@ -384,7 +384,7 @@ in {
   services.gitea-actions-runner = {
     package = pkgs.forgejo-actions-runner;
     instances.default = {
-      enable = true;
+      enable = false;
       name = "monolith";
       url = "https://forgejo.${config.networking.domain}/";
       # Obtaining the path to the runner token file may differ
