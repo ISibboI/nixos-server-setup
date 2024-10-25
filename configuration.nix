@@ -220,7 +220,10 @@ in {
         forceSSL = true;
         root = "/var/www";
         extraConfig = "client_max_body_size 0;";
-        locations."/".proxyPass = "http://localhost:2283";
+        locations."/" = {
+          proxyPass = "http://localhost:2283";
+          proxyWebsockets = true;
+        };
       };
 
       # Forgejo
