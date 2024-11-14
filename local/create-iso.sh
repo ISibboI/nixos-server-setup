@@ -55,7 +55,56 @@ cat > iso.nix <<EOF
     <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
   ];
 
-  # Network
+  # Add helpful packages.
+  users.mutableUsers = false;
+
+  # We want to use fish instead of bash.
+  users.defaultUserShell = pkgs.fish;
+  programs.fish.enable = true;
+
+  # Git is required to clone our installation repo.
+  programs.git = {
+    enable = true;
+    config = {
+      init = {
+        defaultBranch = "main";
+      };
+      user.name = "Sebastian Schmidt";
+      user.email = "isibboi@gmail.com";
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+    # Basics
+    vim
+    file
+    htop
+    bind
+    direnv
+    docker-compose
+
+    # Fish stuff
+    fishPlugins.done
+    fishPlugins.fzf-fish
+    fishPlugins.forgit
+    fishPlugins.hydro
+    fzf
+    fishPlugins.grc
+    grc
+  ];
+
+  # Set correct time zone.
+  time.timeZone = "Europe/Helsinki";
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+  console = {
+    font = "ter-v32n";
+    keyMap = "fi";
+    packages = with pkgs; [terminus_font];
+  };
+
+  # Network.
   networking.useDHCP = true;
 
   # The only possibility to log in initially is this ssh key.
