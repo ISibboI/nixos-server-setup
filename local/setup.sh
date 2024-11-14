@@ -72,18 +72,7 @@ udevadm settle --timeout=5 --exit-if-exists=/dev/disk/by-label/root
 # Mount target root partition
 mount /dev/disk/by-label/root /mnt
 
-# Installing nix
-
-# Allow installing nix as root, see
-#   https://github.com/NixOS/nix/issues/936#issuecomment-475795730
-mkdir -p /etc/nix
-echo "build-users-group =" > /etc/nix/nix.conf
-
-curl -L https://nixos.org/nix/install | sh
-set +u +x # sourcing this may refer to unset variables that we have no control over
-. $HOME/.nix-profile/etc/profile.d/nix.sh
-set -u -x
-
+# Setting up nix channels
 nix-channel --add https://nixos.org/channels/nixos-$NIXOS_STATE_VERSION nixpkgs
 nix-channel --update
 
