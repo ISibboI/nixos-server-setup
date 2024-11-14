@@ -123,6 +123,7 @@ cat > /mnt/etc/nixos/local/secrets.nix <<EOF
 EOF
 
 # Symlink local nixos configuration.
+rm -f /mnt/etc/nixos/configuration.nix
 ln -sr /mnt/etc/nixos/local/configuration.nix /mnt/etc/nixos/
 
 # Install NixOS.
