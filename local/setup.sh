@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Usage: local/setup.sh
+# Usage: ssh root@YOUR_SERVERS_IP bash -s < local/setup.sh
 
 set -eu
 set -o pipefail
