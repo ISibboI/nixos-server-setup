@@ -39,6 +39,7 @@
     file
     htop
     bind
+    lm_sensors
 
     # Fish stuff
     fishPlugins.done
