@@ -5,7 +5,7 @@
 # This is for a specific server configuration; adjust where needed.
 #
 # Usage:
-#     ssh root@YOUR_SERVERS_IP bash -s < hetzner-setup.sh
+#     ssh root@YOUR_SERVERS_IP bash -s < hetzner/setup.sh
 #
 # When the script is done, make sure to boot the server from HD, not rescue mode again.
 

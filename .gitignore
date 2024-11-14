@@ -1,4 +1,4 @@
-**/secrets.nix
+*/secrets.nix
 /configuration.nix
 /nextcloud-admin-pass.txt
 /matrix-shared-secret.txt
@@ -6,3 +6,5 @@
 /gitlab*.txt
 /forgejo-runner-token.txt
 /mail-password-sibbo.txt
+/iso.nix
+/*.iso
