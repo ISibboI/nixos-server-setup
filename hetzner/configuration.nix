@@ -13,11 +13,11 @@ let
 in {
   imports =
     [ # Include the results of the hardware scan.
-      ./hetzner/hardware-configuration.nix
+      ./hardware-configuration.nix
       # Store secrets in a separate file
       ./secrets.nix
       # Backup scripts
-      ./hetzner/backup.nix
+      ./backup.nix
       # Mailserver
       (builtins.fetchTarball {
         # Pick a release version you are interested in and set its hash, e.g.
