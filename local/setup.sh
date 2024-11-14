@@ -62,10 +62,10 @@ echo -e "#! /usr/bin/env bash\nset -e\n" 'parted $@ 2> parted-stderr.txt || grep
 # GPT partition names are limited to 36 UTF-16 chars, see https://en.wikipedia.org/wiki/GUID_Partition_Table#Partition_entries_(LBA_2-33).
 ./parted-ignoring-partprobe-error.sh --script --align optimal /dev/sda -- mklabel gpt mkpart 'BIOS-boot-partition' 1MB 2MB set 1 bios_grub on mkpart 'data-partition' 2MB '-2GB' mkpart 'swap' linux-swap '-2GB' '100%'
 
-# Reload partitions
+# Reload partitions.
 partprobe /dev/sda
 
-# Wait for all devices to exist
+# Wait for all devices to exist.
 udevadm settle --timeout=5 --exit-if-exists=/dev/sda1
 udevadm settle --timeout=5 --exit-if-exists=/dev/sda2
 udevadm settle --timeout=5 --exit-if-exists=/dev/sda3
@@ -80,18 +80,15 @@ mkswap -L swapa /dev/sda3
 # See https://github.com/NixOS/nixpkgs/issues/62444
 udevadm trigger
 
-# Wait for FS labels to appear
+# Wait for FS labels to appear.
 udevadm settle --timeout=5 --exit-if-exists=/dev/disk/by-label/root
 
-# NixOS pre-installation mounts
+# NixOS pre-installation mounts.
 
-# Mount target root partition
+# Mount target root partition.
 mount /dev/disk/by-label/root /mnt
 
-# Setting up nix channels
-nix-channel --add https://nixos.org/channels/nixos-$NIXOS_STATE_VERSION nixpkgs
-nix-channel --update
-
+# Create NixOS configuration template.
 nixos-generate-config --root /mnt
 
 cd /mnt/etc/nixos
@@ -128,7 +125,7 @@ EOF
 # Symlink local nixos configuration.
 ln -sr /mnt/etc/nixos/local/configuration.nix /mnt/etc/nixos/
 
-# Install NixOS
+# Install NixOS.
 PATH="$PATH" `which nixos-install` --no-root-passwd --root /mnt --max-jobs 40
 
 umount /mnt
