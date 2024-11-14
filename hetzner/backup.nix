@@ -66,7 +66,7 @@
         ${pkgs.coreutils}/bin/echo "Backing up $SOURCE_DIR to $TARGET_DIR"
 
         set +e
-        ${pkgs.rsync}/bin/rsync -av --exclude "nobackup" --delete "''${SOURCE_DIR}/" --link-dest "''${SOURCE_DIR}/" "''${BACKUP_DIR}/''${TARGET_DIR}"
+        ${pkgs.rsync}/bin/rsync -av --exclude "_nobackup" --delete "''${SOURCE_DIR}/" --link-dest "''${SOURCE_DIR}/" "''${BACKUP_DIR}/''${TARGET_DIR}"
         RET=$?
         set -e
 
