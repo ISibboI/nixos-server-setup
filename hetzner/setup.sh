@@ -201,7 +201,7 @@ nixos-generate-config --root /mnt
 
 # Find the name of the network interface that connects us to the Internet.
 # Inspired by https://unix.stackexchange.com/questions/14961/how-to-find-out-which-interface-am-i-using-for-connecting-to-the-internet/302613#302613
-RESCUE_INTERFACE=$(ip route get 8.8.8.8 | grep -Po '(?<=dev )(\S+)')
+RESCUE_INTERFACE=$(ip route get 9.9.9.9 | grep -Po '(?<=dev )(\S+)')
 
 # Find what its name will be under NixOS, which uses stable interface names.
 # See https://major.io/2015/08/21/understanding-systemds-predictable-network-device-names/#comment-545626
@@ -212,7 +212,7 @@ UDEVADM_PROPERTIES_FOR_INTERFACE=$(udevadm info --query=property "--path=$INTERF
 NIXOS_INTERFACE=$(echo "$UDEVADM_PROPERTIES_FOR_INTERFACE" | grep -o -E 'ID_NET_NAME_PATH=\w+' | cut -d= -f2)
 echo "Determined NIXOS_INTERFACE as '$NIXOS_INTERFACE'"
 
-IP_V4=$(ip route get 8.8.8.8 | grep -Po '(?<=src )(\S+)')
+IP_V4=$(ip route get 9.9.9.9 | grep -Po '(?<=src )(\S+)')
 echo "Determined IP_V4 as $IP_V4"
 
 # Determine Internet IPv6 by checking route, and using ::1
@@ -240,7 +240,7 @@ git checkout .
 
 # Now we have a `configuration.nix` that is just missing some secrets.
 # Generate `secrets.nix`. Note that we splice in shell variables.
-cat > /mnt/etc/nixos/secrets.nix <<EOF
+cat > /mnt/etc/nixos/hetzner/secrets.nix <<EOF
 { config, pkgs, ... }:
 
 {
@@ -282,6 +282,9 @@ cat > /mnt/etc/nixos/secrets.nix <<EOF
   system.stateVersion = "$NIXOS_STATE_VERSION"; # Did you read the comment?
 }
 EOF
+
+# Symlink hetzner nixos configuration.
+ln -sr /mnt/etc/nixos/hetzner/configuration.nix /mnt/etc/nixos/
 
 # Install NixOS
 PATH="$PATH" `which nixos-install` --no-root-passwd --root /mnt --max-jobs 40

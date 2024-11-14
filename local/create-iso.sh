@@ -126,7 +126,7 @@ rm iso.nix
 rm -f result
 
 # Uninstall nix if it was installed by this script.
-if [ $INSTALL_NIX ]; then
+if [ "$INSTALL_NIX" = "0" ]; then
     echo "Nix was installed before already, leaving it be."
 else
     echo "Nix was installed for the purpose of creating the iso, uninstalling now."

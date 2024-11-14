@@ -129,7 +129,7 @@ in {
 
   networking.nameservers = [ "8.8.8.8" "1.1.1.1" ];
 
-  # Not root password.
+  # No root password.
   # Since we don't allow password authentication for SSH, that should be fine for installation.
   # For security reasons, still set one after installation.
   users.users.root.initialPassword = "";
