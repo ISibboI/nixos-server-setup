@@ -9,7 +9,7 @@ set -x
 
 # Global properties
 if [[ -z "${SSH_KEY:-}" ]]; then
-    AUTHORIZED_KEYS_FILE=/root/.ssh/authorized_keys
+    AUTHORIZED_KEYS_FILE=/etc/ssh/authorized_keys.d/root
     echo "SSH_KEY is empty, checking $AUTHORIZED_KEYS_FILE if there is any"
     set +e
     SSH_KEY=$(head -n 1 $AUTHORIZED_KEYS_FILE)
