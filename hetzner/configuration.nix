@@ -17,7 +17,7 @@ in {
       # Store secrets in a separate file
       ./secrets.nix
       # Backup scripts
-      ./backup.nix
+      ./hetzner/backup.nix
       # Mailserver
       (builtins.fetchTarball {
         # Pick a release version you are interested in and set its hash, e.g.
