@@ -98,8 +98,8 @@ git init
 git remote add origin https://github.com/isibboi/nixos-server-setup.git
 git fetch
 git reset origin/main  # Required when the versioned files existed in path before "git init" of this repo.
-git checkout -t origin/main
 git checkout .
+mv hardware-configuration.nix local/
 
 # Now we have a `configuration.nix` that is just missing some secrets.
 # Generate `secrets.nix`. Note that we splice in shell variables.
