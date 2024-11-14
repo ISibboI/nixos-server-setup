@@ -24,6 +24,12 @@ if [[ -z "${SSH_KEY:-}" ]]; then
     fi
 fi
 
+# Select NixOS version.
+if [[ -z "${NIXOS_STATE_VERSION:-}" ]]; then
+    echo "NIXOS_STATE_VERSION is empty, using default value \"24.05\""
+    NIXOS_STATE_VERSION="24.05"
+fi
+
 # Check if nix is installed, and install if not.
 if [ `which nix` ]; then
     echo "Found an existing nix installation"
@@ -116,6 +122,10 @@ cat > iso.nix <<EOF
   isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 }
 EOF
+
+# Use stable channel.
+nix-channel --add https://nixos.org/channels/nixos-$NIXOS_STATE_VERSION nixpkgs
+nix-channel --update
 
 # Build iso.
 nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=iso.nix
