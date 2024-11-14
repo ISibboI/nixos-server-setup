@@ -7,6 +7,22 @@ set -o pipefail
 
 set -x
 
+# Global properties
+if [[ -z "${SSH_KEY:-}" ]]; then
+    AUTHORIZED_KEYS_FILE=/root/.ssh/authorized_keys
+    echo "SSH_KEY is empty, checking $AUTHORIZED_KEYS_FILE if there is any"
+    set +e
+    SSH_KEY=$(head -n 1 $AUTHORIZED_KEYS_FILE)
+    set -e
+
+    if [[ -z "${SSH_KEY:-}" ]]; then
+        echo "Error: no SSH_KEY found in $AUTHORIZED_KEYS_FILE"
+        exit 1
+    else
+        echo "Found at least one SSH_KEY in $AUTHORIZED_KEYS_FILE, chose the first"
+    fi
+fi
+
 if [[ -z "${NIXOS_STATE_VERSION:-}" ]]; then
     echo "NIXOS_STATE_VERSION is empty, using default value \"24.05\""
     NIXOS_STATE_VERSION="24.05"
@@ -76,9 +92,6 @@ mount /dev/disk/by-label/root /mnt
 nix-channel --add https://nixos.org/channels/nixos-$NIXOS_STATE_VERSION nixpkgs
 nix-channel --update
 
-# Getting NixOS installation tools
-nix-env -iE "_: with import <nixpkgs/nixos> { configuration = { programs.git.enable = true; }; }; with config.system.build; [ nixos-generate-config nixos-install nixos-enter ]"
-
 nixos-generate-config --root /mnt
 
 cd /mnt/etc/nixos
@@ -90,6 +103,27 @@ git fetch
 git reset origin/main  # Required when the versioned files existed in path before "git init" of this repo.
 git checkout -t origin/main
 git checkout .
+
+# Now we have a `configuration.nix` that is just missing some secrets.
+# Generate `secrets.nix`. Note that we splice in shell variables.
+cat > /mnt/etc/nixos/local/secrets.nix <<EOF
+{ config, pkgs, ... }:
+{
+  # The only possibility to log in initially is this ssh key.
+  users.users.root.openssh.authorizedKeys.keys = [
+    "$SSH_KEY"
+  ];
+  
+  # The following is technically not a secret, but it is set by the install script,
+  # so we put it here such that we can keep the plain \`configuration.nix\` as in the
+  # git repo.
+  # This value determines the NixOS release with which your system is to be
+  # compatible, in order to avoid breaking some software such as database
+  # servers. You should change this only after NixOS release notes say you
+  # should.
+  system.stateVersion = "$NIXOS_STATE_VERSION"; # Did you read the comment?
+}
+EOF
 
 # Symlink local nixos configuration.
 ln -sr /mnt/etc/nixos/local/configuration.nix /mnt/etc/nixos/
