@@ -1,5 +1,4 @@
-/secrets.nix
-/hardware-configuration.nix
+**/secrets.nix
 /configuration.nix
 /nextcloud-admin-pass.txt
 /matrix-shared-secret.txt
