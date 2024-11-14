@@ -273,7 +273,7 @@ cat > /mnt/etc/nixos/secrets.nix <<EOF
   ];
   
   # The following is technically not a secret, but it is set by the install script,
-  # so we put it here such that we can keep the plain `configuration.nix` as in the
+  # so we put it here such that we can keep the plain \`configuration.nix\` as in the
   # git repo.
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
