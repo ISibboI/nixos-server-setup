@@ -16,9 +16,9 @@ in {
       ./hardware-configuration.nix
       # Store secrets in a separate file.
       ./secrets.nix
-      # Backup scripts
+      # Backup scripts.
       ./backup.nix
-      # Mailserver
+      # Mailserver.
       (builtins.fetchTarball {
         # Pick a release version you are interested in and set its hash, e.g.
         url = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/archive/nixos-24.05/nixos-mailserver-nixos-24.05.tar.gz";
@@ -30,9 +30,9 @@ in {
 
   nix = {
     settings = {
-      # Enable flakes and new 'nix' command
+      # Enable flakes and new 'nix' command.
       experimental-features = "nix-command flakes";
-      # Deduplicate and optimize nix store
+      # Deduplicate and optimize nix store.
       auto-optimise-store = true;
     };
   };
@@ -107,7 +107,6 @@ in {
     devices = [ "/dev/sda" "/dev/sdb" ];
   };
 
-  networking.domain = "tktie.de";
   networking.hostName = "hetzner";
 
   # The mdadm RAID1s were created with 'mdadm --create ... --homehost=hetzner',

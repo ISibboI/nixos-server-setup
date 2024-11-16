@@ -33,6 +33,11 @@ set -o pipefail
 set -x
 
 # Global properties
+if [[ -z "${DOMAIN:-}" ]]; then
+    echo "DOMAIN is empty, aborting"
+    exit 1
+fi
+
 if [[ -z "${SSH_KEY:-}" ]]; then
     AUTHORIZED_KEYS_FILE=/root/.ssh/authorized_keys
     echo "SSH_KEY is empty, checking $AUTHORIZED_KEYS_FILE if there is any"
@@ -246,6 +251,7 @@ cat > /mnt/etc/nixos/hetzner/secrets.nix <<EOF
 {
   # Network (Hetzner uses static IP assignments, and we don't use DHCP here)
   networking.useDHCP = false;
+  networking.domain = "$DOMAIN";
   networking.interfaces."$NIXOS_INTERFACE".ipv4.addresses = [
     {
       address = "$IP_V4";

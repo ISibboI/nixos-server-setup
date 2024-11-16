@@ -66,7 +66,7 @@
         ${pkgs.coreutils}/bin/echo "Backing up $SOURCE_DIR to $TARGET_DIR"
 
         set +e
-        ${pkgs.rsync}/bin/rsync -av --exclude "_nobackup" --delete "''${SOURCE_DIR}/" --link-dest "''${SOURCE_DIR}/" "''${BACKUP_DIR}/''${TARGET_DIR}"
+        ${pkgs.rsync}/bin/rsync -av --exclude "_nobackup" --delete --link-dest "''${SOURCE_DIR}/" "''${SOURCE_DIR}/" "''${BACKUP_DIR}/''${TARGET_DIR}"
         RET=$?
         set -e
 
@@ -74,8 +74,9 @@
           RET=0
         fi
         if [ $RET -ne 0 ]; then
-          exit $RET
           ${pkgs.coreutils}/bin/echo "rsync failed with exit code $RET"
+          ${pkgs.coreutils}/bin/rm -rf "''${BACKUP_DIR}"
+          exit $RET
         fi
       done
 
