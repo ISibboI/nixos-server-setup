@@ -5,13 +5,15 @@
       ./hardware-configuration.nix
       # Store secrets in a separate file.
       ./secrets.nix
+      # Backup scripts.
+      ./backup.nix
     ];
 
   nix = {
     settings = {
-      # Enable flakes and new 'nix' command
+      # Enable flakes and new 'nix' command.
       experimental-features = "nix-command flakes";
-      # Deduplicate and optimize nix store
+      # Deduplicate and optimize nix store.
       auto-optimise-store = true;
     };
   };
