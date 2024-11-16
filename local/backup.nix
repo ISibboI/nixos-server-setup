@@ -85,7 +85,6 @@
       fi
       if [ $RET -ne 0 ]; then
         ${pkgs.coreutils}/bin/echo "rsync failed with exit code $RET"
-        ${pkgs.coreutils}/bin/rm -rf "$LOCAL_DIR"
         exit $RET
       fi
     '';
