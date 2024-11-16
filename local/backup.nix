@@ -76,7 +76,7 @@
 
       # Rsync
       set +e
-      ${pkgs.rsync}/bin/rsync -av --delete $LINK_DEST "''${REMOTE}:''${REMOTE_DIR}" "''${LOCAL_DIR}"
+      ${pkgs.rsync}/bin/rsync -av --delete -e '${pkgs.openssh}/bin/ssh' $LINK_DEST "''${REMOTE}:''${REMOTE_DIR}" "''${LOCAL_DIR}"
       RET=$?
       set -e
 
