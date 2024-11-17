@@ -64,7 +64,7 @@
 
       readonly LINK_DIR=$(${pkgs.coreutils}/bin/ls -r "''${LOCAL_BASE_DIR}" | ${pkgs.gnugrep}/bin/grep -v "''${BACKUP_DATE}" | head -1)
       if [ -n "$LINK_DIR" ]; then
-        readonly LINK_DEST="--link-dest \"''${LOCAL_BASE_DIR}/''${LINK_DIR}/\""
+        readonly LINK_DEST="--link-dest ''${LOCAL_BASE_DIR}''${LINK_DIR}"
         echo "Using $LINK_DEST"
       else
         readonly LINK_DEST=""
