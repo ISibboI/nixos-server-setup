@@ -44,6 +44,15 @@
     };
   };
 
+  systemd.timers."backup-duperemove" = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "daily";
+      Persistent = true;
+      Unit = "backup-duperemove.service";
+    };
+  };
+
   systemd.services."backup-daily" = {
     script = ''
       # Back up the second most recent backup from hetzner.
@@ -192,6 +201,22 @@
       ${pkgs.coreutils}/bin/ls -t /backup/monthly | ${pkgs.coreutils}/bin/tail -n +15 | ${pkgs.findutils}/bin/xargs -Iä ${pkgs.coreutils}/bin/rm -rf /backup/monthly/ä
 
       # Never remove yearly backups
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+    };
+  };
+
+  systemd.services."backup-duperemove" = {
+    script = ''
+      set -eu
+      set -o errexit
+      set -o nounset
+      set -o pipefail
+      
+      echo "Running duperemove"
+      ${pkgs.duperemove}/bin/duperemove -rhd --hashfile /backup/duperemove_hashfile /backup/daily /backup/weekly /backup/monthly /backup/yearly
     '';
     serviceConfig = {
       Type = "oneshot";
