@@ -51,6 +51,9 @@
     fzf
     fishPlugins.grc
     grc
+
+    # Backups
+    duperemove
   ];
 
   # Set your time zone.

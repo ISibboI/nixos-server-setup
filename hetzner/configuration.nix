@@ -80,6 +80,9 @@ in {
 
     # Python3 for sshuttle VPN over SSH
     python3
+
+    # Backups
+    duperemove
   ];
 
   # Set your time zone.
