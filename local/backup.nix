@@ -44,15 +44,6 @@
     };
   };
 
-  systemd.timers."backup-duperemove" = {
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnCalendar = "daily";
-      Persistent = true;
-      Unit = "backup-duperemove.service";
-    };
-  };
-
   systemd.services."backup-daily" = {
     script = ''
       # Back up the second most recent backup from hetzner.
@@ -100,6 +91,9 @@
     serviceConfig = {
       Type = "oneshot";
       User = "root";
+    };
+    unitConfig = {
+      OnSuccess = "backup-daily-move-latest.service";
     };
   };
 
