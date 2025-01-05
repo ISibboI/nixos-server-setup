@@ -221,7 +221,13 @@ in {
         enableACME = true;
         forceSSL = true;
         root = "/var/www";
-        extraConfig = "client_max_body_size 0;";
+        # Required to upload large files.
+        extraConfig = ''
+          proxy_read_timeout 3600;
+          proxy_buffering      off;
+          proxy_request_buffering off;
+          client_max_body_size 0;
+        '';
         locations."/" = {
           proxyPass = "http://localhost:2283";
           proxyWebsockets = true;
