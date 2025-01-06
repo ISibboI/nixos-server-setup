@@ -93,7 +93,7 @@
       User = "root";
     };
     unitConfig = {
-      OnSuccess = "backup-daily-move-latest.service";
+      OnSuccess = "backup-duperemove.service";
     };
   };
 
