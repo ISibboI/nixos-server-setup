@@ -223,7 +223,9 @@ in {
         root = "/var/www";
         # Required to upload large files.
         extraConfig = ''
-          proxy_read_timeout 3600;
+          proxy_read_timeout 7200s;
+          proxy_send_timeout 600s;
+          send_timeout 600s;
           proxy_buffering      off;
           proxy_request_buffering off;
           client_max_body_size 0;
