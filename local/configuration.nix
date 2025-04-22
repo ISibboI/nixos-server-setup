@@ -97,7 +97,7 @@
     enable = true;
     cacheNetworks = [ "127.0.0.0/24" "::1/128" "192.168.0.0/24" ];
     zones = {
-      "example.com" = {
+      "home" = {
         master = true;
         allowQuery = [ "127.0.0.0/24" "::1/128" "192.168.0.0/24" ];
         file = pkgs.writeText "home.zone" ''
