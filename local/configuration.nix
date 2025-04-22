@@ -103,17 +103,17 @@
         file = pkgs.writeText "home.zone" ''
           $ORIGIN home.
           $TTL    1h
-          @            IN      SOA     ns  hostmaster (
-                                           1    ; Serial
-                                           3h   ; Refresh
-                                           1h   ; Retry
-                                           1w   ; Expire
-                                           1h)  ; Negative Cache TTL
-                       IN      NS      ns
+          @                  IN      SOA     ns  hostmaster (
+                                                 1    ; Serial
+                                                 3h   ; Refresh
+                                                 1h   ; Retry
+                                                 1w   ; Expire
+                                                 1h)  ; Negative Cache TTL
+                             IN      NS      ns
+          ns                 IN      A       192.168.1.111
 
-          server       IN      A       192.168.1.111
-
-          ns           IN      A       192.168.1.111
+          server             IN      A       192.168.1.111
+          jellyfin.server    IN      A       192.168.1.111
         '';
       };
     };
