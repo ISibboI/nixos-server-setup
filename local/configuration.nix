@@ -172,6 +172,10 @@
   services.jellyfin = {
     enable = true;
   };
+  
+  # Firewall
+  networking.firewall.allowedTCPPorts = [ 53 80 443 ];
+  networking.firewall.allowedUDPPorts = [ 53 ];
 
   # Create a backup copy of the system config.
   system.copySystemConfiguration = true;
