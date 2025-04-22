@@ -95,11 +95,11 @@
 
   services.bind = {
     enable = true;
-    cacheNetworks = [ "127.0.0.0/24" "::1/128" "192.168.0.0/24" ];
+    cacheNetworks = [ "127.0.0.0/24" "::1/128" "192.168.0.0/24" "192.168.1.0/24" ];
     zones = {
       "home" = {
         master = true;
-        allowQuery = [ "127.0.0.0/24" "::1/128" "192.168.0.0/24" ];
+        allowQuery = [ "127.0.0.0/24" "::1/128" "192.168.0.0/24" "192.168.1.0/24" ];
         file = pkgs.writeText "home.zone" ''
           $ORIGIN home.
           $TTL    1h
