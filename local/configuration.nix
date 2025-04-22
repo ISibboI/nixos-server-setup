@@ -113,7 +113,7 @@
           ns                 IN      A       192.168.1.111
 
           server             IN      A       192.168.1.111
-          jellyfin.server    IN      A       192.168.1.111
+          jellyfin           IN      A       192.168.1.111
         '';
       };
     };
