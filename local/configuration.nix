@@ -138,7 +138,7 @@
         extraConfig = ''
           client_max_body_size 100M;
         '';
-        location."/".extraConfig = ''
+        locations."/".extraConfig = ''
           # Proxy main Jellyfin traffic
           proxy_pass http://$jellyfin:8096;
           proxy_set_header Host $host;
@@ -151,7 +151,7 @@
           # Disable buffering when the nginx proxy gets very resource heavy upon streaming
           proxy_buffering off;
         '';
-        location."/socket".extraConfig = ''
+        locations."/socket".extraConfig = ''
           # Proxy Jellyfin Websockets traffic
           proxy_pass http://$jellyfin:8096;
           proxy_http_version 1.1;
