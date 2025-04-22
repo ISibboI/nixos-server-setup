@@ -119,6 +119,42 @@
     };
   };
 
+  # Webserver
+  services.nginx = {
+    enable = true;
+
+    # Use recommended settings
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+
+    # Only allow PFS-enabled ciphers with AES256
+    sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
+
+    # Add virtual hosts:
+    virtualHosts = let
+      base = locations: {
+        inherit locations;
+
+        forceSSL = false;
+        enableACME = false;
+        root = "/var/www";
+      };
+      proxy = port: base {
+        "/".proxyPass = "http://localhost:" + toString(port);
+      };
+    in {
+      # Immich
+      "immich.home" = proxy 8096;
+    };
+  };
+
+  # Jellyfin
+  services.jellyfin = {
+    enable = true;
+  };
+
   # Create a backup copy of the system config.
   system.copySystemConfiguration = true;
 
