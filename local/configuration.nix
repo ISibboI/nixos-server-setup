@@ -95,11 +95,11 @@
 
   services.bind = {
     enable = true;
-    cacheNetworks = [ "127.0.0.0/24" "::1/128" "192.168.0.0/24" ];
+    cacheNetworks = [ "127.0.0.0/24" "::1/128" "192.168.0.0/24" "192.168.1.0/24" ];
     zones = {
       "home" = {
         master = true;
-        allowQuery = [ "127.0.0.0/24" "::1/128" "192.168.0.0/24" ];
+        allowQuery = [ "127.0.0.0/24" "::1/128" "192.168.0.0/24" "192.168.1.0/24" ];
         file = pkgs.writeText "home.zone" ''
           $ORIGIN home.
           $TTL    1h
@@ -118,6 +118,64 @@
       };
     };
   };
+
+  # Webserver
+  services.nginx = {
+    enable = true;
+
+    # Use recommended settings, except for security
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
+    recommendedProxySettings = true;
+
+    # Add virtual hosts:
+    virtualHosts = {
+      # Jellyfin
+      "jellyfin.home" = {
+        enableACME = false;
+        forceSSL = false;
+        root = "/var/www";
+        extraConfig = ''
+          client_max_body_size 100M;
+        '';
+        locations."/".extraConfig = ''
+          # Proxy main Jellyfin traffic
+          proxy_pass http://localhost:8096;
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Forwarded-Protocol $scheme;
+          proxy_set_header X-Forwarded-Host $http_host;
+
+          # Disable buffering when the nginx proxy gets very resource heavy upon streaming
+          proxy_buffering off;
+        '';
+        locations."/socket".extraConfig = ''
+          # Proxy Jellyfin Websockets traffic
+          proxy_pass http://localhost:8096;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection "upgrade";
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Forwarded-Protocol $scheme;
+          proxy_set_header X-Forwarded-Host $http_host;
+        '';
+      };
+    };
+  };
+
+  # Jellyfin
+  services.jellyfin = {
+    enable = true;
+  };
+  
+  # Firewall
+  networking.firewall.allowedTCPPorts = [ 53 80 443 ];
+  networking.firewall.allowedUDPPorts = [ 53 ];
 
   # Create a backup copy of the system config.
   system.copySystemConfiguration = true;
