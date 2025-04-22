@@ -123,14 +123,10 @@
   services.nginx = {
     enable = true;
 
-    # Use recommended settings
+    # Use recommended settings, except for security
     recommendedGzipSettings = true;
     recommendedOptimisation = true;
     recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-
-    # Only allow PFS-enabled ciphers with AES256
-    sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
 
     # Add virtual hosts:
     virtualHosts = {
@@ -139,14 +135,10 @@
         enableACME = false;
         forceSSL = false;
         root = "/var/www";
-        # Required to upload large files.
         extraConfig = ''
-          proxy_read_timeout 10800s;
-          proxy_send_timeout 10800s;
-          send_timeout 10800s;
           client_max_body_size 100M;
         '';
-        location."/".extraConfig = {
+        location."/".extraConfig = ''
           # Proxy main Jellyfin traffic
           proxy_pass http://$jellyfin:8096;
           proxy_set_header Host $host;
@@ -158,8 +150,8 @@
 
           # Disable buffering when the nginx proxy gets very resource heavy upon streaming
           proxy_buffering off;
-        };
-        location."/socket".extraConfig = {
+        '';
+        location."/socket".extraConfig = ''
           # Proxy Jellyfin Websockets traffic
           proxy_pass http://$jellyfin:8096;
           proxy_http_version 1.1;
@@ -171,7 +163,7 @@
           proxy_set_header X-Forwarded-Proto $scheme;
           proxy_set_header X-Forwarded-Protocol $scheme;
           proxy_set_header X-Forwarded-Host $http_host;
-        };
+        '';
       };
     };
   };
