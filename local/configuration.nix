@@ -133,20 +133,46 @@
     sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
 
     # Add virtual hosts:
-    virtualHosts = let
-      base = locations: {
-        inherit locations;
-
-        forceSSL = false;
+    virtualHosts = {
+      # Jellyfin
+      "jellyfin.home" = {
         enableACME = false;
+        forceSSL = false;
         root = "/var/www";
+        # Required to upload large files.
+        extraConfig = ''
+          proxy_read_timeout 10800s;
+          proxy_send_timeout 10800s;
+          send_timeout 10800s;
+          client_max_body_size 100M;
+        '';
+        location."/".extraConfig = {
+          # Proxy main Jellyfin traffic
+          proxy_pass http://$jellyfin:8096;
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Forwarded-Protocol $scheme;
+          proxy_set_header X-Forwarded-Host $http_host;
+
+          # Disable buffering when the nginx proxy gets very resource heavy upon streaming
+          proxy_buffering off;
+        };
+        location."/socket".extraConfig = {
+          # Proxy Jellyfin Websockets traffic
+          proxy_pass http://$jellyfin:8096;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection "upgrade";
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Forwarded-Protocol $scheme;
+          proxy_set_header X-Forwarded-Host $http_host;
+        };
       };
-      proxy = port: base {
-        "/".proxyPass = "http://localhost:" + toString(port);
-      };
-    in {
-      # Immich
-      "immich.home" = proxy 8096;
     };
   };
 
