@@ -53,7 +53,7 @@
       set -o nounset
       set -o pipefail
 
-      readonly REMOTE="tktie.de"
+      readonly REMOTE="${config.networking.domain}"
       readonly REMOTE_BASE_DIR="/backup/daily/"
       readonly BACKUP_DATE=$(${pkgs.openssh}/bin/ssh "$REMOTE" ls -r "$REMOTE_BASE_DIR" | tail +2 | head -1)
       readonly REMOTE_DIR="''${REMOTE_BASE_DIR}''${BACKUP_DATE}/"
