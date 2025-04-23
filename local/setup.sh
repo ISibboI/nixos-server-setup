@@ -8,6 +8,11 @@ set -o pipefail
 set -x
 
 # Global properties
+if [[ -z "${DOMAIN:-}" ]]; then
+    echo "DOMAIN is empty, aborting"
+    exit 1
+fi
+
 if [[ -z "${SSH_KEY:-}" ]]; then
     AUTHORIZED_KEYS_FILE=/etc/ssh/authorized_keys.d/root
     echo "SSH_KEY is empty, checking $AUTHORIZED_KEYS_FILE if there is any"
@@ -106,6 +111,8 @@ mv hardware-configuration.nix local/
 cat > /mnt/etc/nixos/local/secrets.nix <<EOF
 { config, pkgs, ... }:
 {
+  networking.domain = "$DOMAIN";
+
   # The only possibility to log in initially is this ssh key.
   users.users.root.openssh.authorizedKeys.keys = [
     "$SSH_KEY"
