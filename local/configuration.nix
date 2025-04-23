@@ -142,6 +142,7 @@
       
       # Syncthing
       "syncthing.local.${config.networking.domain}" = {
+        basicAuthFile = "/var/www/.htpasswd";
         enableACME = false;
         forceSSL = false;
         root = "/var/www";
