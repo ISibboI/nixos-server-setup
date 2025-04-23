@@ -146,6 +146,7 @@
         forceSSL = false;
         root = "/var/www";
         locations."/".proxyPass = "http://localhost:8384";
+      };
     };
   };
 
