@@ -105,7 +105,7 @@
     # Add virtual hosts:
     virtualHosts = {
       # Jellyfin
-      "jellyfin.${config.networking.domain}" = {
+      "jellyfin.local.${config.networking.domain}" = {
         enableACME = false;
         forceSSL = false;
         root = "/var/www";
@@ -139,12 +139,34 @@
           proxy_set_header X-Forwarded-Host $http_host;
         '';
       };
+      
+      # Syncthing
+      "syncthing.local.${config.networking.domain}" = {
+        basicAuthFile = "/var/www/.htpasswd";
+        enableACME = false;
+        forceSSL = false;
+        root = "/var/www";
+        locations."/".extraConfig = ''
+          proxy_pass http://127.0.0.1:8384;
+          proxy_set_header Host localhost;
+        '';
+      };
     };
   };
 
   # Jellyfin
   services.jellyfin = {
     enable = true;
+  };
+
+  # Syncthing
+  services.syncthing = {
+    enable = true;
+    user = "syncthing";
+    dataDir = "/home/syncthing";    # Default folder for new synced folders
+    openDefaultPorts = true;
+    overrideDevices = false;
+    overrideFolders = false;
   };
   
   # Firewall
