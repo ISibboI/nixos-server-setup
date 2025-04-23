@@ -145,7 +145,7 @@
         enableACME = false;
         forceSSL = false;
         root = "/var/www";
-        locations."/".proxyPass = "http://localhost:8384";
+        locations."/".proxyPass = "http://127.0.0.1:8384";
         locations."/".extraConfig = "proxy_set_header Host localhost;";
       };
     };
