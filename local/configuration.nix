@@ -146,7 +146,7 @@
         forceSSL = false;
         root = "/var/www";
         locations."/".proxyPass = "http://localhost:8384";
-        locations."/".extraConfig = "proxy_set_header Host localhost";
+        locations."/".extraConfig = "proxy_set_header Host localhost;";
       };
     };
   };
