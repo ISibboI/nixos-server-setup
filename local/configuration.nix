@@ -93,32 +93,6 @@
     settings.ClientAliveCountMax = 60;
   };
 
-  services.bind = {
-    enable = true;
-    cacheNetworks = [ "127.0.0.0/24" "::1/128" "192.168.0.0/24" "192.168.1.0/24" ];
-    zones = {
-      "home" = {
-        master = true;
-        allowQuery = [ "127.0.0.0/24" "::1/128" "192.168.0.0/24" "192.168.1.0/24" ];
-        file = pkgs.writeText "home.zone" ''
-          $ORIGIN home.
-          $TTL    1h
-          @                  IN      SOA     ns  hostmaster (
-                                                 1    ; Serial
-                                                 3h   ; Refresh
-                                                 1h   ; Retry
-                                                 1w   ; Expire
-                                                 1h)  ; Negative Cache TTL
-                             IN      NS      ns
-          ns                 IN      A       192.168.1.111
-
-          server             IN      A       192.168.1.111
-          jellyfin           IN      A       192.168.1.111
-        '';
-      };
-    };
-  };
-
   # Webserver
   services.nginx = {
     enable = true;
@@ -131,7 +105,7 @@
     # Add virtual hosts:
     virtualHosts = {
       # Jellyfin
-      "jellyfin.home" = {
+      "jellyfin.${config.networking.domain}" = {
         enableACME = false;
         forceSSL = false;
         root = "/var/www";
