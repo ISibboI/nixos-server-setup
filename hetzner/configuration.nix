@@ -297,7 +297,7 @@ in {
     };
   };
 
-  # Gitlab
+  /*# Gitlab
   services.gitlab = {
     enable = true;
     host = "gitlab.${config.networking.domain}";
@@ -330,7 +330,7 @@ in {
         DOCKER_DRIVER = "btrfs";
       };
     };
-  };
+  };*/
 
   # Mailserver
   mailserver = {
