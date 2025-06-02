@@ -442,7 +442,7 @@ in {
         use_x_forwarded_for = true;
       };
       # Use postgres instead of sqlite
-      recorder.db_url = "postgresql://@/home_assistant";
+      recorder.db_url = "postgresql://@/hass";
     };
     # Use postgres instead of sqlite
     package = (pkgs.home-assistant.override {
@@ -467,9 +467,9 @@ in {
       CREATE DATABASE "nextcloud" WITH OWNER "nextcloud";
     '';
     # Home assistant
-    ensureDatabases = [ "home_assistant" ];
+    ensureDatabases = [ "hass" ];
     ensureUsers = [{
-      name = "home_assistant";
+      name = "hass";
       ensureDBOwnership = true;
     }];
   };
