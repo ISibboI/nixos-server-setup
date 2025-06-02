@@ -191,7 +191,7 @@
   systemd.services."home-assistant-reverse-tunnel" = {
     enable = true;
     description = "ssh tunnel to hetzner";
-    wantedBy = "multi-user.target";
+    wantedBy = ["multi-user.target"];
     serviceConfig = {
       # NOTE: you MUST start ssh *without!* the -f (forking) switch, 
       # so that systemd can monitor it and detect when the tunnel goes down
