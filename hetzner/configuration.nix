@@ -242,6 +242,19 @@ in {
         extraConfig = "client_max_body_size 512M;";
         locations."/".proxyPass = "http://unix:/run/forgejo/forgejo.sock";
       };
+
+      # Home assistant
+      "home.${config.networking.domain}" = {
+        forceSSL = true;
+        enableACME = true;
+        extraConfig = ''
+          proxy_buffering off;
+        '';
+        locations."/" = {
+          proxyPass = "http://[::1]:8123";
+          proxyWebsockets = true;
+        };
+      };
     };
   };
 
@@ -409,18 +422,57 @@ in {
     };
   };
 
-  # Postgres setup
-  services.postgresql.enable = true;
-  services.postgresql.initialScript = pkgs.writeText "postgres-init.sql" ''
-    CREATE ROLE "matrix-synapse" WITH LOGIN PASSWORD 'synapse';
-    CREATE DATABASE "matrix-synapse" WITH OWNER "matrix-synapse"
-      TEMPLATE template0
-      LC_COLLATE = "C"
-      LC_CTYPE = "C";
+  # Home assistant
+  services.home-assistant = {
+    enable = true;
+    extraComponents = [
+      # Components required to complete the onboarding
+      "esphome"
+      "met"
+      "radio_browser"
+    ];
+    config = {
+      # Includes dependencies for a basic setup
+      # https://www.home-assistant.io/integrations/default_config/
+      default_config = {};
+      # Use reverse proxy
+      http = {
+        server_host = "::1";
+        trusted_proxies = [ "::1" ];
+        use_x_forwarded_for = true;
+      };
+      # Use postgres instead of sqlite
+      recorder.db_url = "postgresql://@/home_assistant";
+    };
+    # Use postgres instead of sqlite
+    package = (pkgs.home-assistant.override {
+      extraPackages = py: with py; [ psycopg2 ];
+    }).overrideAttrs (oldAttrs: {
+      doInstallCheck = false;
+    });
+  };
 
-    CREATE ROLE "nextcloud" WITH LOGIN PASSWORD 'nextcloud';
-    CREATE DATABASE "nextcloud" WITH OWNER "nextcloud";
-  '';
+  # Postgres setup
+  services.postgresql = {
+    enable = true;
+    # Matrix
+    initialScript = pkgs.writeText "postgres-init.sql" ''
+      CREATE ROLE "matrix-synapse" WITH LOGIN PASSWORD 'synapse';
+      CREATE DATABASE "matrix-synapse" WITH OWNER "matrix-synapse"
+        TEMPLATE template0
+        LC_COLLATE = "C"
+        LC_CTYPE = "C";
+
+      CREATE ROLE "nextcloud" WITH LOGIN PASSWORD 'nextcloud';
+      CREATE DATABASE "nextcloud" WITH OWNER "nextcloud";
+    '';
+    # Home assistant
+    ensureDatabases = [ "home_assistant" ];
+    ensureUsers = [{
+      name = "home_assistant";
+      ensureDBOwnership = true;
+    }];
+  };
 
   # Firewall
   networking.firewall.allowedTCPPorts = [ 80 443 ];
