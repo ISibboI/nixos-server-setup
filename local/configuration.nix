@@ -189,6 +189,9 @@
 
   # Make home assistant accessible from remote server.
   systemd.services."home-assistant-reverse-tunnel" = {
+    enable = true;
+    description = "ssh tunnel to hetzner";
+    wantedBy = "multi-user.target";
     serviceConfig = {
       # NOTE: you MUST start ssh *without!* the -f (forking) switch, 
       # so that systemd can monitor it and detect when the tunnel goes down
@@ -209,14 +212,10 @@
       User = "root";
     };
     unitConfig = {
-      Description = "ssh tunnel to hetzner";
       Wants = "network-online.target";
       After = "network-online.target";
       StartLimitIntervalSec = 5;
       StartLimitBurst = 1;
-    };
-    installConfig = {
-      WantedBy = "multi-user.target";
     };
   };
   
