@@ -422,37 +422,6 @@ in {
     };
   };
 
-  # Home assistant
-  services.home-assistant = {
-    enable = true;
-    extraComponents = [
-      # Components required to complete the onboarding
-      "esphome"
-      "met"
-      "radio_browser"
-      "wiz"
-    ];
-    config = {
-      # Includes dependencies for a basic setup
-      # https://www.home-assistant.io/integrations/default_config/
-      default_config = {};
-      # Use reverse proxy
-      http = {
-        server_host = "::1";
-        trusted_proxies = [ "::1" ];
-        use_x_forwarded_for = true;
-      };
-      # Use postgres instead of sqlite
-      recorder.db_url = "postgresql://@/hass";
-    };
-    # Use postgres instead of sqlite
-    package = (pkgs.home-assistant.override {
-      extraPackages = py: with py; [ psycopg2 ];
-    }).overrideAttrs (oldAttrs: {
-      doInstallCheck = false;
-    });
-  };
-
   # Postgres setup
   services.postgresql = {
     enable = true;

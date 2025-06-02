@@ -154,11 +154,6 @@
     };
   };
 
-  # Jellyfin
-  services.jellyfin = {
-    enable = true;
-  };
-
   # Syncthing
   services.syncthing = {
     enable = true;
@@ -167,6 +162,62 @@
     openDefaultPorts = true;
     overrideDevices = false;
     overrideFolders = false;
+  };
+
+  # Home assistant
+  services.home-assistant = {
+    enable = true;
+    extraComponents = [
+      # Components required to complete the onboarding
+      "esphome"
+      "met"
+      "radio_browser"
+      "wiz"
+    ];
+    config = {
+      # Includes dependencies for a basic setup
+      # https://www.home-assistant.io/integrations/default_config/
+      default_config = {};
+      # Use reverse proxy
+      http = {
+        server_host = "::1";
+        trusted_proxies = [ "::1" ];
+        use_x_forwarded_for = true;
+      };
+    };
+  };
+
+  # Make home assistant accessible from remote server.
+  systemd.services."home-assistant-reverse-tunnel" = {
+    serviceConfig = {
+      # NOTE: you MUST start ssh *without!* the -f (forking) switch, 
+      # so that systemd can monitor it and detect when the tunnel goes down
+      Type = "simple";
+      # forward *local* port 80 to port 8088 on the remote host
+      ExecStart = "ssh root@${config.networking.domain} -N -T -R 8123:localhost:8123";
+      # send an exit signal to the SSH master process that controls the tunnel
+      ExecStop = "ssh arh -O exit -R 8123:localhost:8123";
+      # see: https://www.freedesktop.org/software/systemd/man/systemd.service.html#TimeoutStartSec=
+      TimeoutStartSec = 10;
+      TimeoutStopSec = 10;
+      Restart = always;
+      RestartSec = 10;
+
+      # TODO: set the user name here; root will be used if unset
+      # make sure the user has the correct ssh key or otherwise 
+      # explicitly pass the key with `ssh -i /path/to/key/id_rsa   
+      User = "root";
+    };
+    unitConfig = {
+      Description = "ssh tunnel to hetzner";
+      Wants = "network-online.target";
+      After = "network-online.target";
+      StartLimitIntervalSec = 5;
+      StartLimitBurst = 1;
+    };
+    installConfig = {
+      WantedBy = "multi-user.target";
+    };
   };
   
   # Firewall
