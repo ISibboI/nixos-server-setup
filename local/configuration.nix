@@ -200,7 +200,7 @@
       # see: https://www.freedesktop.org/software/systemd/man/systemd.service.html#TimeoutStartSec=
       TimeoutStartSec = 10;
       TimeoutStopSec = 10;
-      Restart = always;
+      Restart = "always";
       RestartSec = 10;
 
       # TODO: set the user name here; root will be used if unset
