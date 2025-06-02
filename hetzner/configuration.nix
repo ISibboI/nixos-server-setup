@@ -430,6 +430,7 @@ in {
       "esphome"
       "met"
       "radio_browser"
+      "wiz"
     ];
     config = {
       # Includes dependencies for a basic setup
