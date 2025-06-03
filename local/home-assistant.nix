@@ -13,6 +13,16 @@
             color_temp = 300;
             color_mode = "color_temp";
           };
+          "light.wiz_rgbw_tunable_f63007" = {
+            state = "on";
+            color_temp = 300;
+            color_mode = "color_temp";
+          };
+          "light.wiz_rgbw_tunable_f63def" = {
+            state = "on";
+            color_temp = 300;
+            color_mode = "color_temp";
+          };
         };
       }
     ];
