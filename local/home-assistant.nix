@@ -3,6 +3,35 @@
     "automation ui" = "!include automations.yaml";
     "scene ui" = "!include scenes.yaml";
 
+    "automation manual" = [
+      {
+        alias = "Bedroom reminder dim";
+        mode = "single";
+        triggers = [
+          {
+            trigger = "time";
+            at = "19:10:00";
+          }
+        ];
+        conditions = [
+          {
+            condition = "device";
+            type = "is_on";
+            device_id = "04b0c1b4eb9cd8c02dddf944d54a6b07";
+            entity_id = "af8c051d7ebd61a611e69a0c1c7e6281";
+            domain = "light";
+            for = { hours = 0; minutes = 1; seconds = 0; };
+          }
+        ];
+        actions = [
+          device_id = "04b0c1b4eb9cd8c02dddf944d54a6b07";
+          entity_id = "af8c051d7ebd61a611e69a0c1c7e6281";
+          domain = "light";
+          type = "brightness_decrease";
+        ];
+      }
+    ];
+
     "scene manual" = [
       {
         name = "Daytime";
