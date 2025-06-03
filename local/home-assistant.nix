@@ -15,10 +15,9 @@
         ];
         conditions = [
           {
-            condition = "entity";
-            type = "is_on";
+            condition = "state";
             entity_id = "light.bedroom";
-            domain = "light";
+            state = "on";
             for = { hours = 0; minutes = 1; seconds = 0; };
           }
           {
