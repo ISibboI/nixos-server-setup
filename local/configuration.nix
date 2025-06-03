@@ -7,6 +7,8 @@
       ./secrets.nix
       # Backup scripts.
       ./backup.nix
+      # Home assistant automations.
+      ./home-assistant.nix
     ];
 
   nix = {
