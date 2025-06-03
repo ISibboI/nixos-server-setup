@@ -32,17 +32,17 @@
         entities = {
           "light.wiz_rgbw_tunable_f62fd1" = {
             state = "on";
-            rgbw_color = [0 255 249 105];
+            rgbw_color = [100 245 249 155];
             color_mode = "rgbw";
           };
           "light.wiz_rgbw_tunable_f63007" = {
             state = "on";
-            rgbw_color = [0 255 249 105];
+            rgbw_color = [100 245 249 155];
             color_mode = "rgbw";
           };
           "light.wiz_rgbw_tunable_f63def" = {
             state = "on";
-            rgbw_color = [0 255 249 105];
+            rgbw_color = [100 245 249 155];
             color_mode = "rgbw";
           };
         };
