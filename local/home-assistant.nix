@@ -59,7 +59,7 @@
         entities = {
           "light.sebastian_room" = {
             state = "on";
-            rgbw_color = [100 245 249 155];
+            rgbw_color = [255 155 255 150];
             color_mode = "rgbw";
           };
         };
