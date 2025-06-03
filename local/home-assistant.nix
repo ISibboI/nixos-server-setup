@@ -10,17 +10,17 @@
         entities = {
           "light.wiz_rgbw_tunable_f62fd1" = {
             state = "on";
-            color_temp = 300;
+            color_temp = 320;
             color_mode = "color_temp";
           };
           "light.wiz_rgbw_tunable_f63007" = {
             state = "on";
-            color_temp = 300;
+            color_temp = 320;
             color_mode = "color_temp";
           };
           "light.wiz_rgbw_tunable_f63def" = {
             state = "on";
-            color_temp = 300;
+            color_temp = 320;
             color_mode = "color_temp";
           };
         };
@@ -32,18 +32,18 @@
         entities = {
           "light.wiz_rgbw_tunable_f62fd1" = {
             state = "on";
-            color_temp = 250;
-            color_mode = "color_temp";
+            rgbw = [0 255 249 105];
+            color_mode = "rgbw";
           };
           "light.wiz_rgbw_tunable_f63007" = {
             state = "on";
-            color_temp = 250;
-            color_mode = "color_temp";
+            rgbw = [0 255 249 105];
+            color_mode = "rgbw";
           };
           "light.wiz_rgbw_tunable_f63def" = {
             state = "on";
-            color_temp = 250;
-            color_mode = "color_temp";
+            rgbw = [0 255 249 105];
+            color_mode = "rgbw";
           };
         };
       }
