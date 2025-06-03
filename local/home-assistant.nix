@@ -5,6 +5,7 @@
 
     "scene manual" = [
       {
+        id = "110011";
         name = "Daytime preconfigured";
         entities = {
           "light.wiz_rgbw_tunable_f62fd1" = {
