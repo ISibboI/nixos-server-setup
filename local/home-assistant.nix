@@ -24,10 +24,12 @@
           }
         ];
         actions = [
-          device_id = "04b0c1b4eb9cd8c02dddf944d54a6b07";
-          entity_id = "af8c051d7ebd61a611e69a0c1c7e6281";
-          domain = "light";
-          type = "brightness_decrease";
+          {
+            device_id = "04b0c1b4eb9cd8c02dddf944d54a6b07";
+            entity_id = "af8c051d7ebd61a611e69a0c1c7e6281";
+            domain = "light";
+            type = "brightness_decrease";
+          }
         ];
       }
     ];
