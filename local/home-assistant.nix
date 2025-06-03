@@ -17,14 +17,13 @@
           {
             condition = "device";
             type = "is_on";
-            device_id = "04b0c1b4eb9cd8c02dddf944d54a6b07";
-            entity_id = "af8c051d7ebd61a611e69a0c1c7e6281";
+            entity_id = "light.bedroom";
             domain = "light";
             for = { hours = 0; minutes = 1; seconds = 0; };
           }
           {
             condition = "numeric_state";
-            entity_id = "af8c051d7ebd61a611e69a0c1c7e6281";
+            entity_id = "light.bedroom";
             attribute = "brightness";
             above = 150;
           }
@@ -32,7 +31,7 @@
         actions = [
           {
             action = "light.turn_on";
-            target.entity_id = "af8c051d7ebd61a611e69a0c1c7e6281";
+            target.entity_id = "light.bedroom";
             data = {
               transition = 2;
               brightness = 150;
