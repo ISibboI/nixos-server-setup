@@ -31,12 +31,12 @@
         ];
         actions = [
           {
-            device_id = "04b0c1b4eb9cd8c02dddf944d54a6b07";
-            entity_id = "af8c051d7ebd61a611e69a0c1c7e6281";
-            domain = "light";
-            type = "turn_on";
-            transition = 2;
-            brightness = 150;
+            action = "light.turn_on";
+            target.entity_id = "af8c051d7ebd61a611e69a0c1c7e6281";
+            data = {
+              transition = 2;
+              brightness = 150;
+            };
           }
         ];
       }
