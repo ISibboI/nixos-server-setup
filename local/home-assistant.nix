@@ -15,7 +15,7 @@
         ];
         conditions = [
           {
-            condition = "device";
+            condition = "entity";
             type = "is_on";
             entity_id = "light.bedroom";
             domain = "light";
