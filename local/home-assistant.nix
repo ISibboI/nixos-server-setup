@@ -10,7 +10,7 @@
         entities = {
           "light.wiz_rgbw_tunable_f62fd1" = {
             state = "on";
-            color_temp_kelvin = 3000;
+            color_temp = 300;
             color_mode = "color_temp";
           };
         };
