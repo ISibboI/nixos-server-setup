@@ -171,6 +171,17 @@
           };
         };
       }
+
+      {
+        name = "Wake-up";
+        icon = "mdi:weather-sunset-up";
+        entities = {
+          "light.bedroom" = {
+            state = "on";
+            effect = "Wake-up";
+          };
+        };
+      }
     ];
   };
 }
