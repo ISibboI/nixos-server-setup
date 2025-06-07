@@ -129,6 +129,37 @@
       }
 
       {
+        alias = "Office daytime retrigger if turned off";
+        mode = "single";
+        triggers = [
+          {
+            trigger = "state";
+            entity_id = "light.sebastian_room";
+            from = "unavailable";
+            to = "on";
+          }
+        ];
+        conditions = [
+          {
+            condition = "time";
+            after = "06:00:00";
+            before = "18:59:00";
+          }
+          {
+            condition = "template";
+            value_template = "{{ this.attributes.last_triggered is none or this.attributes.last_triggered < today_at(\"05:00:00\") }}";
+          }
+        ];
+        actions = [
+          {
+            action = "scene.turn_on";
+            target.entity_id = "scene.daytime";
+            data.transition = 0.1;
+          }
+        ];
+      }
+
+      {
         alias = "Office evening dim";
         mode = "single";
         triggers = [
