@@ -348,6 +348,7 @@ in {
   # Mailserver
   mailserver = {
     enable = true;
+    stateVersion = 3;
     fqdn = "mail.${config.networking.domain}";
     domains = [ "${config.networking.domain}" ];
 
