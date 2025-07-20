@@ -185,7 +185,7 @@
         entities = {
           "light.sebastian_room" = {
             state = "on";
-            color_temp_kelvin = 3000;
+            color_temp_kelvin = 3500;
             color_mode = "color_temp";
           };
         };
