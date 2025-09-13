@@ -228,11 +228,19 @@
     listeners = [{
     address = "192.168.1.111";
     port = 1883;
-    users.raspi = {
-      acl = [
-        "write ruuvi/#"
-      ];
-      password = "$7$101$VaOCMIJQqnbF9WZH$49csJlzRU714b5VGZO3mDK79CaqTafvshe1BDEI3pw2kyg1tZEE6pNUgd3JVeUtYGlWvoAyHxxdQWvrgmk1hMw==";
+    users = {
+      raspi = {
+        acl = [
+          "write ruuvi/#"
+        ];
+        password = "$7$101$eRA3nAXKFSAPYbm0$gt9pocgo51qwefZnE7fFbhBwvDgLMLT34PW73PyphK8Vnn6ExymMtf2kRdHEa1YBxmQXqkiwVjv/ZbyCm58fsA==";
+      };
+      hass = {
+        acl = [
+          "read ruuvi/#"
+        ];
+        password = "$7$101$ODbExqxsFHIzL7hP$XJiyJujMJMN5JsdLoRs/VnHBiX/S8sDh2EMLJJn0dupbzbUs3y7bD8xWDria4bjQIXICDlV4C8WBI6GDP6cQAg==";
+      };
     };
   }];
   };
