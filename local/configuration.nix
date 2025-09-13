@@ -237,6 +237,7 @@
         };
         hass = {
           acl = [
+            "readwrite homeassistant/#"
             "read ruuvi/#"
           ];
           hashedPassword = "$7$101$ODbExqxsFHIzL7hP$XJiyJujMJMN5JsdLoRs/VnHBiX/S8sDh2EMLJJn0dupbzbUs3y7bD8xWDria4bjQIXICDlV4C8WBI6GDP6cQAg==";
