@@ -221,9 +221,24 @@
       StartLimitBurst = 1;
     };
   };
+
+  # Mosquitto
+  services.mosquitto = {
+    enable = true;
+    listeners = [{
+    address = "192.168.1.111";
+    port = 1883;
+    users.raspi = {
+      acl = [
+        "write ruuvi/#"
+      ];
+      password = "$7$101$VaOCMIJQqnbF9WZH$49csJlzRU714b5VGZO3mDK79CaqTafvshe1BDEI3pw2kyg1tZEE6pNUgd3JVeUtYGlWvoAyHxxdQWvrgmk1hMw==";
+    };
+  }];
+  };
   
   # Firewall
-  networking.firewall.allowedTCPPorts = [ 53 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 53 80 443 1883 ];
   networking.firewall.allowedUDPPorts = [ 53 ];
 
   # Create a backup copy of the system config.
