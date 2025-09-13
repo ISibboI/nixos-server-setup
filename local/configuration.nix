@@ -175,6 +175,7 @@
       "met"
       "radio_browser"
       "wiz"
+      "ruuvitag_ble"
     ];
     config = {
       # Includes dependencies for a basic setup
