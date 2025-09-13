@@ -175,7 +175,7 @@
       "met"
       "radio_browser"
       "wiz"
-      "ruuvitag_ble"
+      "mqtt"
     ];
     config = {
       # Includes dependencies for a basic setup
