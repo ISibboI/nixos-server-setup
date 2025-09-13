@@ -230,16 +230,9 @@
       port = 1883;
       users = {
         raspi = {
-          acl = [
-            "write ruuvi/#"
-          ];
           hashedPassword = "$7$101$eRA3nAXKFSAPYbm0$gt9pocgo51qwefZnE7fFbhBwvDgLMLT34PW73PyphK8Vnn6ExymMtf2kRdHEa1YBxmQXqkiwVjv/ZbyCm58fsA==";
         };
         hass = {
-          acl = [
-            "readwrite homeassistant/#"
-            "read ruuvi/#"
-          ];
           hashedPassword = "$7$101$ODbExqxsFHIzL7hP$XJiyJujMJMN5JsdLoRs/VnHBiX/S8sDh2EMLJJn0dupbzbUs3y7bD8xWDria4bjQIXICDlV4C8WBI6GDP6cQAg==";
         };
       };
