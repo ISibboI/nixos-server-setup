@@ -199,7 +199,7 @@
       # NOTE: you MUST start ssh *without!* the -f (forking) switch, 
       # so that systemd can monitor it and detect when the tunnel goes down
       Type = "simple";
-      # forward *local* port 80 to port 8088 on the remote host
+      # forward *local* port 8123 to port 8123 on the remote host
       ExecStart = "${pkgs.openssh}/bin/ssh root@${config.networking.domain} -N -T -R 8123:localhost:8123";
       # send an exit signal to the SSH master process that controls the tunnel
       ExecStop = "${pkgs.openssh}/bin/ssh arh -O exit -R 8123:localhost:8123";
