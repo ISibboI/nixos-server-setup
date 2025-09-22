@@ -176,7 +176,9 @@
       "radio_browser"
       "wiz"
       "mqtt"
-      "aiogithubapi"
+    ];
+    extraPackages = python3Packages: with python3Packages; [
+      aiogithubapi
     ];
     config = {
       # Includes dependencies for a basic setup
