@@ -176,6 +176,7 @@
       "radio_browser"
       "wiz"
       "mqtt"
+      "aiogithubapi"
     ];
     config = {
       # Includes dependencies for a basic setup
