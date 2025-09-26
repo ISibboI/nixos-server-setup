@@ -44,6 +44,16 @@
     };
   };
 
+  systemd.timers."backup-duperemove" = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      # Run on first Monday of every month at 2am.
+      OnCalendar = "Mon *-*-1..7 02:00:00";
+      Persistent = true;
+      Unit = "backup-duperemove.service";
+    };
+  };
+
   systemd.services."backup-daily" = {
     script = ''
       set -eu
@@ -127,9 +137,6 @@
     serviceConfig = {
       Type = "oneshot";
       User = "root";
-    };
-    unitConfig = {
-      OnSuccess = "backup-duperemove.service";
     };
   };
 
