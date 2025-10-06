@@ -253,7 +253,7 @@
       set -o pipefail
       
       echo "Running duperemove"
-      ${pkgs.duperemove}/bin/duperemove -rhd --hashfile /backup/duperemove_hashfile /backup/daily /backup/weekly /backup/monthly /backup/yearly
+      ${pkgs.duperemove}/bin/duperemove -rhd --hashfile /backup/duperemove_hashfile /backup/weekly /backup/monthly /backup/yearly
     '';
     serviceConfig = {
       Type = "oneshot";
