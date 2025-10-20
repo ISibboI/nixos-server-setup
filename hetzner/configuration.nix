@@ -299,7 +299,7 @@ in {
   services.nextcloud = {
     enable = true;
     hostName = "nextcloud.${config.networking.domain}";
-    package = pkgs.nextcloud31;
+    package = pkgs.nextcloud32;
     https = true;
     config = {
       dbtype = "pgsql";
