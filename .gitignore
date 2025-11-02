@@ -1,5 +1,5 @@
 */secrets.nix
-/configuration.nix
+/flake.nix
 /nextcloud-admin-pass.txt
 /matrix-shared-secret.txt
 /result
