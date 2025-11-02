@@ -131,7 +131,7 @@ EOF
 
 # Symlink local nixos configuration.
 rm -f /mnt/etc/nixos/configuration.nix
-ln -sr /mnt/etc/nixos/local/configuration.nix /mnt/etc/nixos/
+ln -sr /mnt/etc/nixos/local/flake.nix /mnt/etc/nixos/
 
 # Install NixOS.
 PATH="$PATH" `which nixos-install` --no-root-passwd --root /mnt --max-jobs 40
