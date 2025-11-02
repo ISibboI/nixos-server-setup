@@ -240,6 +240,10 @@
           acl = [ "readwrite #" ];
           hashedPassword = "$7$101$ODbExqxsFHIzL7hP$XJiyJujMJMN5JsdLoRs/VnHBiX/S8sDh2EMLJJn0dupbzbUs3y7bD8xWDria4bjQIXICDlV4C8WBI6GDP6cQAg==";
         };
+        radd = {
+          acl = [ "readwrite #" ];
+          hashedPassword = "$7$101$WkYDH7oQqKSHBT0A$90LtW4i/D/EjLLkunJU3CEr1lCGrBvpVykCE9MIimgPjcfz8dkV69fLmwBSZyQEtol8ytrywcT88o6V4pNv+vg==";
+        };
       };
     }];
   };
