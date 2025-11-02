@@ -9,8 +9,6 @@
       ./backup.nix
       # Home assistant automations.
       ./home-assistant.nix
-      # Ruuvi Additions
-      git+https://github.com/ISibboI/radd
     ];
 
   nix = {
