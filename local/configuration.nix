@@ -44,6 +44,7 @@
     htop
     bind
     lm_sensors
+    direnv
 
     # Fish stuff
     fishPlugins.done
