@@ -9,6 +9,8 @@
       ./backup.nix
       # Home assistant automations.
       ./home-assistant.nix
+      # Ruuvi Additions
+      git+https://github.com/ISibboI/radd
     ];
 
   nix = {
@@ -247,6 +249,19 @@
       };
     }];
   };
+
+  # Radd (DONT DO IT LIKE THIS)
+  #systemd.services.radd = {
+  #  enable = true;
+  #  path = [ pkgs.nix ];
+  #  unitConfig = {
+  #    Type = "simple";
+  #  };
+  #  serviceConfig = {
+  #    ExecStart = "nix run git+https://github.com/ISibboI/radd";
+  #  };
+  #  wantedBy = [ "multi-user.target" ];
+  #};
   
   # Firewall
   networking.firewall.allowedTCPPorts = [ 53 80 443 1883 ];
