@@ -1,10 +1,11 @@
 { config, pkgs, ... }:
-{
+let
+  # Store secrets in a separate file.
+  secrets = builtins.getFlake "path:/root/secrets";
+in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # Store secrets in a separate file.
-      ./secrets.nix
       # Backup scripts.
       ./backup.nix
       # Home assistant automations.
@@ -79,12 +80,14 @@
     devices = [ "/dev/sda" ];
   };
 
+  networking.domain = secrets.networking.domain;
   networking.nameservers = [ "8.8.8.8" "1.1.1.1" ];
 
   # No root password.
   # Since we don't allow password authentication for SSH, that should be fine for installation.
   # For security reasons, still set one after installation.
   users.users.root.initialPassword = "";
+  users.users.root.openssh.authorizedKeys.keys = secrets.users.users.root.openssh.authorizedKeys.keys;
 
   services.openssh = {
     enable = true;
@@ -269,4 +272,9 @@
   # Create a backup copy of the system config.
   system.copySystemConfiguration = true;
 
+  # This value determines the NixOS release with which your system is to be
+  # compatible, in order to avoid breaking some software such as database
+  # servers. You should change this only after NixOS release notes say you
+  # should.
+  system.stateVersion = secrets.system.stateVersion; # Did you read the comment?
 }

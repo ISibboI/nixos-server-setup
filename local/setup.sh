@@ -106,26 +106,33 @@ git reset origin/main  # Required when the versioned files existed in path befor
 git checkout .
 mv hardware-configuration.nix local/
 
-# Now we have a `configuration.nix` that is just missing some secrets.
-# Generate `secrets.nix`. Note that we splice in shell variables.
-cat > /mnt/etc/nixos/local/secrets.nix <<EOF
-{ config, pkgs, ... }:
+# Now we have a `configuration.nix`.
+# We transform it to be a flake and add the missing secrets.
+# Note that we splice in shell variables.
+mkdir -p /mnt/root/secrets
+cat > /mnt/root/secrets/flake.nix <<EOF
 {
-  networking.domain = "$DOMAIN";
+    description = "Private information about this server, as well as information that should not be update through version control.";
 
-  # The only possibility to log in initially is this ssh key.
-  users.users.root.openssh.authorizedKeys.keys = [
-    "$SSH_KEY"
-  ];
-  
-  # The following is technically not a secret, but it is set by the install script,
-  # so we put it here such that we can keep the plain \`configuration.nix\` as in the
-  # git repo.
-  # This value determines the NixOS release with which your system is to be
-  # compatible, in order to avoid breaking some software such as database
-  # servers. You should change this only after NixOS release notes say you
-  # should.
-  system.stateVersion = "$NIXOS_STATE_VERSION"; # Did you read the comment?
+    inputs = {};
+
+    outputs = { self }: {
+        networking.domain = "$DOMAIN";
+
+        # The only possibility to log in initially is this ssh key.
+        users.users.root.openssh.authorizedKeys.keys = [
+            "$SSH_KEY"
+        ];
+        
+        # The following is technically not a secret, but it is set by the install script,
+        # so we put it here such that we can keep the plain \`configuration.nix\` as in the
+        # git repo.
+        # This value determines the NixOS release with which your system is to be
+        # compatible, in order to avoid breaking some software such as database
+        # servers. You should change this only after NixOS release notes say you
+        # should.
+        system.stateVersion = "$NIXOS_STATE_VERSION"; # Did you read the comment?
+    };
 }
 EOF
 
