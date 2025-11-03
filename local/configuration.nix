@@ -80,6 +80,7 @@ in {
     devices = [ "/dev/sda" ];
   };
 
+  networking.hostName = "local";
   networking.domain = secrets.networking.domain;
   networking.nameservers = [ "8.8.8.8" "1.1.1.1" ];
 

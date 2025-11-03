@@ -106,8 +106,9 @@ git reset origin/main  # Required when the versioned files existed in path befor
 git checkout .
 mv hardware-configuration.nix local/
 
-# Now we have a `configuration.nix`.
-# We transform it to be a flake and add the missing secrets.
+# Now we have a `configuration.nix`, but we will use the correct one from the git repo, which makes the config a flake.
+rm -f /mnt/etc/nixos/configuration.nix
+# Our flake depends on another flake that contains missing private information.
 # Note that we splice in shell variables.
 mkdir -p /mnt/root/secrets
 cat > /mnt/root/secrets/flake.nix <<EOF
@@ -135,10 +136,6 @@ cat > /mnt/root/secrets/flake.nix <<EOF
     };
 }
 EOF
-
-# Symlink local nixos configuration.
-rm -f /mnt/etc/nixos/configuration.nix
-ln -sr /mnt/etc/nixos/local/flake.nix /mnt/etc/nixos/
 
 # Install NixOS.
 PATH="$PATH" `which nixos-install` --no-root-passwd --root /mnt --max-jobs 40
