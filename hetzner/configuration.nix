@@ -135,7 +135,7 @@ in {
     }
   ];
   networking.defaultGateway = secrets.default_gateway;
-  networking.defaultGateway6 = { address = "fe80::1"; interface = ${secrets.nixos_interface}; };
+  networking.defaultGateway6 = { address = "fe80::1"; interface = secrets.nixos_interface; };
 
   # The mdadm RAID1s were created with 'mdadm --create ... --homehost=hetzner',
   # but the hostname for each machine may be different, and mdadm's HOMEHOST
