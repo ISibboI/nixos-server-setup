@@ -433,7 +433,7 @@ in {
 
   # Forgejo actions runner
   services.gitea-actions-runner = {
-    package = pkgs.forgejo-actions-runner;
+    package = pkgs.forgejo-runner;
     instances.default = {
       enable = false;
       name = "monolith";
