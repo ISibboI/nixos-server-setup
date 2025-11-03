@@ -175,9 +175,6 @@ in {
     settings.ClientAliveCountMax = 60;
   };
 
-  # Create a backup copy of the system config.
-  system.copySystemConfiguration = true;
-
   # Webserver
   services.nginx = {
     enable = true;
