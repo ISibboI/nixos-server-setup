@@ -2,7 +2,7 @@
 
 let
   # Store secrets in a separate file.
-  secrets = builtins.getFlake "path:/root/secrets?lastModified=1762192828&narHash=sha256-7NmZ37/5xWupbi3FLe4oaagB%2B93IPMY6opwpLVwMHvs%3D";
+  secrets = builtins.getFlake "path:/root/secrets?lastModified=1762194542&narHash=sha256-x1RuURL02JqeCWgHJ8iN6H/p0BfZcs2BETKEu/SVmW4%3D";
   matrixFqdn = "matrix.${config.networking.domain}";
   matrixBaseUrl = "https://${matrixFqdn}";
   clientConfig."m.homeserver".base_url = matrixBaseUrl;
