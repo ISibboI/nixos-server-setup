@@ -270,9 +270,6 @@ in {
   networking.firewall.allowedTCPPorts = [ 53 80 443 1883 ];
   networking.firewall.allowedUDPPorts = [ 53 ];
 
-  # Create a backup copy of the system config.
-  system.copySystemConfiguration = true;
-
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
