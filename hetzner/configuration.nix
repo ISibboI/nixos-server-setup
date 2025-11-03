@@ -114,24 +114,26 @@ in {
   networking.useDHCP = false;
   # Network (Hetzner uses static IP assignments, and we don't use DHCP here)
   networking.domain = secrets.domain;
-  networking.interfaces.${secrets.nixos_interface}.ipv4.addresses = [
-    {
-      address = secrets.ip_v4;
-      # The prefix length is commonly, but not always, 24.
-      # You should check what the prefix length is for your server
-      # by inspecting the netmask in the "IPs" tab of the Hetzner UI.
-      # For example, a netmask of 255.255.255.0 means prefix length 24
-      # (24 leading 1s), and 255.255.255.192 means prefix length 26
-      # (26 leading 1s).
-      prefixLength = secrets.netmask_prefix_length;
-    }
-  ];
-  networking.interfaces.${secrets.nixos_interface}.ipv6.addresses = [
-    {
-      address = secrets.ip_v6;
-      prefixLength = 64;
-    }
-  ];
+  networking.interfaces.${secrets.nixos_interface} = {
+    ipv4.addresses = [
+      {
+        address = secrets.ip_v4;
+        # The prefix length is commonly, but not always, 24.
+        # You should check what the prefix length is for your server
+        # by inspecting the netmask in the "IPs" tab of the Hetzner UI.
+        # For example, a netmask of 255.255.255.0 means prefix length 24
+        # (24 leading 1s), and 255.255.255.192 means prefix length 26
+        # (26 leading 1s).
+        prefixLength = secrets.netmask_prefix_length;
+      }
+    ];
+    ipv6.addresses = [
+      {
+        address = secrets.ip_v6;
+        prefixLength = 64;
+      }
+    ];
+  };
   networking.defaultGateway = secrets.default_gateway;
   networking.defaultGateway6 = { address = "fe80::1"; interface = secrets.nixos_interface; };
 
