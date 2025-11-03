@@ -16,8 +16,6 @@ in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # Store secrets in a separate file.
-      ./secrets.nix
       # Backup scripts.
       ./backup.nix
       # Mailserver.
