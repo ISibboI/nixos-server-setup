@@ -243,58 +243,42 @@ git reset origin/main  # Required when the versioned files existed in path befor
 git checkout -t origin/main
 git checkout .
 
-# Now we have a `configuration.nix` that is just missing some secrets.
-# Generate `secrets.nix`. Note that we splice in shell variables.
-cat > /mnt/etc/nixos/hetzner/secrets.nix <<EOF
-{ config, pkgs, ... }:
-
+# Now we have a `configuration.nix`, but we will use the correct one from the git repo, which makes the config a flake.
+rm -f /mnt/etc/nixos/configuration.nix
+# Our flake depends on another flake that contains missing private information.
+# Note that we splice in shell variables.
+mkdir -p /mnt/root/secrets
+cat > /mnt/root/secrets/flake.nix <<EOF
 {
-  # Network (Hetzner uses static IP assignments, and we don't use DHCP here)
-  networking.useDHCP = false;
-  networking.domain = "$DOMAIN";
-  networking.interfaces."$NIXOS_INTERFACE".ipv4.addresses = [
-    {
-      address = "$IP_V4";
-      # The prefix length is commonly, but not always, 24.
-      # You should check what the prefix length is for your server
-      # by inspecting the netmask in the "IPs" tab of the Hetzner UI.
-      # For example, a netmask of 255.255.255.0 means prefix length 24
-      # (24 leading 1s), and 255.255.255.192 means prefix length 26
-      # (26 leading 1s).
-      prefixLength = $NETMASK_PREFIX_LENGTH;
-    }
-  ];
-  networking.interfaces."$NIXOS_INTERFACE".ipv6.addresses = [
-    {
-      address = "$IP_V6";
-      prefixLength = 64;
-    }
-  ];
-  networking.defaultGateway = "$DEFAULT_GATEWAY";
-  networking.defaultGateway6 = { address = "fe80::1"; interface = "$NIXOS_INTERFACE"; };
+  description = "Private information about this server, as well as information that should not be update through version control.";
 
-  # The only possibility to log in initially is this ssh key.
-  users.users.root.openssh.authorizedKeys.keys = [
-    "$SSH_KEY"
-  ];
-  
-  # The following is technically not a secret, but it is set by the install script,
-  # so we put it here such that we can keep the plain \`configuration.nix\` as in the
-  # git repo.
-  # This value determines the NixOS release with which your system is to be
-  # compatible, in order to avoid breaking some software such as database
-  # servers. You should change this only after NixOS release notes say you
-  # should.
-  system.stateVersion = "$NIXOS_STATE_VERSION"; # Did you read the comment?
+  inputs = {};
+
+  outputs = { self }: {
+    domain = "$DOMAIN";
+    nixos_interface = "$NIXOS_INTERFACE";
+    ip_v4 = "$IP_V4";
+    ip_v6 = "$IP_V6";
+    netmask_prefix_length = $NETMASK_PREFIX_LENGTH;
+    default_gateway = "$DEFAULT_GATEWAY";
+    root_ssh_key = "$SSH_KEY";
+
+    # The following is technically not a secret, but it is set by the install script,
+    # so we put it here such that we can keep the plain \`configuration.nix\` as in the
+    # git repo.
+    # This value determines the NixOS release with which your system is to be
+    # compatible, in order to avoid breaking some software such as database
+    # servers. You should change this only after NixOS release notes say you
+    # should.
+    system.stateVersion = "$NIXOS_STATE_VERSION"; # Did you read the comment?
+  };
 }
 EOF
-
-# Symlink hetzner nixos configuration.
-ln -sr /mnt/etc/nixos/hetzner/configuration.nix /mnt/etc/nixos/
 
 # Install NixOS
 PATH="$PATH" `which nixos-install` --no-root-passwd --root /mnt --max-jobs 40
 
+sync
 umount /mnt
 
 reboot

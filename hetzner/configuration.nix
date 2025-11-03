@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 let
+  # Store secrets in a separate file.
+  secrets = builtins.getFlake "path:/root/secrets?lastModified=1762192828&narHash=sha256-7NmZ37/5xWupbi3FLe4oaagB%2B93IPMY6opwpLVwMHvs%3D";
   matrixFqdn = "matrix.${config.networking.domain}";
   matrixBaseUrl = "https://${matrixFqdn}";
   clientConfig."m.homeserver".base_url = matrixBaseUrl;
@@ -111,6 +113,29 @@ in {
   };
 
   networking.hostName = "hetzner";
+  networking.useDHCP = false;
+  # Network (Hetzner uses static IP assignments, and we don't use DHCP here)
+  networking.domain = secrets.domain;
+  networking.interfaces.${secrets.nixos_interface}.ipv4.addresses = [
+    {
+      address = secrets.ip_v4;
+      # The prefix length is commonly, but not always, 24.
+      # You should check what the prefix length is for your server
+      # by inspecting the netmask in the "IPs" tab of the Hetzner UI.
+      # For example, a netmask of 255.255.255.0 means prefix length 24
+      # (24 leading 1s), and 255.255.255.192 means prefix length 26
+      # (26 leading 1s).
+      prefixLength = secrets.netmask_prefix_length;
+    }
+  ];
+  networking.interfaces.${secrets.nixos_interface}.ipv6.addresses = [
+    {
+      address = secrets.ip_v6;
+      prefixLength = 64;
+    }
+  ];
+  networking.defaultGateway = secrets.default_gateway;
+  networking.defaultGateway6 = { address = "fe80::1"; interface = ${secrets.nixos_interface}; };
 
   # The mdadm RAID1s were created with 'mdadm --create ... --homehost=hetzner',
   # but the hostname for each machine may be different, and mdadm's HOMEHOST
@@ -135,6 +160,10 @@ in {
   # Since we don't allow password authentication for SSH, that should be fine for installation.
   # For security reasons, still set one after installation.
   users.users.root.initialPassword = "";
+  # The only possibility to log in initially is this ssh key.
+  users.users.root.openssh.authorizedKeys.keys = [
+    secrets.root_ssh_key
+  ];
 
   services.openssh = {
     enable = true;
@@ -448,4 +477,9 @@ in {
   # Firewall
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 
+  # This value determines the NixOS release with which your system is to be
+  # compatible, in order to avoid breaking some software such as database
+  # servers. You should change this only after NixOS release notes say you
+  # should.
+  system.stateVersion = secrets.system.stateVersion; # Did you read the comment?
 }
