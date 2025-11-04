@@ -10,6 +10,8 @@ in {
       ./backup.nix
       # Home assistant automations.
       ./home-assistant.nix
+      # Radd
+      radd.nixosModules.default
     ];
 
   nix = {
@@ -253,18 +255,11 @@ in {
     }];
   };
 
-  # Radd (DONT DO IT LIKE THIS)
-  #systemd.services.radd = {
-  #  enable = true;
-  #  path = [ pkgs.nix ];
-  #  unitConfig = {
-  #    Type = "simple";
-  #  };
-  #  serviceConfig = {
-  #    ExecStart = "nix run git+https://github.com/ISibboI/radd";
-  #  };
-  #  wantedBy = [ "multi-user.target" ];
-  #};
+  # Radd
+  services.radd = {
+    enable = true;
+    mqttPasswordFile = /etc/nixos/radd-mqtt-password.txt;
+  }
   
   # Firewall
   networking.firewall.allowedTCPPorts = [ 53 80 443 1883 ];
