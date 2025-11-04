@@ -256,10 +256,10 @@ in {
   };
 
   # Radd
-  #services.radd = {
-  #  enable = true;
-  #  mqttPasswordFile = /etc/nixos/radd-mqtt-password.txt;
-  #};
+  services.radd = {
+    enable = true;
+    mqttPasswordFile = /etc/nixos/radd-mqtt-password.txt;
+  };
   
   # Firewall
   networking.firewall.allowedTCPPorts = [ 53 80 443 1883 ];
