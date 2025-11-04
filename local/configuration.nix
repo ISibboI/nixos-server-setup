@@ -258,7 +258,7 @@ in {
   # Radd
   services.radd = {
     enable = true;
-    mqttPasswordFile = /etc/nixos/radd-mqtt-password.txt;
+    mqttPasswordFile = "/etc/nixos/radd-mqtt-password.txt";
   };
   
   # Firewall
