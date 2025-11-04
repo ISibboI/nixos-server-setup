@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, radd, ... }:
 let
   # Store secrets in a separate file.
   secrets = builtins.getFlake "path:/root/secrets?lastModified=1762182077&narHash=sha256-7ybOHj2mT01nlESLNMYbA3XfF9K3P7P37kWoB2CEPBc%3D";
