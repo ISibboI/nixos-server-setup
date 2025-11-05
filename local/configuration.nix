@@ -259,6 +259,7 @@ in {
   services.radd = {
     enable = true;
     mqttPasswordFile = "/etc/nixos/radd-mqtt-password.txt";
+    mqttBrokerAddress = "tcp://192.168.1.111:1883";
   };
   
   # Firewall
