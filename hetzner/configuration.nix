@@ -289,7 +289,7 @@ in {
     defaults.email = "isibboi@gmail.com";
     defaults.webroot = "/var/lib/acme/acme-challenge";
     # Nixos mailserver cert.
-    certs = { "${config.mailserver.fqdn}" };
+    certs.${config.mailserver.fqdn} = {};
   };
 
   # Syncthing
