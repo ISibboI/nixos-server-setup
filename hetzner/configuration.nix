@@ -377,6 +377,7 @@ in {
     stateVersion = 3;
     fqdn = "mail.${config.networking.domain}";
     domains = [ "${config.networking.domain}" ];
+    x509.useACMEHost = "${config.mailserver.fqdn}";
 
     # A list of all login accounts. To create the password hashes, use
     # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
@@ -387,9 +388,6 @@ in {
       };
     };
 
-    # Use Let's Encrypt certificates. Note that this needs to set up a stripped
-    # down nginx and opens port 80.
-    certificateScheme = "acme-nginx";
   };
 
   # Grocy
