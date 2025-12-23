@@ -287,6 +287,7 @@ in {
   security.acme = {
     acceptTerms = true;
     defaults.email = "isibboi@gmail.com";
+    defaults.webroot = "/var/lib/acme/acme-challenge";
     certs.${config.mailserver.fqdn} = {
       # Further setup required, check the manual:
       # https://nixos.org/manual/nixos/stable/#module-security-acme
