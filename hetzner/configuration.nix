@@ -35,6 +35,13 @@ in {
       # Deduplicate and optimize nix store.
       auto-optimise-store = true;
     };
+
+    # Automatically delete old nix store entries.
+    gc = {
+      automatic = true;
+      dates = "monthly";
+      options = "--delete-older-than 90d";
+    };
   };
 
   users.mutableUsers = false;
