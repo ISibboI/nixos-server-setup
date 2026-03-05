@@ -5,12 +5,12 @@
   };
   outputs = { self, nixpkgs, ... }@attrs: {
     nixosConfigurations.hetzner = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      stdenv.hostPlatform.system = "x86_64-linux";
       modules = [ ./hetzner/configuration.nix ];
     };
 
     nixosConfigurations.local = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      stdenv.hostPlatform.system = "x86_64-linux";
       specialArgs = attrs;
       modules = [ ./local/configuration.nix ];
     };
