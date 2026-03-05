@@ -190,6 +190,9 @@ in {
       "radio_browser"
       "wiz"
       "mqtt"
+      # Recommended for fast zlib compression
+      # https://www.home-assistant.io/integrations/isal
+      "isal"
     ];
     extraPackages = python3Packages: with python3Packages; [
       aiogithubapi
