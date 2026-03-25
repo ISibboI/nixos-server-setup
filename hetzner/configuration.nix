@@ -260,6 +260,8 @@ in {
           proxy_send_timeout 10800s;
           send_timeout 10800s;
           client_max_body_size 0;
+          proxy_request_buffering off;
+          client_body_buffer_size 1024k;
         '';
         locations."/" = {
           proxyPass = "http://localhost:2283";
