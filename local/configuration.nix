@@ -245,16 +245,13 @@ in {
   # Fix numpy CPU support for home assistant.
   nixpkgs.overlays = [
     (final: prev: {
-      python3 = prev.python3.override {
-        packageOverrides = pyFinal: pyPrev: {
-          numpy = pyPrev.numpy.overrideAttrs (old: {
-            # Optional: NumPy's Meson options (example)
-            mesonFlags = (old.mesonFlags or []) ++ [
-              "-Dcpu-baseline=native"
-              "-Dcpu-dispatch=none"
-            ];
-          });
-        };
+      python3Packages.numpy = prev.python3Packages.numpy.overrideAttrs {
+        (old: {
+          mesonFlags = (old.mesonFlags or []) ++ [
+            "-Dcpu-baseline=native"
+            "-Dcpu-dispatch=none"
+          ];
+        });
       };
     })
   ];
