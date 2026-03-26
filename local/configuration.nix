@@ -248,7 +248,20 @@ in {
       python314Packages.numpy = prev.python314Packages.numpy.overrideAttrs
         (old: {
           mesonFlags = (old.mesonFlags or []) ++ [ "-Dcpu-baseline=native" "-Dcpu-dispatch=none" ];
-        }); 
+        });
+    })
+
+    (final: prev: {
+      python314 = prev.python314.override {
+        packageOverrides = pyFinal: pyPrev: {
+          numpy = pyPrev.numpy.overrideAttrs (old: {
+            mesonFlags = (old.mesonFlags or []) ++ [
+              "-Dcpu-baseline=native"
+              "-Dcpu-dispatch=none"
+            ];
+          });
+        };
+      };
     })
   ];
 
