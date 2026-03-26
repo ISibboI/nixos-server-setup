@@ -263,26 +263,6 @@ in {
         };
       };
     })
-
-    (final: prev: {
-      python3Packages.numpy = prev.python3Packages.numpy.overrideAttrs
-        (old: {
-          mesonFlags = (old.mesonFlags or []) ++ [ "-Dcpu-baseline=native" "-Dcpu-dispatch=none" ];
-        });
-    })
-
-    (final: prev: {
-      python3 = prev.python3.override {
-        packageOverrides = pyFinal: pyPrev: {
-          numpy = pyPrev.numpy.overrideAttrs (old: {
-            mesonFlags = (old.mesonFlags or []) ++ [
-              "-Dcpu-baseline=native"
-              "-Dcpu-dispatch=none"
-            ];
-          });
-        };
-      };
-    })
   ];
 
   # Mosquitto
