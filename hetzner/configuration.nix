@@ -97,6 +97,9 @@ in {
     cargo
     rustc
     gcc
+
+    # Libraries for compiling stuff
+    openssl
   ];
 
   # Set your time zone.
