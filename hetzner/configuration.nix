@@ -92,6 +92,10 @@ in {
 
     # Backups
     duperemove
+
+    # Rust
+    cargo
+    rustc
   ];
 
   # Set your time zone.
