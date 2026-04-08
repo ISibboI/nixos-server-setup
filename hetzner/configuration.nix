@@ -97,6 +97,7 @@ in {
     cargo
     rustc
     gcc
+    pkg-config
 
     # Libraries for compiling stuff
     openssl
