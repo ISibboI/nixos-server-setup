@@ -17,7 +17,7 @@
 
       readonly SCRIPT="/root/jobs/daily-jobs-at-four.sh"
       if [ -x "$SCRIPT" ]; then
-        ${pkgs.bash}/bin/bash -c "$SCRIPT"
+        ${pkgs.bash}/bin/bash -c "$SCRIPT ${pkgs.nix}/bin/nix"
       else
         echo "Script $SCRIPT is not executable or does not exist."
         exit 1
