@@ -92,15 +92,6 @@ in {
 
     # Backups
     duperemove
-
-    # Rust
-    cargo
-    rustc
-    gcc
-    pkg-config
-
-    # Libraries for compiling stuff
-    openssl.dev
   ];
 
   # Set your time zone.
