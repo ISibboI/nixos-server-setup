@@ -100,7 +100,7 @@ in {
     pkg-config
 
     # Libraries for compiling stuff
-    openssl
+    openssl.dev
   ];
 
   # Set your time zone.
