@@ -96,6 +96,7 @@ in {
     # Rust
     cargo
     rustc
+    gcc
   ];
 
   # Set your time zone.
