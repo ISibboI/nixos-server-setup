@@ -18,6 +18,8 @@ in {
       ./hardware-configuration.nix
       # Backup scripts.
       ./backup.nix
+      # Regular jobs.
+      ./regular-jobs.nix
       # Mailserver.
       (builtins.fetchTarball {
         # Pick a release version you are interested in and set its hash, e.g.
