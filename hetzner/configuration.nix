@@ -292,6 +292,17 @@ in {
           proxyWebsockets = true;
         };
       };
+
+      # Changedetection.io
+      "changedetection.${config.networking.domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        root = "/var/www";
+        locations."/" = {
+          proxyPass = "http://localhost:5000";
+          proxyWebsockets = true;
+        };
+      };
     };
   };
 
@@ -459,6 +470,13 @@ in {
         "ubuntu-18.04:docker://node:16-buster"
       ];
     };
+  };
+
+  # Changedetection.io
+  services.changedetection-io = {
+    enable = true;
+    baseUrl = "https://changedetection.${config.networking.domain}";
+    behindProxy = true;
   };
 
   # Postgres setup
