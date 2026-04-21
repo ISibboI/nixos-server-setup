@@ -293,7 +293,7 @@ in {
         };
       };
 
-      # Changedetection.io"
+      # Changedetection.io
       "changedetection.${config.networking.domain}" = proxy 5000 // {
         basicAuthFile = "/var/www/.htpasswd";
       };
