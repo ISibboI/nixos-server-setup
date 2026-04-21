@@ -471,6 +471,7 @@ in {
     enable = true;
     baseURL = "https://changedetection.${config.networking.domain}";
     behindProxy = true;
+    webDriverSupport = true;
   };
 
   # Changedetection.io is unfree software, so we need to explicitly allow it.
