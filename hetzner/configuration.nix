@@ -293,15 +293,9 @@ in {
         };
       };
 
-      # Changedetection.io
-      "changedetection.${config.networking.domain}" = {
-        enableACME = true;
-        forceSSL = true;
-        root = "/var/www";
-        locations."/" = {
-          proxyPass = "http://localhost:5000";
-          proxyWebsockets = true;
-        };
+      # Changedetection.io"
+      "changedetection.${config.networking.domain}" = proxy 5000 // {
+        basicAuthFile = "/var/www/.htpasswd";
       };
     };
   };
