@@ -479,6 +479,11 @@ in {
     behindProxy = true;
   };
 
+  # Changedetection.io is unfree software, so we need to explicitly allow it.
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "changedetection-io"
+  ];
+
   # Postgres setup
   services.postgresql = {
     enable = true;
