@@ -475,7 +475,7 @@ in {
   # Changedetection.io
   services.changedetection-io = {
     enable = true;
-    baseUrl = "https://changedetection.${config.networking.domain}";
+    baseURL = "https://changedetection.${config.networking.domain}";
     behindProxy = true;
   };
 
