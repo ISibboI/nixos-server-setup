@@ -400,7 +400,7 @@ in {
 
     # A list of all login accounts. To create the password hashes, use
     # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
-    loginAccounts = {
+    accounts = {
       "sibbo@${config.networking.domain}" = {
         hashedPasswordFile = "/etc/nixos/mail-password-sibbo.txt";
         aliases = ["postmaster@${config.networking.domain}"];
