@@ -193,6 +193,7 @@ in {
       # Recommended for fast zlib compression
       # https://www.home-assistant.io/integrations/isal
       "isal"
+      "zha"
     ];
     extraPackages = python3Packages: with python3Packages; [
       aiogithubapi
