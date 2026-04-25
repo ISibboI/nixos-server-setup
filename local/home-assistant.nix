@@ -139,7 +139,7 @@
             target.entity_id = "light.samu";
             data = {
               brightness = 255;
-              transition = 900;
+              transition = 60;
               color_temp_kelvin = 4500;
             };
           }
