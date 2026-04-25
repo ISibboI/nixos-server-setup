@@ -4,6 +4,9 @@
     "scene ui" = "!include scenes.yaml";
 
     "automation manual" = [
+      ###############
+      ### Bedroom ###
+      ###############
       {
         alias = "Bedroom morning on";
         mode = "single";
@@ -110,6 +113,89 @@
         ];
       }
 
+      ###################
+      ### Samu's Room ###
+      ###################
+      {
+        alias = "Samu's room morning on";
+        mode = "single";
+        triggers = [
+          {
+            trigger = "time";
+            at = "06:45:00";
+          }
+        ];
+        conditions = [
+          {
+            condition = "state";
+            entity_id = "light.samu";
+            state = "off";
+            for = { hours = 0; minutes = 1; seconds = 0; };
+          }
+        ];
+        actions = [
+          {
+            action = "light.turn_on";
+            target.entity_id = "light.samu";
+            data = {
+              brightness = 255;
+              transition = 900;
+              color_temp_kelvin = 4500;
+            };
+          }
+        ];
+      }
+
+      {
+        alias = "Samu's room morning off";
+        mode = "single";
+        triggers = [
+          {
+            trigger = "time";
+            at = "08:50:00";
+          }
+        ];
+        actions = [
+          {
+            action = "light.turn_off";
+            target.entity_id = "light.samu";
+          }
+        ];
+      }
+
+      {
+        alias = "Samu's room evening on";
+        mode = "single";
+        triggers = [
+          {
+            trigger = "time";
+            at = "17:30:00";
+          }
+        ];
+        conditions = [
+          {
+            condition = "state";
+            entity_id = "light.samu";
+            state = "off";
+            for = { hours = 0; minutes = 1; seconds = 0; };
+          }
+        ];
+        actions = [
+          {
+            action = "light.turn_on";
+            target.entity_id = "light.samu";
+            data = {
+              brightness = 255;
+              transition = 2;
+              color_temp_kelvin = 2700;
+            };
+          }
+        ];
+      }
+
+      ##############
+      ### Office ###
+      ##############
       {
         alias = "Office daytime";
         mode = "single";
