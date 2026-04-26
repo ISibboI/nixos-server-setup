@@ -161,7 +161,7 @@
             entity_id = "light.samu";
             attribute = "brightness";
             below = 3;
-          },
+          }
           {
             condition = "state";
             entity_id = "light.samu";
@@ -196,7 +196,7 @@
             entity_id = "light.samu";
             attribute = "brightness";
             below = 6;
-          },
+          }
           {
             condition = "state";
             entity_id = "light.samu";
@@ -231,7 +231,7 @@
             entity_id = "light.samu";
             attribute = "brightness";
             below = 10;
-          },
+          }
           {
             condition = "state";
             entity_id = "light.samu";
@@ -266,7 +266,7 @@
             entity_id = "light.samu";
             attribute = "brightness";
             below = 20;
-          },
+          }
           {
             condition = "state";
             entity_id = "light.samu";
@@ -301,7 +301,7 @@
             entity_id = "light.samu";
             attribute = "brightness";
             below = 40;
-          },
+          }
           {
             condition = "state";
             entity_id = "light.samu";
@@ -336,7 +336,7 @@
             entity_id = "light.samu";
             attribute = "brightness";
             below = 80;
-          },
+          }
           {
             condition = "state";
             entity_id = "light.samu";
@@ -371,7 +371,7 @@
             entity_id = "light.samu";
             attribute = "brightness";
             below = 160;
-          },
+          }
           {
             condition = "state";
             entity_id = "light.samu";
@@ -406,7 +406,7 @@
             entity_id = "light.samu";
             attribute = "brightness";
             below = 255;
-          },
+          }
           {
             condition = "state";
             entity_id = "light.samu";
