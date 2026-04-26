@@ -140,7 +140,7 @@
             data = {
               brightness = 1;
               transition = 60;
-              color_temp_kelvin = 4500;
+              color_temp_kelvin = 2000;
             };
           }
         ];
@@ -175,7 +175,7 @@
             data = {
               brightness = 3;
               transition = 60;
-              color_temp_kelvin = 4500;
+              color_temp_kelvin = 2300;
             };
           }
         ];
@@ -210,7 +210,7 @@
             data = {
               brightness = 6;
               transition = 60;
-              color_temp_kelvin = 4500;
+              color_temp_kelvin = 3000;
             };
           }
         ];
@@ -245,7 +245,7 @@
             data = {
               brightness = 10;
               transition = 60;
-              color_temp_kelvin = 4500;
+              color_temp_kelvin = 4000;
             };
           }
         ];
