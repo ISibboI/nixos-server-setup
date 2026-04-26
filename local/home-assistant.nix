@@ -117,7 +117,7 @@
       ### Samu's Room ###
       ###################
       {
-        alias = "Samu's room morning on";
+        alias = "Samu's room morning on 1";
         mode = "single";
         triggers = [
           {
@@ -131,6 +131,286 @@
             entity_id = "light.samu";
             state = "off";
             for = { hours = 0; minutes = 1; seconds = 0; };
+          }
+        ];
+        actions = [
+          {
+            action = "light.turn_on";
+            target.entity_id = "light.samu";
+            data = {
+              brightness = 1;
+              transition = 60;
+              color_temp_kelvin = 4500;
+            };
+          }
+        ];
+      }
+
+      {
+        alias = "Samu's room morning on 2";
+        mode = "single";
+        triggers = [
+          {
+            trigger = "time";
+            at = "06:47:00";
+          }
+        ];
+        conditions = [
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 3;
+          },
+          {
+            condition = "state";
+            entity_id = "light.samu";
+            state = "on";
+          }
+        ];
+        actions = [
+          {
+            action = "light.turn_on";
+            target.entity_id = "light.samu";
+            data = {
+              brightness = 3;
+              transition = 60;
+              color_temp_kelvin = 4500;
+            };
+          }
+        ];
+      }
+
+      {
+        alias = "Samu's room morning on 3";
+        mode = "single";
+        triggers = [
+          {
+            trigger = "time";
+            at = "06:49:00";
+          }
+        ];
+        conditions = [
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 6;
+          },
+          {
+            condition = "state";
+            entity_id = "light.samu";
+            state = "on";
+          }
+        ];
+        actions = [
+          {
+            action = "light.turn_on";
+            target.entity_id = "light.samu";
+            data = {
+              brightness = 6;
+              transition = 60;
+              color_temp_kelvin = 4500;
+            };
+          }
+        ];
+      }
+
+      {
+        alias = "Samu's room morning on 4";
+        mode = "single";
+        triggers = [
+          {
+            trigger = "time";
+            at = "06:51:00";
+          }
+        ];
+        conditions = [
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 10;
+          },
+          {
+            condition = "state";
+            entity_id = "light.samu";
+            state = "on";
+          }
+        ];
+        actions = [
+          {
+            action = "light.turn_on";
+            target.entity_id = "light.samu";
+            data = {
+              brightness = 10;
+              transition = 60;
+              color_temp_kelvin = 4500;
+            };
+          }
+        ];
+      }
+
+      {
+        alias = "Samu's room morning on 5";
+        mode = "single";
+        triggers = [
+          {
+            trigger = "time";
+            at = "06:53:00";
+          }
+        ];
+        conditions = [
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 20;
+          },
+          {
+            condition = "state";
+            entity_id = "light.samu";
+            state = "on";
+          }
+        ];
+        actions = [
+          {
+            action = "light.turn_on";
+            target.entity_id = "light.samu";
+            data = {
+              brightness = 20;
+              transition = 60;
+              color_temp_kelvin = 4500;
+            };
+          }
+        ];
+      }
+
+      {
+        alias = "Samu's room morning on 6";
+        mode = "single";
+        triggers = [
+          {
+            trigger = "time";
+            at = "06:55:00";
+          }
+        ];
+        conditions = [
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 40;
+          },
+          {
+            condition = "state";
+            entity_id = "light.samu";
+            state = "on";
+          }
+        ];
+        actions = [
+          {
+            action = "light.turn_on";
+            target.entity_id = "light.samu";
+            data = {
+              brightness = 40;
+              transition = 60;
+              color_temp_kelvin = 4500;
+            };
+          }
+        ];
+      }
+
+      {
+        alias = "Samu's room morning on 7";
+        mode = "single";
+        triggers = [
+          {
+            trigger = "time";
+            at = "06:57:00";
+          }
+        ];
+        conditions = [
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 80;
+          },
+          {
+            condition = "state";
+            entity_id = "light.samu";
+            state = "on";
+          }
+        ];
+        actions = [
+          {
+            action = "light.turn_on";
+            target.entity_id = "light.samu";
+            data = {
+              brightness = 80;
+              transition = 60;
+              color_temp_kelvin = 4500;
+            };
+          }
+        ];
+      }
+
+      {
+        alias = "Samu's room morning on 8";
+        mode = "single";
+        triggers = [
+          {
+            trigger = "time";
+            at = "06:59:00";
+          }
+        ];
+        conditions = [
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 160;
+          },
+          {
+            condition = "state";
+            entity_id = "light.samu";
+            state = "on";
+          }
+        ];
+        actions = [
+          {
+            action = "light.turn_on";
+            target.entity_id = "light.samu";
+            data = {
+              brightness = 160;
+              transition = 60;
+              color_temp_kelvin = 4500;
+            };
+          }
+        ];
+      }
+
+      {
+        alias = "Samu's room morning on 9";
+        mode = "single";
+        triggers = [
+          {
+            trigger = "time";
+            at = "07:00:00";
+          }
+        ];
+        conditions = [
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 255;
+          },
+          {
+            condition = "state";
+            entity_id = "light.samu";
+            state = "on";
           }
         ];
         actions = [
