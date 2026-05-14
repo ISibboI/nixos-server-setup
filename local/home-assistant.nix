@@ -50,35 +50,6 @@
       }
 
       {
-        alias = "Bedroom evening on";
-        mode = "single";
-        triggers = [
-          {
-            trigger = "time";
-            at = "17:30:00";
-          }
-        ];
-        conditions = [
-          {
-            condition = "state";
-            entity_id = "light.bedroom";
-            state = "off";
-            for = { hours = 0; minutes = 1; seconds = 0; };
-          }
-        ];
-        actions = [
-          {
-            action = "light.turn_on";
-            target.entity_id = "light.bedroom";
-            data = {
-              brightness = 255;
-              transition = 2;
-            };
-          }
-        ];
-      }
-
-      {
         alias = "Bedroom reminder dim";
         mode = "single";
         triggers = [
