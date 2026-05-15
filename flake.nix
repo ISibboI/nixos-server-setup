@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     radd.url = "github:ISibboI/radd";
+    radd.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = { self, nixpkgs, ... }@attrs: {
     nixosConfigurations.hetzner = nixpkgs.lib.nixosSystem {
