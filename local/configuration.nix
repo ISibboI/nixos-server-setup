@@ -14,13 +14,6 @@ in {
       radd.nixosModules.default
     ];
 
-  # This ensures that the system is built for the correct architecture, but it means that we need to rebuild everything ourselves.
-  nixpkgs.hostPlatform = {
-    gcc.arch = "x86-64";
-    gcc.tune = "x86-64";
-    system = "x86_64-linux";
-  };
-
   nix = {
     settings = {
       # Enable flakes and new 'nix' command.
