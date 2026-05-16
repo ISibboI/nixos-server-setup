@@ -14,6 +14,12 @@ in {
       radd.nixosModules.default
     ];
 
+  nixpkgs.hostPlatform = {
+    gcc.arch = "x86-64";
+    gcc.tune = "x86-64";
+    system = "x86_64-linux";
+  };
+
   nix = {
     settings = {
       # Enable flakes and new 'nix' command.
