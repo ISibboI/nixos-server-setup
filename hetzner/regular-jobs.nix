@@ -17,7 +17,8 @@
 
       readonly SCRIPT="/root/jobs/hourly-jobs.sh"
       if [ -x "$SCRIPT" ]; then
-        ${pkgs.bash}/bin/bash -c "$SCRIPT ${pkgs.nix}/bin/nix"
+        HOUR=$(${pkgs.coreutils}/bin/date +%H)
+        ${pkgs.bash}/bin/bash -c "$SCRIPT ${pkgs.nix}/bin/nix $HOUR"
       else
         echo "Script $SCRIPT is not executable or does not exist."
         exit 1
