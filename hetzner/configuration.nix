@@ -2,7 +2,7 @@
 
 let
   # Store secrets in a separate file.
-  secrets = builtins.getFlake "path:/root/secrets?lastModified=1762194542&narHash=sha256-x1RuURL02JqeCWgHJ8iN6H/p0BfZcs2BETKEu/SVmW4%3D";
+  secrets = builtins.getFlake "path:/root/secrets?lastModified=1780400207&narHash=sha256-gZOAQlDpd7z5vZNmMEeDlH04XAPKgRA3ZvIMr7JxBG0%3D";
   matrixFqdn = "matrix.${config.networking.domain}";
   matrixBaseUrl = "https://${matrixFqdn}";
   clientConfig."m.homeserver".base_url = matrixBaseUrl;
@@ -297,6 +297,9 @@ in {
       "changedetection.${config.networking.domain}" = proxy 5000 // {
         basicAuthFile = "/var/www/.htpasswd";
       };
+
+      # Cookies
+      "${secrets.cookieDomain}" = proxy 8030;
     };
   };
 
