@@ -482,6 +482,9 @@ in {
     "changedetection-io"
   ];
 
+  # Cron
+  services.cron.enable = true;
+
   # Postgres setup
   services.postgresql = {
     enable = true;
