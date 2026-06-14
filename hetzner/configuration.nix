@@ -488,7 +488,7 @@ in {
   # Navidrome
   services.navidrome = {
     enable = true;
-    settings.MusicFolder = "/home/syncthing/Music";
+    settings.MusicFolder = "/syncthing_shared/Music";
   };
 
   # Cron
