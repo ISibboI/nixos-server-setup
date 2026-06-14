@@ -300,6 +300,9 @@ in {
 
       # Cookies
       "${secrets.cookieDomain}" = proxy 8030;
+
+      # Navidrome
+      "navidrome.${config.networking.domain}" = proxy 4533;
     };
   };
 
@@ -481,6 +484,12 @@ in {
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "changedetection-io"
   ];
+
+  # Navidrome
+  services.navidrome = {
+    enable = true;
+    settings.MusicFolder = "/home/syncthing/Music";
+  };
 
   # Cron
   services.cron.enable = true;
