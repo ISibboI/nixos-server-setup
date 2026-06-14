@@ -488,6 +488,7 @@ in {
   # Navidrome
   services.navidrome = {
     enable = true;
+    environmentFile = "/etc/nixos/navidrome.env";
     settings.MusicFolder = "/syncthing_shared/Music";
   };
 
