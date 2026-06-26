@@ -238,7 +238,7 @@ in {
   };
   
   # Firewall
-  networking.firewall.allowedTCPPorts = [ 53 80 443 1883 ];
+  networking.firewall.allowedTCPPorts = [ 53 80 443 1883 8384 ];
   networking.firewall.allowedUDPPorts = [ 53 ];
 
   # This value determines the NixOS release with which your system is to be
