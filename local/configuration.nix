@@ -120,42 +120,6 @@ in {
 
     # Add virtual hosts:
     virtualHosts = {
-      # Jellyfin
-      "jellyfin.local.${config.networking.domain}" = {
-        enableACME = false;
-        forceSSL = false;
-        root = "/var/www";
-        extraConfig = ''
-          client_max_body_size 100M;
-        '';
-        locations."/".extraConfig = ''
-          # Proxy main Jellyfin traffic
-          proxy_pass http://localhost:8096;
-          proxy_set_header Host $host;
-          proxy_set_header X-Real-IP $remote_addr;
-          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header X-Forwarded-Proto $scheme;
-          proxy_set_header X-Forwarded-Protocol $scheme;
-          proxy_set_header X-Forwarded-Host $http_host;
-
-          # Disable buffering when the nginx proxy gets very resource heavy upon streaming
-          proxy_buffering off;
-        '';
-        locations."/socket".extraConfig = ''
-          # Proxy Jellyfin Websockets traffic
-          proxy_pass http://localhost:8096;
-          proxy_http_version 1.1;
-          proxy_set_header Upgrade $http_upgrade;
-          proxy_set_header Connection "upgrade";
-          proxy_set_header Host $host;
-          proxy_set_header X-Real-IP $remote_addr;
-          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header X-Forwarded-Proto $scheme;
-          proxy_set_header X-Forwarded-Protocol $scheme;
-          proxy_set_header X-Forwarded-Host $http_host;
-        '';
-      };
-      
       # Syncthing
       "syncthing.local.${config.networking.domain}" = {
         basicAuthFile = "/var/www/.htpasswd";
