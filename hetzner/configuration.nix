@@ -306,8 +306,8 @@ in {
 
       # Jellyfin
       "jellyfin.${config.networking.domain}" = {
-        enableACME = false;
-        forceSSL = false;
+        enableACME = true;
+        forceSSL = true;
         root = "/var/www";
         extraConfig = ''
           client_max_body_size 100M;
