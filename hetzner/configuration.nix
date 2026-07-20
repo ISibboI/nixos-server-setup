@@ -339,6 +339,13 @@ in {
           proxy_set_header X-Forwarded-Host $http_host;
         '';
       };
+
+      # Game
+      "game.${config.networking.domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        root = "/var/www-game";
+      };
     };
   };
 
