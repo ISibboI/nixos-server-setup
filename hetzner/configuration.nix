@@ -345,6 +345,7 @@ in {
         enableACME = true;
         forceSSL = true;
         root = "/var/www-game";
+        basicAuthFile = "/var/www-game/.htpasswd";
       };
     };
   };
