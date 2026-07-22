@@ -98,10 +98,10 @@
         ];
         conditions = [
           {
-            condition = "numeric_state";
+            condition = "state";
             entity_id = "light.samu";
-            attribute = "brightness";
-            below = 200;
+            state = "off";
+            for = { hours = 0; minutes = 1; seconds = 0; };
           }
         ];
         actions = [
