@@ -349,7 +349,7 @@ in {
       };
 
       # Actual budget
-      "actualbudget.${config.networking.domain}" = proxy 5006;
+      "actual.${config.networking.domain}" = proxy 5006;
     };
   };
 
