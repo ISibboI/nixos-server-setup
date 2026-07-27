@@ -548,7 +548,7 @@ in {
   services.actual = {
     enable = true;
     settings.port = 5006;
-    settings.dataDir = /var/lib/private/actual;
+    settings.dataDir = "/var/lib/private/actual";
   };
 
   # Cron
