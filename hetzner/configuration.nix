@@ -547,6 +547,7 @@ in {
   # Actual budget
   services.actual = {
     enable = true;
+    port = 5006;
   };
 
   # Cron
