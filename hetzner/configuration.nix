@@ -347,6 +347,9 @@ in {
         root = "/var/www-game";
         basicAuthFile = "/var/www-game/.htpasswd";
       };
+
+      # Actual budget
+      "actualbudget.${config.networking.domain}" = proxy 5006;
     };
   };
 
@@ -538,6 +541,11 @@ in {
 
   # Jellyfin
   services.jellyfin = {
+    enable = true;
+  };
+
+  # Actual budget
+  services.actual = {
     enable = true;
   };
 
