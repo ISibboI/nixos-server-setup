@@ -1,4 +1,6 @@
 { config, pkgs, ... }: {
+  imports = [ home-assistant/samus-nightlight-off.nix ];
+
   services.home-assistant.config = {
     "automation ui" = "!include automations.yaml";
     "scene ui" = "!include scenes.yaml";
