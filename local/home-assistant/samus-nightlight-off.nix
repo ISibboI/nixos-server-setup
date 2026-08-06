@@ -7,7 +7,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:00:00";
+            at = "20:00:00";
           }
         ];
         conditions = [
@@ -41,7 +41,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:00:24";
+            at = "20:00:24";
           }
         ];
         conditions = [
@@ -75,7 +75,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:00:47";
+            at = "20:00:47";
           }
         ];
         conditions = [
@@ -109,7 +109,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:01:11";
+            at = "20:01:11";
           }
         ];
         conditions = [
@@ -143,7 +143,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:01:34";
+            at = "20:01:34";
           }
         ];
         conditions = [
@@ -177,7 +177,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:01:58";
+            at = "20:01:58";
           }
         ];
         conditions = [
@@ -211,7 +211,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:02:21";
+            at = "20:02:21";
           }
         ];
         conditions = [
@@ -245,7 +245,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:02:45";
+            at = "20:02:45";
           }
         ];
         conditions = [
@@ -279,7 +279,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:03:08";
+            at = "20:03:08";
           }
         ];
         conditions = [
@@ -313,7 +313,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:03:32";
+            at = "20:03:32";
           }
         ];
         conditions = [
@@ -347,7 +347,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:03:55";
+            at = "20:03:55";
           }
         ];
         conditions = [
@@ -381,7 +381,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:04:19";
+            at = "20:04:19";
           }
         ];
         conditions = [
@@ -415,7 +415,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:04:42";
+            at = "20:04:42";
           }
         ];
         conditions = [
@@ -449,7 +449,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:05:06";
+            at = "20:05:06";
           }
         ];
         conditions = [
@@ -483,7 +483,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:05:29";
+            at = "20:05:29";
           }
         ];
         conditions = [
@@ -517,7 +517,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:05:53";
+            at = "20:05:53";
           }
         ];
         conditions = [
@@ -551,7 +551,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:06:16";
+            at = "20:06:16";
           }
         ];
         conditions = [
@@ -585,7 +585,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:06:40";
+            at = "20:06:40";
           }
         ];
         conditions = [
@@ -619,7 +619,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:07:04";
+            at = "20:07:04";
           }
         ];
         conditions = [
@@ -653,7 +653,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:07:27";
+            at = "20:07:27";
           }
         ];
         conditions = [
@@ -687,7 +687,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:07:51";
+            at = "20:07:51";
           }
         ];
         conditions = [
@@ -721,7 +721,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:08:14";
+            at = "20:08:14";
           }
         ];
         conditions = [
@@ -755,7 +755,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:08:38";
+            at = "20:08:38";
           }
         ];
         conditions = [
@@ -789,7 +789,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:09:01";
+            at = "20:09:01";
           }
         ];
         conditions = [
@@ -823,7 +823,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:09:25";
+            at = "20:09:25";
           }
         ];
         conditions = [
@@ -857,7 +857,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:09:48";
+            at = "20:09:48";
           }
         ];
         conditions = [
@@ -891,7 +891,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:10:12";
+            at = "20:10:12";
           }
         ];
         conditions = [
@@ -925,7 +925,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:10:35";
+            at = "20:10:35";
           }
         ];
         conditions = [
@@ -959,7 +959,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:10:59";
+            at = "20:10:59";
           }
         ];
         conditions = [
@@ -993,7 +993,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:11:22";
+            at = "20:11:22";
           }
         ];
         conditions = [
@@ -1027,7 +1027,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:11:46";
+            at = "20:11:46";
           }
         ];
         conditions = [
@@ -1061,7 +1061,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:12:09";
+            at = "20:12:09";
           }
         ];
         conditions = [
@@ -1095,7 +1095,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:12:33";
+            at = "20:12:33";
           }
         ];
         conditions = [
@@ -1129,7 +1129,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:12:56";
+            at = "20:12:56";
           }
         ];
         conditions = [
@@ -1163,7 +1163,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:13:20";
+            at = "20:13:20";
           }
         ];
         conditions = [
@@ -1197,7 +1197,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:13:44";
+            at = "20:13:44";
           }
         ];
         conditions = [
@@ -1231,7 +1231,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:14:07";
+            at = "20:14:07";
           }
         ];
         conditions = [
@@ -1265,7 +1265,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:14:31";
+            at = "20:14:31";
           }
         ];
         conditions = [
@@ -1299,7 +1299,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:14:54";
+            at = "20:14:54";
           }
         ];
         conditions = [
@@ -1333,7 +1333,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:15:18";
+            at = "20:15:18";
           }
         ];
         conditions = [
@@ -1367,7 +1367,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:15:41";
+            at = "20:15:41";
           }
         ];
         conditions = [
@@ -1401,7 +1401,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:16:05";
+            at = "20:16:05";
           }
         ];
         conditions = [
@@ -1435,7 +1435,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:16:28";
+            at = "20:16:28";
           }
         ];
         conditions = [
@@ -1469,7 +1469,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:16:52";
+            at = "20:16:52";
           }
         ];
         conditions = [
@@ -1503,7 +1503,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:17:15";
+            at = "20:17:15";
           }
         ];
         conditions = [
@@ -1537,7 +1537,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:17:39";
+            at = "20:17:39";
           }
         ];
         conditions = [
@@ -1571,7 +1571,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:18:02";
+            at = "20:18:02";
           }
         ];
         conditions = [
@@ -1605,7 +1605,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:18:26";
+            at = "20:18:26";
           }
         ];
         conditions = [
@@ -1639,7 +1639,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:18:49";
+            at = "20:18:49";
           }
         ];
         conditions = [
@@ -1673,7 +1673,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:19:13";
+            at = "20:19:13";
           }
         ];
         conditions = [
@@ -1707,7 +1707,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:19:36";
+            at = "20:19:36";
           }
         ];
         conditions = [
@@ -1741,7 +1741,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:20:00";
+            at = "20:20:00";
           }
         ];
         conditions = [
@@ -1775,7 +1775,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:20:24";
+            at = "20:20:24";
           }
         ];
         conditions = [
@@ -1809,7 +1809,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:20:47";
+            at = "20:20:47";
           }
         ];
         conditions = [
@@ -1843,7 +1843,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:21:11";
+            at = "20:21:11";
           }
         ];
         conditions = [
@@ -1877,7 +1877,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:21:34";
+            at = "20:21:34";
           }
         ];
         conditions = [
@@ -1911,7 +1911,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:21:58";
+            at = "20:21:58";
           }
         ];
         conditions = [
@@ -1945,7 +1945,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:22:21";
+            at = "20:22:21";
           }
         ];
         conditions = [
@@ -1979,7 +1979,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:22:45";
+            at = "20:22:45";
           }
         ];
         conditions = [
@@ -2013,7 +2013,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:23:08";
+            at = "20:23:08";
           }
         ];
         conditions = [
@@ -2047,7 +2047,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:23:32";
+            at = "20:23:32";
           }
         ];
         conditions = [
@@ -2081,7 +2081,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:23:55";
+            at = "20:23:55";
           }
         ];
         conditions = [
@@ -2115,7 +2115,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:24:19";
+            at = "20:24:19";
           }
         ];
         conditions = [
@@ -2149,7 +2149,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:24:42";
+            at = "20:24:42";
           }
         ];
         conditions = [
@@ -2183,7 +2183,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:25:06";
+            at = "20:25:06";
           }
         ];
         conditions = [
@@ -2217,7 +2217,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:25:29";
+            at = "20:25:29";
           }
         ];
         conditions = [
@@ -2251,7 +2251,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:25:53";
+            at = "20:25:53";
           }
         ];
         conditions = [
@@ -2285,7 +2285,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:26:16";
+            at = "20:26:16";
           }
         ];
         conditions = [
@@ -2319,7 +2319,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:26:40";
+            at = "20:26:40";
           }
         ];
         conditions = [
@@ -2353,7 +2353,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:27:04";
+            at = "20:27:04";
           }
         ];
         conditions = [
@@ -2387,7 +2387,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:27:27";
+            at = "20:27:27";
           }
         ];
         conditions = [
@@ -2421,7 +2421,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:27:51";
+            at = "20:27:51";
           }
         ];
         conditions = [
@@ -2455,7 +2455,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:28:14";
+            at = "20:28:14";
           }
         ];
         conditions = [
@@ -2489,7 +2489,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:28:38";
+            at = "20:28:38";
           }
         ];
         conditions = [
@@ -2523,7 +2523,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:29:01";
+            at = "20:29:01";
           }
         ];
         conditions = [
@@ -2557,7 +2557,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:29:25";
+            at = "20:29:25";
           }
         ];
         conditions = [
@@ -2591,7 +2591,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:29:48";
+            at = "20:29:48";
           }
         ];
         conditions = [
@@ -2625,7 +2625,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:30:12";
+            at = "20:30:12";
           }
         ];
         conditions = [
@@ -2659,7 +2659,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:30:35";
+            at = "20:30:35";
           }
         ];
         conditions = [
@@ -2693,7 +2693,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:30:59";
+            at = "20:30:59";
           }
         ];
         conditions = [
@@ -2727,7 +2727,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:31:22";
+            at = "20:31:22";
           }
         ];
         conditions = [
@@ -2761,7 +2761,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:31:46";
+            at = "20:31:46";
           }
         ];
         conditions = [
@@ -2795,7 +2795,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:32:09";
+            at = "20:32:09";
           }
         ];
         conditions = [
@@ -2829,7 +2829,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:32:33";
+            at = "20:32:33";
           }
         ];
         conditions = [
@@ -2863,7 +2863,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:32:56";
+            at = "20:32:56";
           }
         ];
         conditions = [
@@ -2897,7 +2897,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:33:20";
+            at = "20:33:20";
           }
         ];
         conditions = [
@@ -2931,7 +2931,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:33:44";
+            at = "20:33:44";
           }
         ];
         conditions = [
@@ -2965,7 +2965,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:34:07";
+            at = "20:34:07";
           }
         ];
         conditions = [
@@ -2999,7 +2999,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:34:31";
+            at = "20:34:31";
           }
         ];
         conditions = [
@@ -3033,7 +3033,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:34:54";
+            at = "20:34:54";
           }
         ];
         conditions = [
@@ -3067,7 +3067,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:35:18";
+            at = "20:35:18";
           }
         ];
         conditions = [
@@ -3101,7 +3101,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:35:41";
+            at = "20:35:41";
           }
         ];
         conditions = [
@@ -3135,7 +3135,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:36:05";
+            at = "20:36:05";
           }
         ];
         conditions = [
@@ -3169,7 +3169,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:36:28";
+            at = "20:36:28";
           }
         ];
         conditions = [
@@ -3203,7 +3203,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:36:52";
+            at = "20:36:52";
           }
         ];
         conditions = [
@@ -3237,7 +3237,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:37:15";
+            at = "20:37:15";
           }
         ];
         conditions = [
@@ -3271,7 +3271,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:37:39";
+            at = "20:37:39";
           }
         ];
         conditions = [
@@ -3305,7 +3305,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:38:02";
+            at = "20:38:02";
           }
         ];
         conditions = [
@@ -3339,7 +3339,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:38:26";
+            at = "20:38:26";
           }
         ];
         conditions = [
@@ -3373,7 +3373,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:38:49";
+            at = "20:38:49";
           }
         ];
         conditions = [
@@ -3407,7 +3407,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:39:13";
+            at = "20:39:13";
           }
         ];
         conditions = [
@@ -3441,7 +3441,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:39:36";
+            at = "20:39:36";
           }
         ];
         conditions = [
@@ -3475,7 +3475,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:40:00";
+            at = "20:40:00";
           }
         ];
         conditions = [
@@ -3509,7 +3509,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:40:24";
+            at = "20:40:24";
           }
         ];
         conditions = [
@@ -3543,7 +3543,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:40:47";
+            at = "20:40:47";
           }
         ];
         conditions = [
@@ -3577,7 +3577,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:41:11";
+            at = "20:41:11";
           }
         ];
         conditions = [
@@ -3611,7 +3611,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:41:34";
+            at = "20:41:34";
           }
         ];
         conditions = [
@@ -3645,7 +3645,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:41:58";
+            at = "20:41:58";
           }
         ];
         conditions = [
@@ -3679,7 +3679,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:42:21";
+            at = "20:42:21";
           }
         ];
         conditions = [
@@ -3713,7 +3713,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:42:45";
+            at = "20:42:45";
           }
         ];
         conditions = [
@@ -3747,7 +3747,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:43:08";
+            at = "20:43:08";
           }
         ];
         conditions = [
@@ -3781,7 +3781,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:43:32";
+            at = "20:43:32";
           }
         ];
         conditions = [
@@ -3815,7 +3815,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:43:55";
+            at = "20:43:55";
           }
         ];
         conditions = [
@@ -3849,7 +3849,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:44:19";
+            at = "20:44:19";
           }
         ];
         conditions = [
@@ -3883,7 +3883,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:44:42";
+            at = "20:44:42";
           }
         ];
         conditions = [
@@ -3917,7 +3917,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:45:06";
+            at = "20:45:06";
           }
         ];
         conditions = [
@@ -3951,7 +3951,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:45:29";
+            at = "20:45:29";
           }
         ];
         conditions = [
@@ -3985,7 +3985,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:45:53";
+            at = "20:45:53";
           }
         ];
         conditions = [
@@ -4019,7 +4019,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:46:16";
+            at = "20:46:16";
           }
         ];
         conditions = [
@@ -4053,7 +4053,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:46:40";
+            at = "20:46:40";
           }
         ];
         conditions = [
@@ -4087,7 +4087,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:47:04";
+            at = "20:47:04";
           }
         ];
         conditions = [
@@ -4121,7 +4121,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:47:27";
+            at = "20:47:27";
           }
         ];
         conditions = [
@@ -4155,7 +4155,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:47:51";
+            at = "20:47:51";
           }
         ];
         conditions = [
@@ -4189,7 +4189,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:48:14";
+            at = "20:48:14";
           }
         ];
         conditions = [
@@ -4223,7 +4223,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:48:38";
+            at = "20:48:38";
           }
         ];
         conditions = [
@@ -4257,7 +4257,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:49:01";
+            at = "20:49:01";
           }
         ];
         conditions = [
@@ -4291,7 +4291,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:49:25";
+            at = "20:49:25";
           }
         ];
         conditions = [
@@ -4325,7 +4325,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:49:48";
+            at = "20:49:48";
           }
         ];
         conditions = [
@@ -4359,7 +4359,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:50:12";
+            at = "20:50:12";
           }
         ];
         conditions = [
@@ -4393,7 +4393,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:50:35";
+            at = "20:50:35";
           }
         ];
         conditions = [
@@ -4427,7 +4427,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:50:59";
+            at = "20:50:59";
           }
         ];
         conditions = [
@@ -4461,7 +4461,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:51:22";
+            at = "20:51:22";
           }
         ];
         conditions = [
@@ -4495,7 +4495,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:51:46";
+            at = "20:51:46";
           }
         ];
         conditions = [
@@ -4529,7 +4529,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:52:09";
+            at = "20:52:09";
           }
         ];
         conditions = [
@@ -4563,7 +4563,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:52:33";
+            at = "20:52:33";
           }
         ];
         conditions = [
@@ -4597,7 +4597,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:52:56";
+            at = "20:52:56";
           }
         ];
         conditions = [
@@ -4631,7 +4631,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:53:20";
+            at = "20:53:20";
           }
         ];
         conditions = [
@@ -4665,7 +4665,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:53:44";
+            at = "20:53:44";
           }
         ];
         conditions = [
@@ -4699,7 +4699,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:54:07";
+            at = "20:54:07";
           }
         ];
         conditions = [
@@ -4733,7 +4733,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:54:31";
+            at = "20:54:31";
           }
         ];
         conditions = [
@@ -4767,7 +4767,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:54:54";
+            at = "20:54:54";
           }
         ];
         conditions = [
@@ -4801,7 +4801,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:55:18";
+            at = "20:55:18";
           }
         ];
         conditions = [
@@ -4835,7 +4835,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:55:41";
+            at = "20:55:41";
           }
         ];
         conditions = [
@@ -4869,7 +4869,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:56:05";
+            at = "20:56:05";
           }
         ];
         conditions = [
@@ -4903,7 +4903,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:56:28";
+            at = "20:56:28";
           }
         ];
         conditions = [
@@ -4937,7 +4937,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:56:52";
+            at = "20:56:52";
           }
         ];
         conditions = [
@@ -4971,7 +4971,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:57:15";
+            at = "20:57:15";
           }
         ];
         conditions = [
@@ -5005,7 +5005,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:57:39";
+            at = "20:57:39";
           }
         ];
         conditions = [
@@ -5039,7 +5039,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:58:02";
+            at = "20:58:02";
           }
         ];
         conditions = [
@@ -5073,7 +5073,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:58:26";
+            at = "20:58:26";
           }
         ];
         conditions = [
@@ -5107,7 +5107,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:58:49";
+            at = "20:58:49";
           }
         ];
         conditions = [
@@ -5141,7 +5141,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:59:13";
+            at = "20:59:13";
           }
         ];
         conditions = [
@@ -5175,7 +5175,7 @@
         triggers = [
           {
             trigger = "time";
-            at = "08:59:36";
+            at = "20:59:36";
           }
         ];
         conditions = [
