@@ -22,6 +22,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -55,6 +61,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -90,6 +102,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -123,6 +141,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -158,6 +182,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -191,6 +221,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -226,6 +262,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -259,6 +301,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -294,6 +342,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -327,6 +381,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -362,6 +422,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -395,6 +461,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -430,6 +502,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -463,6 +541,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -498,6 +582,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -531,6 +621,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -566,6 +662,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -599,6 +701,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -634,6 +742,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -667,6 +781,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -702,6 +822,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -735,6 +861,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -770,6 +902,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -803,6 +941,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -838,6 +982,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -871,6 +1021,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -906,6 +1062,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -939,6 +1101,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -974,6 +1142,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -1007,6 +1181,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -1042,6 +1222,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -1075,6 +1261,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -1110,6 +1302,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -1143,6 +1341,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -1178,6 +1382,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -1211,6 +1421,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -1246,6 +1462,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -1279,6 +1501,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -1314,6 +1542,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -1347,6 +1581,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -1382,6 +1622,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -1415,6 +1661,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -1450,6 +1702,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -1483,6 +1741,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -1518,6 +1782,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -1551,6 +1821,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -1586,6 +1862,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -1619,6 +1901,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -1654,6 +1942,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -1687,6 +1981,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -1722,6 +2022,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -1755,6 +2061,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -1790,6 +2102,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -1823,6 +2141,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -1858,6 +2182,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -1891,6 +2221,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -1926,6 +2262,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -1959,6 +2301,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -1994,6 +2342,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -2027,6 +2381,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -2062,6 +2422,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -2095,6 +2461,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -2130,6 +2502,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -2163,6 +2541,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -2198,6 +2582,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -2231,6 +2621,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -2266,6 +2662,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -2299,6 +2701,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -2334,6 +2742,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -2367,6 +2781,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -2402,6 +2822,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -2435,6 +2861,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -2470,6 +2902,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -2503,6 +2941,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -2538,6 +2982,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -2571,6 +3021,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -2606,6 +3062,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -2639,6 +3101,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -2674,6 +3142,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -2707,6 +3181,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -2742,6 +3222,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -2775,6 +3261,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -2810,6 +3302,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -2843,6 +3341,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -2878,6 +3382,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -2911,6 +3421,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -2946,6 +3462,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -2979,6 +3501,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -3014,6 +3542,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -3047,6 +3581,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -3082,6 +3622,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -3115,6 +3661,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -3150,6 +3702,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -3183,6 +3741,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -3218,6 +3782,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -3251,6 +3821,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -3286,6 +3862,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -3319,6 +3901,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -3354,6 +3942,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -3387,6 +3981,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -3422,6 +4022,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -3455,6 +4061,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -3490,6 +4102,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -3523,6 +4141,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -3558,6 +4182,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -3591,6 +4221,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -3626,6 +4262,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -3659,6 +4301,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -3694,6 +4342,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -3727,6 +4381,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -3762,6 +4422,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -3795,6 +4461,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -3830,6 +4502,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -3863,6 +4541,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -3898,6 +4582,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -3931,6 +4621,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -3966,6 +4662,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -3999,6 +4701,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -4034,6 +4742,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -4067,6 +4781,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -4102,6 +4822,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -4135,6 +4861,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -4170,6 +4902,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -4203,6 +4941,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -4238,6 +4982,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -4271,6 +5021,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -4306,6 +5062,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -4339,6 +5101,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -4374,6 +5142,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -4407,6 +5181,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -4442,6 +5222,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -4475,6 +5261,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -4510,6 +5302,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -4543,6 +5341,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -4578,6 +5382,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -4611,6 +5421,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -4646,6 +5462,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -4679,6 +5501,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -4714,6 +5542,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -4747,6 +5581,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -4782,6 +5622,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -4815,6 +5661,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -4850,6 +5702,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -4883,6 +5741,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -4918,6 +5782,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -4951,6 +5821,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -4986,6 +5862,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -5019,6 +5901,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -5054,6 +5942,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -5087,6 +5981,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
@@ -5122,6 +6022,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -5156,6 +6062,12 @@
             entity_id = "light.samu";
             state = "on";
           }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
+          }
         ];
         actions = [
           {
@@ -5189,6 +6101,12 @@
             condition = "state";
             entity_id = "light.samu";
             state = "on";
+          }
+          {
+            condition = "numeric_state";
+            entity_id = "light.samu";
+            attribute = "brightness";
+            below = 200;
           }
         ];
         actions = [
