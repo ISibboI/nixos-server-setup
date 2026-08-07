@@ -158,6 +158,7 @@ in {
       # https://www.home-assistant.io/integrations/isal
       "isal"
       "zha"
+      "roborock"
     ];
     extraPackages = python3Packages: with python3Packages; [
       aiogithubapi
