@@ -6095,17 +6095,6 @@
             condition = "numeric_state";
             entity_id = "light.samu";
             attribute = "brightness";
-            above = 0;
-          }
-          {
-            condition = "state";
-            entity_id = "light.samu";
-            state = "on";
-          }
-          {
-            condition = "numeric_state";
-            entity_id = "light.samu";
-            attribute = "brightness";
             below = 200;
           }
         ];
