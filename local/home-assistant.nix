@@ -100,15 +100,10 @@
         ];
         conditions = [
           {
-            condition = "or";
-            conditions = [
-              {
-                condition = "state";
-                entity_id = "light.samu";
-                state = "off";
-                for = { hours = 0; minutes = 1; seconds = 0; };
-              }
-            ];
+            condition = "state";
+            entity_id = "light.samu";
+            state = "off";
+            for = { hours = 0; minutes = 1; seconds = 0; };
           }
         ];
         actions = [
