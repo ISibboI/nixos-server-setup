@@ -108,12 +108,6 @@
                 state = "off";
                 for = { hours = 0; minutes = 1; seconds = 0; };
               }
-              {
-                condition = "numeric_state";
-                entity_id = "light.samu";
-                attribute = "brightness";
-                below = 10;
-              }
             ];
           }
         ];
