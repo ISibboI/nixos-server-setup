@@ -111,7 +111,7 @@
             action = "light.turn_on";
             target.entity_id = "light.samu";
             data = {
-              brightness = 1;
+              brightness = 3;
               transition = 60;
               color_temp_kelvin = 2000;
             };
@@ -133,7 +133,7 @@
             condition = "numeric_state";
             entity_id = "light.samu";
             attribute = "brightness";
-            below = 3;
+            below = 4;
           }
           {
             condition = "state";
@@ -146,7 +146,7 @@
             action = "light.turn_on";
             target.entity_id = "light.samu";
             data = {
-              brightness = 3;
+              brightness = 4;
               transition = 60;
               color_temp_kelvin = 2300;
             };

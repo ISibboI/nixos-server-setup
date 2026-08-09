@@ -6007,86 +6007,6 @@
         triggers = [
           {
             trigger = "time";
-            at = "20:58:49";
-          }
-        ];
-        conditions = [
-          {
-            condition = "numeric_state";
-            entity_id = "light.samu";
-            attribute = "brightness";
-            above = 2;
-          }
-          {
-            condition = "state";
-            entity_id = "light.samu";
-            state = "on";
-          }
-          {
-            condition = "numeric_state";
-            entity_id = "light.samu";
-            attribute = "brightness";
-            below = 200;
-          }
-        ];
-        actions = [
-          {
-            action = "light.turn_on";
-            target.entity_id = "light.samu";
-            data = {
-              brightness = 2;
-              transition = 23;
-            };
-          }
-        ];
-      }
-      
-      {
-        alias = "Samu's room nightlight off 152";
-        mode = "single";
-        triggers = [
-          {
-            trigger = "time";
-            at = "20:59:13";
-          }
-        ];
-        conditions = [
-          {
-            condition = "numeric_state";
-            entity_id = "light.samu";
-            attribute = "brightness";
-            above = 1;
-          }
-          {
-            condition = "state";
-            entity_id = "light.samu";
-            state = "on";
-          }
-          {
-            condition = "numeric_state";
-            entity_id = "light.samu";
-            attribute = "brightness";
-            below = 200;
-          }
-        ];
-        actions = [
-          {
-            action = "light.turn_on";
-            target.entity_id = "light.samu";
-            data = {
-              brightness = 1;
-              transition = 23;
-            };
-          }
-        ];
-      }
-      
-      {
-        alias = "Samu's room nightlight off 153";
-        mode = "single";
-        triggers = [
-          {
-            trigger = "time";
             at = "20:59:36";
           }
         ];
@@ -6103,7 +6023,7 @@
             action = "light.turn_off";
             target.entity_id = "light.samu";
             data = {
-              transition = 23;
+              transition = 5;
             };
           }
         ];
