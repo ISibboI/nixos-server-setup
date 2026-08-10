@@ -112,7 +112,6 @@
             target.entity_id = "light.samu";
             data = {
               brightness = 3;
-              transition = 60;
               color_temp_kelvin = 2000;
             };
           }
@@ -142,7 +141,6 @@
             target.entity_id = "light.samu";
             data = {
               brightness = 3;
-              transition = 60;
               color_temp_kelvin = 2000;
             };
           }
