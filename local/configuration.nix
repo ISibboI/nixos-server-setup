@@ -186,7 +186,7 @@ in {
       # so that systemd can monitor it and detect when the tunnel goes down
       Type = "simple";
       # forward *local* port 8123 to port 8123 on the remote host
-      ExecStart = "${pkgs.openssh}/bin/ssh root@${config.networking.domain} -N -T -R 8123:localhost:8123";
+      ExecStart = "${pkgs.openssh}/bin/ssh root@${config.networking.domain} -o ServerAliveInterval=60 -o ExitOnForwardFailure=yes -N -T -R 8123:localhost:8123";
       # send an exit signal to the SSH master process that controls the tunnel
       ExecStop = "${pkgs.openssh}/bin/ssh arh -O exit -R 8123:localhost:8123";
       # see: https://www.freedesktop.org/software/systemd/man/systemd.service.html#TimeoutStartSec=
