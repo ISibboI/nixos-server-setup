@@ -305,7 +305,24 @@ in {
       "navidrome.${config.networking.domain}" = proxy 4533;
 
       # Reitti
-      "reitti.${config.networking.domain}" = proxy 4534;
+      "reitti.${config.networking.domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        root = "/var/www";
+        # Required to upload large files.
+        extraConfig = ''
+          proxy_read_timeout 10800s;
+          proxy_send_timeout 10800s;
+          send_timeout 10800s;
+          client_max_body_size 0;
+          proxy_request_buffering off;
+          client_body_buffer_size 1024k;
+        '';
+        locations."/" = {
+          proxyPass = "http://localhost:4534";
+          proxyWebsockets = true;
+        };
+      };
 
       # Jellyfin
       "jellyfin.${config.networking.domain}" = {
