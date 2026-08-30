@@ -304,6 +304,9 @@ in {
       # Navidrome
       "navidrome.${config.networking.domain}" = proxy 4533;
 
+      # Reitti
+      "reitti.${config.networking.domain}" = proxy 4534;
+
       # Jellyfin
       "jellyfin.${config.networking.domain}" = {
         enableACME = true;
