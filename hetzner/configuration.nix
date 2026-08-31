@@ -324,6 +324,9 @@ in {
         };
       };
 
+      # Endurain
+      "endurain.${config.networking.domain}" = proxy 4535;
+
       # Jellyfin
       "jellyfin.${config.networking.domain}" = {
         enableACME = true;
