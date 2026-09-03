@@ -61,7 +61,7 @@
       set -o nounset
       set -o pipefail
 
-      readonly SOURCE_CONFIGS=("/home/syncthing:syncthing" "/syncthing_shared:syncthing_shared" "/var/lib/immich:immich" "/var/lib/nextcloud:nextcloud" "/var/lib/hass/backups:hass" "/var/lib/jellyfin:jellyfin" "/var/lib/private/actual:actual" "/var/lib/navidrome:navidrome" "/var/lib/reitti:reitti" "/var/lib/endurain:endurain")
+      readonly SOURCE_CONFIGS=("/home/syncthing:syncthing" "/syncthing_shared:syncthing_shared" "/var/lib/immich:immich" "/var/lib/nextcloud:nextcloud" "/var/lib/hass/backups:hass" "/var/lib/jellyfin:jellyfin" "/var/lib/private/actual:actual" "/var/lib/navidrome:navidrome" "/var/lib/reitti:reitti" "/usr/lib/endurain:endurain")
 
       readonly DATE="''$(${pkgs.coreutils}/bin/date '+%Y-%m-%d')"
       readonly BACKUP_DIR="/backup/daily/$DATE"
