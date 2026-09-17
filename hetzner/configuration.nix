@@ -363,6 +363,23 @@ in {
         '';
       };
 
+      # Audiobookshelf
+      "audiobookshelf.${config.networking.domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        root = "/var/www";
+        extraConfig = ''
+          client_max_body_size 100M;
+        '';    
+        locations."/" = {
+          proxyPass = "http://localhost:${builtins.toString config.services.audiobookshelf.port}";
+          proxyWebsockets = true;
+          extraConfig = ''
+            proxy_redirect http:// $scheme://;
+          '';
+        };
+      };
+
       # Game
       "game.${config.networking.domain}" = {
         enableACME = true;
@@ -571,6 +588,13 @@ in {
   services.actual = {
     enable = true;
     settings.port = 5006;
+  };
+
+  # Audiobookshelf
+  services.audiobookshelf = {
+    enable = true;
+    port = 5007;
+    dataDir = "audiobookshelf";
   };
 
   # Cron
