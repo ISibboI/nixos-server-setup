@@ -453,41 +453,6 @@ in {
     };
   };
 
-  /*# Gitlab
-  services.gitlab = {
-    enable = true;
-    host = "gitlab.${config.networking.domain}";
-    port = 443;
-    https = true;
-    databasePasswordFile = "/etc/nixos/gitlab-postgres-pass.txt";
-    initialRootPasswordFile = "/etc/nixos/gitlab-initial-root-pass.txt";
-    secrets = {
-      secretFile = "/etc/nixos/gitlab-secret.txt";
-      otpFile = "/etc/nixos/gitlab-otp.txt";
-      dbFile = "/etc/nixos/gitlab-db.txt";
-      jwsFile = pkgs.runCommand "oidcKeyBase" {} "${pkgs.openssl}/bin/openssl genrsa 2048 > $out";
-    };
-  };
-  systemd.services.gitlab-backup.environment.BACKUP = "dump";
-
-  # Gitlab runner
-  services.gitlab-runner = {
-    enable = true;
-    settings.concurrent = 8;
-    services.debian = {
-      # File should contain at least these two variables:
-      # `CI_SERVER_URL`
-      # `REGISTRATION_TOKEN`
-      authenticationTokenConfigFile = "/etc/nixos/gitlab-runner-registration.txt";
-      dockerImage = "debian:stable";
-      cloneUrl = "https://gitlab.${config.networking.domain}";
-      environmentVariables = {
-        # Make sure it uses btrfs volumes for faster CI times.
-        DOCKER_DRIVER = "btrfs";
-      };
-    };
-  };*/
-
   # Mailserver
   mailserver = {
     enable = true;
@@ -543,24 +508,6 @@ in {
         DEFAULT_ACTIONS_URL = "github";
       };
       service.DISABLE_REGISTRATION = true; 
-    };
-  };
-
-  # Forgejo actions runner
-  services.gitea-actions-runner = {
-    package = pkgs.forgejo-runner;
-    instances.default = {
-      enable = false;
-      name = "monolith";
-      url = "https://forgejo.${config.networking.domain}/";
-      # Obtaining the path to the runner token file may differ
-      tokenFile = "/etc/nixos/forgejo-runner-token.txt";
-      labels = [
-        "ubuntu-latest:docker://node:16-bullseye"
-        "ubuntu-22.04:docker://node:16-bullseye"
-        "ubuntu-20.04:docker://node:16-bullseye"
-        "ubuntu-18.04:docker://node:16-buster"
-      ];
     };
   };
 
