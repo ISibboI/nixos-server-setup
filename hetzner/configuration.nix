@@ -390,6 +390,11 @@ in {
 
       # Actual budget
       "actual.${config.networking.domain}" = proxy 5006;
+
+      # Astra
+      "astra.${config.networking.domain}" = proxy 8085 // {
+        basicAuthFile = "/var/www/.htpasswd";
+      };
     };
   };
 
