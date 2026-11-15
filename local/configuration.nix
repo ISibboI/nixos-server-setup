@@ -17,7 +17,7 @@ in {
   nix = {
     settings = {
       # Enable flakes and new 'nix' command.
-      experimental-features = "nix-command flakes";
+      experimental-features = ["nix-command" "flakes"];
       # Deduplicate and optimize nix store.
       auto-optimise-store = true;
     };
@@ -108,6 +108,16 @@ in {
     settings.ClientAliveInterval = 60;
     settings.ClientAliveCountMax = 60;
   };
+
+  # Monitor disk health (SMART).
+  services.smartd.enable = true;
+
+  # Don't build the NixOS manual; it makes evaluation slower and use more memory.
+  documentation.nixos.enable = false;
+
+  # Compressed swap in RAM. The server has only 2 GB of RAM, and swapping to the HDD is very slow.
+  # zram gets a higher priority than the disk swap partition, so it is used first.
+  zramSwap.enable = true;
 
   # Webserver
   services.nginx = {
