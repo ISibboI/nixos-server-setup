@@ -247,7 +247,14 @@ in {
     mqttPasswordFile = "/etc/nixos/radd-mqtt-password.txt";
     mqttBrokerUrl = "tcp://192.168.1.111:1883";
   };
-  
+  # radd exits if it cannot reach the MQTT broker, so start it after mosquitto,
+  # and retry slowly enough that a short broker restart doesn't hit the start limit.
+  systemd.services.radd = {
+    after = [ "mosquitto.service" ];
+    wants = [ "mosquitto.service" ];
+    serviceConfig.RestartSec = 5;
+  };
+
   # Firewall
   networking.firewall.allowedTCPPorts = [ 53 80 443 1883 ];
   networking.firewall.allowedUDPPorts = [ 53 ];
