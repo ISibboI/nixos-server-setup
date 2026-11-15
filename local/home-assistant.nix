@@ -90,6 +90,35 @@
       ### Samu's Room ###
       ###################
       {
+        alias = "Samu's room morning on 0";
+        mode = "single";
+        triggers = [
+          {
+            trigger = "time";
+            at = "06:43:00";
+          }
+        ];
+        conditions = [
+          {
+            condition = "state";
+            entity_id = "light.samu";
+            state = "off";
+            for = { hours = 0; minutes = 1; seconds = 0; };
+          }
+        ];
+        actions = [
+          {
+            action = "light.turn_on";
+            target.entity_id = "light.samu";
+            data = {
+              brightness = 3;
+              color_temp_kelvin = 2000;
+            };
+          }
+        ];
+      }
+
+      {
         alias = "Samu's room morning on 1";
         mode = "single";
         triggers = [
@@ -111,8 +140,7 @@
             action = "light.turn_on";
             target.entity_id = "light.samu";
             data = {
-              brightness = 1;
-              transition = 60;
+              brightness = 3;
               color_temp_kelvin = 2000;
             };
           }
@@ -133,7 +161,7 @@
             condition = "numeric_state";
             entity_id = "light.samu";
             attribute = "brightness";
-            below = 3;
+            below = 4;
           }
           {
             condition = "state";
@@ -146,7 +174,7 @@
             action = "light.turn_on";
             target.entity_id = "light.samu";
             data = {
-              brightness = 3;
+              brightness = 4;
               transition = 60;
               color_temp_kelvin = 2300;
             };
