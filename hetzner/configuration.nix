@@ -187,6 +187,9 @@ in {
   # Monitor disk health (SMART).
   services.smartd.enable = true;
 
+  # Don't build the NixOS manual; it makes evaluation slower and use more memory.
+  documentation.nixos.enable = false;
+
   # Webserver
   services.nginx = {
     enable = true;
