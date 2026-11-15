@@ -6,8 +6,7 @@
     nixpkgs-hetzner.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-local.url = "github:NixOS/nixpkgs/nixos-unstable";
     radd.url = "github:ISibboI/radd";
-    # Newer nixpkgs cmake does not work on x86-64 anymore...
-    radd.inputs.nixpkgs.url = "github:NixOS/nixpkgs/b71c3965ae02e6788567965c91976020509a0710";
+    radd.inputs.nixpkgs.follows = "nixpkgs-local";
   };
   outputs = { self, nixpkgs-hetzner, nixpkgs-local, ... }@attrs: {
     nixosConfigurations.hetzner = nixpkgs-hetzner.lib.nixosSystem {
