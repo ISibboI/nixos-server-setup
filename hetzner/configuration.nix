@@ -184,6 +184,9 @@ in {
     settings.ClientAliveCountMax = 60;
   };
 
+  # Monitor disk health (SMART).
+  services.smartd.enable = true;
+
   # Webserver
   services.nginx = {
     enable = true;
