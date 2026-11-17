@@ -1,5 +1,8 @@
-{ config, pkgs, radd, ... }:
+{ config, pkgs, radd, nixpkgs-fish, ... }:
 let
+  # fish 4.9.3 crashes with SIGILL on this CPU (Athlon II, no SSE4.1) when
+  # saving history, so use 4.8.1 until a fixed version lands.
+  fish = nixpkgs-fish.legacyPackages.${pkgs.stdenv.hostPlatform.system}.fish;
   # Store secrets in a separate file.
   secrets = builtins.getFlake "path:/root/secrets?lastModified=1762182077&narHash=sha256-7ybOHj2mT01nlESLNMYbA3XfF9K3P7P37kWoB2CEPBc%3D";
 in {
@@ -33,9 +36,10 @@ in {
   users.mutableUsers = false;
 
   # We want to use fish instead of bash.
-  users.defaultUserShell = pkgs.fish;
+  users.defaultUserShell = fish;
 
   programs.fish.enable = true;
+  programs.fish.package = fish;
   programs.git = {
     enable = true;
     config = {
