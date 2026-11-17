@@ -177,12 +177,9 @@ in {
       # Includes dependencies for a basic setup
       # https://www.home-assistant.io/integrations/default_config/
       default_config = {};
-      # Use reverse proxy
-      http = {
-        server_host = "::1";
-        trusted_proxies = [ "::1" ];
-        use_x_forwarded_for = true;
-      };
+      # The http block (server_host ::1, trusted_proxies ::1, use_x_forwarded_for)
+      # was migrated by HA 2026.11 into /var/lib/hass/.storage/http and is now
+      # managed via Settings > System > Network. YAML http: is ignored.
     };
   };
 
