@@ -212,8 +212,10 @@ in {
         enableACME = true;
         root = "/var/www";
       };
+      # Explicit addresses: "localhost" makes nginx try [::1] first, which fails
+      # for services that only listen on IPv4.
       proxy = port: base {
-        "/".proxyPass = "http://localhost:" + toString(port);
+        "/".proxyPass = "http://127.0.0.1:" + toString(port);
       };
     in {
       # Define syncthing.${config.networking.domain} as reverse-proxied service on localhost:8384
@@ -272,7 +274,7 @@ in {
           client_body_buffer_size 1024k;
         '';
         locations."/" = {
-          proxyPass = "http://localhost:2283";
+          proxyPass = "http://[::1]:2283"; # Immich listens on IPv6 only.
           proxyWebsockets = true;
         };
       };
@@ -325,7 +327,7 @@ in {
           client_body_buffer_size 1024k;
         '';
         locations."/" = {
-          proxyPass = "http://localhost:4534";
+          proxyPass = "http://127.0.0.1:4534";
           proxyWebsockets = true;
         };
       };
@@ -343,7 +345,7 @@ in {
         '';
         locations."/".extraConfig = ''
           # Proxy main Jellyfin traffic
-          proxy_pass http://localhost:8096;
+          proxy_pass http://127.0.0.1:8096;
           proxy_set_header Host $host;
           proxy_set_header X-Real-IP $remote_addr;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -356,7 +358,7 @@ in {
         '';
         locations."/socket".extraConfig = ''
           # Proxy Jellyfin Websockets traffic
-          proxy_pass http://localhost:8096;
+          proxy_pass http://127.0.0.1:8096;
           proxy_http_version 1.1;
           proxy_set_header Upgrade $http_upgrade;
           proxy_set_header Connection "upgrade";
@@ -378,7 +380,7 @@ in {
           client_max_body_size 100M;
         '';    
         locations."/" = {
-          proxyPass = "http://localhost:${builtins.toString config.services.audiobookshelf.port}";
+          proxyPass = "http://127.0.0.1:${builtins.toString config.services.audiobookshelf.port}";
           proxyWebsockets = true;
           extraConfig = ''
             proxy_redirect http:// $scheme://;
