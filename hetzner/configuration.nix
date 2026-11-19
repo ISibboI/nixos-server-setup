@@ -441,7 +441,9 @@ in {
         } ];
       }
     ];
-    extraConfigFiles = [ "/etc/nixos/matrix-shared-secret.txt" ];
+    # Secret for registering users via register_new_matrix_user.
+    # Synapse generates this file on first start if it does not exist.
+    settings.registration_shared_secret_path = "/var/lib/matrix-synapse/registration_shared_secret";
   };
 
   # Nextcloud
@@ -450,11 +452,10 @@ in {
     hostName = "nextcloud.${config.networking.domain}";
     package = pkgs.nextcloud35;
     https = true;
-    config = {
-      dbtype = "pgsql";
-      # Needed every time.
-      dbpassFile = "/etc/nixos/nextcloud-postgres-pass.txt";
-    };
+    # Create database and role locally and connect via /run/postgresql
+    # with peer authentication, so no database password is needed.
+    database.createLocally = true;
+    config.dbtype = "pgsql";
   };
 
   # Mailserver
@@ -563,16 +564,17 @@ in {
     # Major upgrades need a manual pg_upgrade of /var/lib/postgresql/<version>.
     # The cluster has data checksums off, so initdb new versions with --no-data-checksums.
     package = pkgs.postgresql_18;
-    # Matrix
+    # Services connect over the Unix socket with peer authentication
+    # (system user == database role), so no database passwords are needed.
+    # Matrix needs C collation, which ensureDatabases cannot set, so it is
+    # created here on a fresh cluster. Nextcloud's database is created by
+    # services.nextcloud.database.createLocally.
     initialScript = pkgs.writeText "postgres-init.sql" ''
-      CREATE ROLE "matrix-synapse" WITH LOGIN PASSWORD 'synapse';
+      CREATE ROLE "matrix-synapse" WITH LOGIN;
       CREATE DATABASE "matrix-synapse" WITH OWNER "matrix-synapse"
         TEMPLATE template0
         LC_COLLATE = "C"
         LC_CTYPE = "C";
-
-      CREATE ROLE "nextcloud" WITH LOGIN PASSWORD 'nextcloud';
-      CREATE DATABASE "nextcloud" WITH OWNER "nextcloud";
     '';
     # Home assistant
     ensureDatabases = [ "hass" ];

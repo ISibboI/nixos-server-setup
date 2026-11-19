@@ -5,6 +5,8 @@ let
   fish = nixpkgs-fish.legacyPackages.${pkgs.stdenv.hostPlatform.system}.fish;
   # Store secrets in a separate file.
   secrets = builtins.getFlake "path:/root/secrets?lastModified=1762182077&narHash=sha256-7ybOHj2mT01nlESLNMYbA3XfF9K3P7P37kWoB2CEPBc%3D";
+  # Secrets that only services use are generated on the machine (root-only).
+  raddMqttPasswordFile = "/var/lib/secrets/radd-mqtt-password";
 in {
   imports =
     [ # Include the results of the hardware scan.
@@ -234,18 +236,38 @@ in {
           acl = [ "readwrite #" ];
           hashedPassword = "$7$101$ODbExqxsFHIzL7hP$XJiyJujMJMN5JsdLoRs/VnHBiX/S8sDh2EMLJJn0dupbzbUs3y7bD8xWDria4bjQIXICDlV4C8WBI6GDP6cQAg==";
         };
+        # radd runs on this host, so its password is generated locally
+        # (see radd-mqtt-password below) and nobody needs to know it.
         radd = {
           acl = [ "readwrite #" ];
-          hashedPassword = "$7$101$WkYDH7oQqKSHBT0A$90LtW4i/D/EjLLkunJU3CEr1lCGrBvpVykCE9MIimgPjcfz8dkV69fLmwBSZyQEtol8ytrywcT88o6V4pNv+vg==";
+          passwordFile = raddMqttPasswordFile;
         };
       };
     }];
   };
 
+  # Generate the radd MQTT password once; it survives rebuilds and reboots.
+  systemd.services.radd-mqtt-password = {
+    description = "Generate the MQTT password for radd";
+    before = [ "mosquitto.service" "radd.service" ];
+    requiredBy = [ "mosquitto.service" "radd.service" ];
+    unitConfig.ConditionPathExists = "!${raddMqttPasswordFile}";
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      UMask = "0077";
+    };
+    script = ''
+      mkdir -p "$(dirname ${raddMqttPasswordFile})"
+      ${pkgs.openssl}/bin/openssl rand -hex 32 > ${raddMqttPasswordFile}.tmp
+      mv ${raddMqttPasswordFile}.tmp ${raddMqttPasswordFile}
+    '';
+  };
+
   # Radd
   services.radd = {
     enable = true;
-    mqttPasswordFile = "/etc/nixos/radd-mqtt-password.txt";
+    mqttPasswordFile = raddMqttPasswordFile;
     mqttBrokerUrl = "tcp://192.168.1.111:1883";
   };
   # radd exits if it cannot reach the MQTT broker, so start it after mosquitto,

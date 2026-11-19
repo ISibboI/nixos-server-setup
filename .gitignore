@@ -9,3 +9,4 @@
 /iso.nix
 /*.iso
 /navidrome.env
+/nextcloud-postgres-pass.txt
