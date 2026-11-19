@@ -559,6 +559,9 @@ in {
   # Postgres setup
   services.postgresql = {
     enable = true;
+    # Pinned explicitly: the stateVersion default (14) was removed from nixpkgs.
+    # Major upgrades need a manual pg_upgrade of /var/lib/postgresql/<version>.
+    package = pkgs.postgresql_17;
     # Matrix
     initialScript = pkgs.writeText "postgres-init.sql" ''
       CREATE ROLE "matrix-synapse" WITH LOGIN PASSWORD 'synapse';
