@@ -561,7 +561,8 @@ in {
     enable = true;
     # Pinned explicitly: the stateVersion default (14) was removed from nixpkgs.
     # Major upgrades need a manual pg_upgrade of /var/lib/postgresql/<version>.
-    package = pkgs.postgresql_17;
+    # The cluster has data checksums off, so initdb new versions with --no-data-checksums.
+    package = pkgs.postgresql_18;
     # Matrix
     initialScript = pkgs.writeText "postgres-init.sql" ''
       CREATE ROLE "matrix-synapse" WITH LOGIN PASSWORD 'synapse';
